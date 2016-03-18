@@ -1,0 +1,22 @@
+\select@language {spanish}
+\contentsline {chapter}{Pr\IeC {\'o}logo}{\es@scroman {iii}}
+\contentsline {chapter}{\numberline {1}Introducci\IeC {\'o}n}{1}
+\contentsline {chapter}{\numberline {2}Introducci\IeC {\'o}n a Code Aster}{3}
+\contentsline {section}{\numberline {2.1}Como Empezar Code\_Aster, tomado del U0.00.01}{3}
+\contentsline {section}{\numberline {2.2}Documentaci\IeC {\'o}n}{3}
+\contentsline {subsection}{\numberline {2.2.1}Recomendaci\IeC {\'o}n}{4}
+\contentsline {section}{\numberline {2.3}Interfaz gr\IeC {\'a}fica astk}{4}
+\contentsline {section}{\numberline {2.4}El estudio del comportamiento mec\IeC {\'a}nico de las estructuras}{4}
+\contentsline {chapter}{\numberline {3}Comandos de CODE\_ASTER}{7}
+\contentsline {section}{\numberline {3.1}Programas para Code Aster }{9}
+\contentsline {subsection}{\numberline {3.1.1}Comando DEBUT}{10}
+\contentsline {subsection}{\numberline {3.1.2}Comando DEFI\_MATERIAU}{10}
+\contentsline {subsection}{\numberline {3.1.3}Comando LIRE\_MAILLAGE}{12}
+\contentsline {subsection}{\numberline {3.1.4}Comando AFFE\_MODELE}{14}
+\contentsline {subsection}{\numberline {3.1.5}Comando AFFE\_MATERIAU}{15}
+\contentsline {subsection}{\numberline {3.1.6}Comando AFFE\_CHAR\_MECA}{16}
+\contentsline {subsection}{\numberline {3.1.7}Comando MECA\_STATIQUE}{17}
+\contentsline {subsection}{\numberline {3.1.8}Comando CALC\_ELEM}{17}
+\contentsline {subsection}{\numberline {3.1.9}Comando CALC\_NO}{20}
+\contentsline {subsection}{\numberline {3.1.10}Comando IMPR\_RESU}{20}
+\contentsline {subsection}{\numberline {3.1.11}Comando FIN}{21}

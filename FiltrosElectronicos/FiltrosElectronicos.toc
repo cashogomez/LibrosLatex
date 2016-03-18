@@ -1,0 +1,50 @@
+\select@language {spanish}
+\contentsline {chapter}{Pr\IeC {\'o}logo}{\es@scroman {iii}}
+\contentsline {chapter}{\numberline {1}Dise\IeC {\~n}o de Amplificadores}{1}
+\contentsline {section}{\numberline {1.1}Caracter\IeC {\'\i }sticas de un amplificador}{1}
+\contentsline {subsection}{\numberline {1.1.1}Ganancia de voltaje}{2}
+\contentsline {subsection}{\numberline {1.1.2}Ganancia de corriente}{4}
+\contentsline {subsection}{\numberline {1.1.3}Ganancia de Potencia}{4}
+\contentsline {subsection}{\numberline {1.1.4}Ganancia logar\IeC {\'\i }tmica}{4}
+\contentsline {subsection}{\numberline {1.1.5}Resistencia de entrada y de salida }{5}
+\contentsline {section}{\numberline {1.2}Tipos de amplificadores}{5}
+\contentsline {subsection}{\numberline {1.2.1}Amplificador de voltaje}{5}
+\contentsline {subsection}{\numberline {1.2.2}Amplificador de corriente}{7}
+\contentsline {subsection}{\numberline {1.2.3}Amplificadores de transconductancia}{8}
+\contentsline {subsection}{\numberline {1.2.4}Amplificadores de transimpedancia}{9}
+\contentsline {section}{\numberline {1.3}Teorema de Miller}{10}
+\contentsline {section}{\numberline {1.4}Ejemplo: Utilizaci\IeC {\'o}n del teorema de Miller}{12}
+\contentsline {subsection}{\numberline {1.4.1}(a)}{13}
+\contentsline {subsection}{\numberline {1.4.2}(b)}{14}
+\contentsline {section}{\numberline {1.5}Problemas para resolver}{14}
+\contentsline {subsubsection}{Problema de dise\IeC {\~n}o 1}{14}
+\contentsline {subsubsection}{Problema de dise\IeC {\~n}o 2}{15}
+\contentsline {subsubsection}{Problema de dise\IeC {\~n}o 3}{15}
+\contentsline {subsubsection}{Problema de dise\IeC {\~n}o 4}{15}
+\contentsline {subsubsection}{Problema de dise\IeC {\~n}o 5}{15}
+\contentsline {section}{\numberline {1.6}Problemas para el examen de filtros electr\IeC {\'o}nicos}{15}
+\contentsline {subsection}{\numberline {1.6.1}Problema Grupo 1:}{15}
+\contentsline {subsection}{\numberline {1.6.2}Problema Grupo 2:}{16}
+\contentsline {chapter}{\numberline {2}Introducci\IeC {\'o}n a la teor\IeC {\'\i }a de filtros}{17}
+\contentsline {section}{\numberline {2.1}Caracterizaci\IeC {\'o}n}{19}
+\contentsline {section}{\numberline {2.2}La transformada de Laplace}{20}
+\contentsline {section}{\numberline {2.3}Funci\IeC {\'o}n transferencia}{21}
+\contentsline {section}{\numberline {2.4}An\IeC {\'a}lisis en el Dominio de la Frecuencia}{22}
+\contentsline {subsection}{\numberline {2.4.1}Respuesta Senoidal}{22}
+\contentsline {section}{\numberline {2.5}El filtro de primer orden}{24}
+\contentsline {section}{\numberline {2.6}El bicuadr\IeC {\'a}tico Sallen-Key}{25}
+\contentsline {chapter}{\numberline {3}Aproximaci\IeC {\'o}n de Filtro Butterworth }{27}
+\contentsline {section}{\numberline {3.1}Propiedades de la funci\IeC {\'o}n $|N(j\omega )|$}{27}
+\contentsline {subsection}{\numberline {3.1.1}Ejemplo: Funci\IeC {\'o}n de circuito con polos y ceros con simetr\IeC {\'\i }a cuadrantal}{28}
+\contentsline {subsection}{\numberline {3.1.2}Ejemplo: Obtenci\IeC {\'o}n de $N(s)$ a partir de su magnitud}{29}
+\contentsline {section}{\numberline {3.2}Funciones de magnitud m\IeC {\'a}ximamente plana}{30}
+\contentsline {subsection}{\numberline {3.2.1}Ejemplo: Obtenci\IeC {\'o}n de una funci\IeC {\'o}n de magnitud m\IeC {\'a}ximamente plana}{31}
+\contentsline {section}{\numberline {3.3}Filtros Butterworth}{31}
+\contentsline {section}{\numberline {3.4}El parametro epsilon y la atenuaci\IeC {\'o}n m\IeC {\'a}xima}{32}
+\contentsline {subsubsection}{Obtenci\IeC {\'o}n de la \IeC {\'e}psilon en base a la atenuaci\IeC {\'o}n m\IeC {\'a}xima}{32}
+\contentsline {section}{\numberline {3.5}Orden del filtro Butterworth}{33}
+\contentsline {section}{\numberline {3.6}Polos de la funci\IeC {\'o}n Butterworth}{34}
+\contentsline {chapter}{\numberline {4}Filtro Chebyshev}{37}
+\contentsline {section}{\numberline {4.1}Filtro Chebyshev Pasabanda}{37}
+\contentsline {section}{\numberline {4.2}Bicuadr\IeC {\'a}tico Pasabanda de banda angosta}{39}
+\contentsline {subsection}{\numberline {4.2.1}Filtro Pasabanda de 40Khz para sensores ultras\IeC {\'o}nicos}{39}

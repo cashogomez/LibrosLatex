@@ -1,0 +1,59 @@
+[General]
+def_graphic_ext=png
+img_extIsRegExp=false
+img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
+kileprversion=2
+kileversion=2.0.85
+lastDocument=Electraton.tex
+masterDocument=
+name=Auto Electrico
+pkg_extIsRegExp=false
+pkg_extensions=.cls .sty .bbx .cbx .lbx
+src_extIsRegExp=false
+src_extensions=.tex .ltx .latex .dtx .ins
+
+[Tools]
+MakeIndex=
+QuickBuild=
+
+[document-settings,item:Electraton.tex]
+Bookmarks=
+Encoding=UTF-8
+Highlighting=LaTeX
+Indentation Mode=
+Mode=LaTeX
+ReadWrite=true
+
+[item:../cashoBibliografoa.bib]
+archive=true
+column=2097184
+encoding=
+highlight=
+line=0
+mode=
+open=false
+order=-1
+
+[item:Electraton.tex]
+archive=true
+column=66
+encoding=UTF-8
+highlight=LaTeX
+line=150
+mode=LaTeX
+open=false
+order=0
+
+[item:autoelectrico.kilepr]
+archive=true
+column=6357068
+encoding=
+highlight=
+line=0
+mode=
+open=false
+order=-1
+
+[view-settings,view=0,item:Electraton.tex]
+CursorColumn=66
+CursorLine=150

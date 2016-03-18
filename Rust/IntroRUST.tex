@@ -1,0 +1,547 @@
+%\documentclass[options]{class}
+\documentclass[12pt, twoside]{report}
+
+%Para listado de programas
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{mygreen}{rgb}{0,0.5,0}
+\definecolor{mygray}{rgb}{0.7,0.7,0.7}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+	 backgroundcolor=\color{mygray},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+	 basicstyle=\footnotesize\ttfamily,        % the size of the fonts that are used for the code
+	 breaklines=true,            % Zeilen werden Umgebrochen
+	 keywordstyle=\color{red},
+	 commentstyle=\itshape\color{mygreen},    % comment style
+	 numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+	 numbersep=5pt                   % how far the line-numbers are from the code
+}
+
+%Paquete de Idioma
+\usepackage[spanish]{babel}
+
+%Codificación Alfabeto
+\usepackage[utf8]{inputenc}
+
+%Codificación de Fuente
+\usepackage[T1]{fontenc}
+
+%Índice
+\usepackage{makeidx}
+
+%Gráficos
+\usepackage{graphicx}
+\usepackage{float} 
+%\usepackage{xcolor} 
+
+%Matemática
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amstext} 
+
+%Estilo de Página Numeración superior
+%\pagestyle{headings}
+
+%un estilo propio
+\usepackage{fancyhdr}
+\setlength{\headheight}{15pt}
+
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{ \markboth{\chaptername\ \thechapter: #1}{} }
+\renewcommand{\sectionmark}[1]{ \markright{ Sección \thesection. #1}{} }
+
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[RE]{\textit{ \nouppercase{\leftmark}} }
+\fancyhead[LO]{\textit{ \nouppercase{\rightmark}} }
+\fancyfoot[CE]{\textit{\textcopyright 2015 Laboratorio de Sistemas Embebidos\\
+	                    UPAEP} }
+\fancyfoot[CO]{\textit{LSE004-2015 \\
+		Elaboró: Dr. Casimiro Gómez González} }	            
+\fancypagestyle{plain}{ %
+	\fancyhf{} % remove everything
+	\renewcommand{\headrulewidth}{0pt} % remove lines as well
+	\renewcommand{\footrulewidth}{0pt}
+}
+
+%Hiperlinks \href{url}{text}
+\usepackage[pdftex]{hyperref}
+
+\usepackage{cite} % para contraer referencias
+
+%Titulo
+\title{LSE004-2015: Programando en el lenguaje RUST}
+\author{Dr. Casimiro Gómez González\\
+	Facultad de Electrónica, UPAEP\\
+               correo: casimiro.gomez@upaep.mx\\
+               Tel: 222 229 9428}
+\date{Primavera 2015}
+
+\begin{document}
+
+\maketitle
+
+\chapter*{Prólogo}
+
+El presente texto es una introducción a la programación en RUST, incluye las herramientas necesarias para el desarrollo de proyectos de nivel intermedio en este excitante lenguaje y sus aplicaciones en el desarrollo de sistemas embebidos.
+
+\begin{flushright}
+	
+	El autor\\
+	Casimiro Gómez González\\
+	Doctor en Ingeniería Mecatrónica \\
+	correo: casimiro.gomez@upaep.mx
+\end{flushright}
+
+\tableofcontents
+
+\chapter{Instalación de RUST}
+Rust es un lenguaje de programación compilado, de propósito general y multiparadigma que está siendo desarrollado por Mozilla. Ha sido diseñado para ser ''un lenguaje seguro, concurrente y práctico'', soportando programación funcional pura, por procedimientos, imperativa y orientada a objetos.
+
+El lenguaje surgió de un proyecto personal desarrollado por Graydon Hoare (trabajador de Mozilla), quién empezó a trabajar en él en 2006; y Mozilla se involucró en este proyecto en 2009 y lo dio a conocer oficialmente en 2010. El mismo año, el trabajo pasó del compilador inicial (escrito en OCaml) al compilador auto contenido, escrito en sí mismo, en Rust. Conocido como rustc, se compiló a sí mismo en 2011. El compilador auto contenido usa LLVM como su back-end.
+
+La primera versión alfa numerada del compilador de Rust apareció en enero de 2012. Según la política de Mozilla, Rust es desarrollado de forma totalmente abierta y solicita la opinión y contribución de la comunidad. El diseño del lenguaje se ha ido perfeccionando a través de las experiencias en el desarrollo del motor de navegador, Servo, y el propio compilador de Rust. Aunque es desarrollado y patrocinado por Mozilla y Samsung, es un proyecto comunitario. Una gran parte de las contribuciones proceden de los miembros de la comunidad.
+
+El objetivo de Rust es ser un buen lenguaje para la creación de grandes programas del lado del cliente y del servidor que se ejecuten en Internet. Esto ha llevado a un conjunto de características con un énfasis en la seguridad, el control de distribución de la memoria y la concurrencia. Se espera que el rendimiento de código seguro sea más lento que C++, si el rendimiento es la única consideración, pero si lo comparamos con el código C++ hecho para que tome precauciones comparables a las que toma Rust, este último puede ser incluso más rápido
+
+\section{Requisitos de instalación}
+
+Para la instalación de RUST en freebsd es importante reconocer que se encuentra en el Tier 3\footnote{Rust clasifica los sistemas operativos según 
+su nivel de actualización y si cuentan con los tres programas: std, rustc y cargo. FreeBSD al encontrarse en el tier 3 significa que el lenguaje es desarrollado por la comunidad y no de manera oficial} , por lo cual se recomienda su instalación con el siguiente comando en la terminal de FreeBSD:
+
+\begin{lstlisting}[language=bash]
+$su 
+$(Introduce tu password de superusuario)
+#pkg update
+#pkg install rust
+\end{lstlisting}
+
+\section{Instalando RUST en Linux}
+
+El primer paso para usar Rust es instalarlo. Hay distintas formas de instalar Rust, pero la forma más fácil es usar el script \textbf{rustup}. Se necesita ejecutar el siguiente comando:
+
+\begin{lstlisting}[language=bash]
+$ curl -sf -L https://static.rust-lang.org/rustup.sh | sudo sh
+\end{lstlisting}
+
+También es posible instalarlo en dos pasos:
+
+\begin{lstlisting}[language=bash]
+$ curl -f -L https://static.rust-lang.org/rustup.sh -O
+$ sudo sh rustup.sh
+\end{lstlisting}
+
+\subsection{Desinstalando}
+
+Si se desea desinstalar Rust se debe ejecutar el siguiente comando:
+
+\begin{lstlisting}[language=bash]
+$ sudo /usr/local/lib/rustlib/uninstall.sh
+\end{lstlisting}
+
+\section{Instalación de RustDT}
+
+Para la instalación de RustDT se necesita tener instalado lo siguiente:
+
+\begin{itemize}
+
+ \item Eclipse 4.5 (Mars) or later.
+ \item Java VM version 8 or later.
+ \item The Racer tool.
+
+\end{itemize}
+
+\subsection{Instrucciones}
+\begin{itemize}
+\item Usa el Eclipse que tengas instalado en tu sistema o baja el paquete de http://www.eclipse.org/downloads/\footnote{Para un paquete de eclipse sin ningún otro IDE o extra (tal como la herramienta VCS)} debes bajar la "\textit{Platform Runtime Binary}".
+
+\item Iniciar Eclipse, e ir a \textbf{HELP -> Install New Software...}
+
+\item Pulsa el botón \textbf{Add...} para agregar un nuevo sitio, introduce el URL: \textbf{http://rustdt.github.io/releases/} en el campo de localización, pulsa \textbf{OK}.
+
+\item Selecciona el sitio de las actualizaciones recientes en \textbf{work with:} menu. Selecciona \textbf{RustDT} en la caja de opciones. Ahora la característica de \textbf{RustDT} aparecerá en la parte inferior
+
+\item Selecciona la característica \textbf{RustDT} y completa el wizard.\footnote{Las dependencias de \textbf{RustDT} tales como CDT automáticamente  se instalarán durante el proceso de la instalación }
+
+\item Reiniciar Eclipse  
+
+\item Para la configuración inicial sigue las instrucciones en la sección de configuración en la guia de usuario. 
+
+\end{itemize}
+
+\subsection{Actualizar}
+
+Si tienes instalado RustDT y quieres actualizar pulsa \textbf{Help / Check for Updates...}
+
+\chapter{Características Principales de RUST}
+
+RUST es un lenguaje de programación de sistemas enfocado en tres objetivos: Seguridad, velocidad y concurrencia. Se logran estos tres objetivos sin tener un colector de basura, provocando esto que sea un lenguaje útil  para aplicaciones donde otros lenguajes no lo son: Ser embebidos en otros lenguajes, programas con datos específicos de tiempo y espacio, escritura de código de bajo nivel, tales como drivers de dispositivos y sistemas operativos. Mejora de los lenguajes actuales dirigidas a este espacio por tener una serie de controles de seguridad en tiempo de compilación que no producen sobrecarga de tiempo de ejecución , mientras que la eliminación de todas las carreras de datos. Rust también tiene como objetivo lograr `` abstracciones  de costo cero '' a pesar de que algunas de estas abstracciones sienten como los de un lenguaje de alto nivel . Incluso entonces , Rust todavía permite un control preciso como un lenguaje de bajo nivel lo haría.
+
+\section{Una corta introducción a RUST}
+
+EL principal concepto que hace a Rust único es llamado "propiedad". Considere el siguiente ejemplo:
+
+\begin{lstlisting}[language=erlang]
+fn main() {
+	let mut x = vec!["Hola", "mundo"];
+}
+\end{lstlisting}
+
+Este programa realiza un enlace de variable llamado \textbf{x}. El valor de este enlace  es un\textit{ Vec<T>}, un ``vector'' a través de una macro definida en la librería estándar. Esta macro es llamada \textbf{vec}, y se invoca a los macros con un \textbf{!}. Esto sigue el principio general de Rust: \textbf{Haz las cosas explícitamente}. Las macros pueden hacer cosas significativamente mas complicadas que las funciones, es por ello que son visualmente distintas. El símbolo \textbf{!} tambien ayuda con el parsing, haciendo la herramienta de macros fácil de escribir, lo cual es muy importante.
+
+Se utiliza \textbf{mut} para hacer \textbf{x} mutable: los enlaces son inmutables por defecto en Rust. 
+
+También vale la pena señalar que no necesitábamos una anotación de tipo aquí: mientras Rust se escribe con tipado estático, no lo necesitamos para anotar explícitamente el tipo . Rust tiene inferencia de tipos para equilibrar el poder de tipos estáticos con el nivel de detalle de la anotación de tipos .
+
+Rust prefiere asignación de pila que asignación de memoria dinámica: x es colocada directamente en la pila. Sin embargo, el tipo Vec<T> coloca espacios para elementos del vector en la memoria dinámica.  Como lenguaje de programación de sistemas, RUST proporciona la habilidad de controlar como las memoria es colocada.
+
+Como mencionamos anteriormente, la ``propiedad'' es el concepto principal en Rust. En el lenguaje Rust, x se dice que es ``Dueño'' del vector. Esto significa que cuando x se elimina, la memoria del vector se descoloca. 
+Esto es realizado determinísticamente por el compilador de Rust, mas que a través de un mecanismo tal como el colector de basura. En otras palabras, en RUST, no se llama a la función como \textbf{malloc} y \textbf{free} por ti mismo: El compilador estáticamente determina cuando se necesita colocar o liberar memoria, e introduce estas llamadas por el mismo. Equivocarse es humano, pero el compilador nunca olvida.
+
+Si agregamos otra linea a nuestro ejemplo:
+
+\begin{lstlisting}[language=erlang]
+fn main() {
+let mut x = vec!["Hello", "world"];
+
+let y = &x[0];
+}
+\end{lstlisting}
+
+En el programa anterior se introdujo otra ligadura, \textbf{y}. En este caso, \textbf{y} es una ``referencia'' a el primer elemento de el vector. La referencias en Rust son similares a los apuntadores en otros lenguajes, pero con revisiones de seguridad adicionales en tiempo de compilación. Las referencias interactuan con las el sistema de propiedades ``prestando'' a lo que apunta, mas que adueñandose de él. La diferencia es, cuando la referencia se elimina, no será liberada de la memoria. Si así fuera, sería liberada dos veces lo cual es malo.
+
+Ahora adicionemos una tercera línea.
+
+\begin{lstlisting}[language=erlang]
+fn main() {
+	let mut x = vec!["Hello", "world"];
+
+	let y = &x[0];
+
+	x.push("foo");
+}
+\end{lstlisting}
+
+\textbf{push} es un método en los vectores que adiciona otro elemento al final del vector. Cuando se trata de compilar este programa, se general el siguiente error:
+
+\begin{lstlisting}[language=erlang]
+error: cannot borrow `x` as mutable because it is also borrowed as immutable
+x.push(4);
+^
+note: previous borrow of `x` occurs here; the immutable borrow prevents
+subsequent moves or mutable borrows of `x` until the borrow ends
+let y = &x[0];
+^
+note: previous borrow ends here
+fn main() {
+
+}
+^
+\end{lstlisting}
+
+El compilador Rust da información bastante detallada de los errores algunas veces, esta es una de esas veces. Como se señala en el error, mientras hacemos nuestra ligadura mutable no se puede ejecutar  \textbf{push}. Esto es debido a que aún tenemos una referencia a un elemento del vector, \textbf{y}. Mutar algo mientras otra referencia existe es peligroso, porque se podría invalidad la referencia. En este caso específico, cuando creamos un vector, solamente tendremos espacio de memoria para tres elementos. Adicionar un cuarto significa colocar un espacio de memoria para esos elementos nuevos, copiando valores viejos y actualizando el apuntador interno a esa memoria. Todo esto suena bien. El problema es que \textbf{y} no se puede actualizar, por lo que tendremos un apuntador colgante. Esto es malo. Cualquier uso de \textbf{y} generará un error en este caso, así que el compilador captura el error para nosotros.
+
+Asi que ¿Como resolvemos este problema? Se puede utilizando dos técnicas. La primera es haciendo una copia mas que una referencia:
+
+
+\begin{lstlisting}[language=erlang]
+fn main() {
+	let mut x = vec!["Hello", "world"];
+	
+	let y = x[0].clone();
+	
+	x.push("foo");
+}
+\end{lstlisting}
+
+Rust tiene una semántica para mover datos, de tal forma que si queremos hacer una copia de alguna dato, llamamos al método \textbf{clone()}. En este ejemplo, \textbf{y} no es más una referencia al vector guardado en \textbf{x\textbf{}}, pero copia su primer elemento ``hola''. Ahora no tenemos referencia, y el método \textbf{push()} trabajará bien.
+
+Si realmente se requiere de utilizar una referencia, se necesita otra opción, esta es: asegurarse que nuestra referencia esta fuera del ambiente antes de que tratemos de hacer la mutación. Esto quería de la siguiente forma:
+
+\begin{lstlisting}[language=erlang]
+fn main() {
+	let mut x = vec!["Hello", "world"];
+	
+	{
+		let y = &x[0];
+	}
+	
+	x.push("foo");
+}
+\end{lstlisting}
+
+En este programa se ha creado un ambiente interno utilizando el conjunto de llaves adicionales. \textbf{y} se saca del ambiente antes de llamar al método \textbf{push()}, de tal forma que todo funciona adecuadamente.
+
+El concepto de ``propiedad '' no es bueno para prevenir apuntadores colgados, pero un conjunto de problemas relacionados, como iteracciones inválidas , concurrencia y otros si se previenen.
+
+
+
+\section{Programa ``Hola, Mundo''}
+
+Antes de escribir nuestro tradicional programa ``Hola, Mundo'', vamos a crear nuestro subdirectorio de trabajo
+
+\begin{lstlisting}[language=bash]
+$ mkdir ~/projects
+$ cd ~/projects
+$ mkdir hello_world
+$ cd hello_world
+\end{lstlisting}
+
+Ahora haremos un nuevo archivo fuente. Y llamaremos al archivo \textbf{main.rs}. Los archivos en Rust siempre terminan con la extensión \textbf{.rs}. Si utilizas mas de una palabra en el nombre de tu archivo, se recomienda usar un guión inferior \textbf{Hola\_Mundo.rs} mas que \textbf{HolaMundo.rs}.
+
+Ahora, una vez el archivo este abierto, escribir el siguiente código dentro:
+
+\begin{lstlisting}[language=erlang]
+fn main() {
+	println!("Hola, Mundo");
+}
+\end{lstlisting}
+
+Grabar el archivo, y luego escribir los siguientes comandos en la terminal:
+\begin{lstlisting}[language=bash]
+$ rustc main.rs
+$ ./main 
+Hello, world!
+\end{lstlisting}
+
+¡Éxito! Ahora analizaremos el programa en detalle
+
+\begin{lstlisting}[language=erlang]
+fn main() {
+
+}
+\end{lstlisting}
+
+Estas lineas definen una función en Rust. La función \textbf{main} es especial: Es el principio de todo programa Rust. La primera linea dice ``Estoy declarando una función llamada \textbf{main} la cual no necesita argumentos y no regresa nada". Si necesitara algún argumento estos irían dentro de los paréntesis, y debido a que no estamos regresando nada se puede omitir la palabra clave \textbf{return} completamente.
+
+\section{Conviertiendo a Cargo}
+
+Vamos a convertir el programa ``Hola Mundo'' a Cargo, para ello necesitamos hacer tres cosas: 
+
+\begin{itemize}
+\item Hacer el archivo de configuraciòn \textbf{Cargo.toml}
+\item Poner los archivos fuentes en los directorios adecuados
+\item Ejecutar el archivo creado
+\end{itemize}
+
+\subsection{Primer paso}
+
+\begin{lstlisting}[language=bash]
+$ mkdir src
+$ mv main.rs src/main.rs 
+$ rm main 
+\end{lstlisting}
+
+Si deseamos crear una librería en lugar de un ejecutable, debemos usar el nombre lib.rs. Esta convención es usada por Cargo para compilar exitosamente nuestros proyectos. Localizaciones propias pueden ser especificadas con las palabras claves [bin] o [lib] en el archivo TOML.
+
+Cargo espera que tus archivos fuentes se encuentren en el directorio \textbf{src}. Esto deja los archivos de nivel alto para otras cosas, como READMEs, información de licencias, y cualquier otra cosa no relacionado con tu código. Cargo te ayuda a mantener tus proyectos agradables. Un lugar para cada cosa y cada cosa en su lugar.
+
+Ahora, nuestro archivo de configuración:
+
+\chapter{Diseñando el Sistema Operativo \textbf{\textit{UtVitam}} con Rust}
+
+Les presento el nuevo sistema operativo UtVitam. UtVitam es un sistema operativo enfocado a dar vida a nuevos proyectos que busquen funcionar independiente y embebidos, por ello es que UtVitam proviene del latin que significa \textbf{A la vida}. La primera decisión que debemos hacer nada más plantearnos el sistema operativo es ¿cuál va a ser el bootloader?
+
+Aquí existen múltiples variantes, e incluso podríamos crear uno nosotros; sin embargo, vamos a usar GRUB, porque la mayoría conoce más o menos algo de él. Creamos una carpeta que será el root de nuestro sistema operativo y allí creamos la carpeta /boot/grub
+
+\begin{lstlisting}[language=bash]
+mkdir UtVitamroot && cd UtVitamroot
+mkdir -p boot/grub
+\end{lstlisting}
+
+Allí creamos el fichero grub.cfg de la siguiente manera:
+
+\begin{lstlisting}[language=bash]
+menuentry "UtVitam" {
+
+echo "Booting UtVitam"
+
+multiboot /Ut/START.ELF
+
+boot
+
+}
+\end{lstlisting}
+
+
+En este fichero hemos visto como GRUB cargará nuestro kernel, en este caso, en /Ut/START.ELF. Ahora debemos crear nuestro kernel.
+
+Para ello necesitaremos el GCC y GAS (el ensamblador del proyecto GNU, suele venir con el gcc). Así pues vamos a crear el kernel.
+
+Primero hacemos un archivo llamado kernel.asm. Este archivo contendrá el punto de inicio de nuestro kernel y además definirá el multiboot (una característica de algunos bootloaders como GRUB). El contenido de kernel.asm será:
+
+\begin{lstlisting}[language=bash]
+.text
+
+.globl start
+
+start:
+
+jmp multiboot_entry
+
+.align 4
+
+multiboot_header:
+
+.long 0x1BADB002
+
+.long 0x00000003
+
+.long -(0x1BADB002+0x00000003)
+
+multiboot_entry:
+
+movl $(stack + 0x4000), %esp
+
+call UtVitam_Main
+
+loop: hlt
+
+jmp loop
+
+.section ".bss"
+
+.comm stack,0x4000
+
+\end{lstlisting}
+
+Todo lo relacionando con multiboot es simplemente seguir la especificación nada más. Todo empezará en start, llamará a multiboot\_entry, habremos definido el multiboot header en los primeros 4k y lo pondremos (con movl).
+
+
+Más tarde llamamos a UtVitam\_Main que es nuestra función en C del kernel. En el loop hacemos un halt para parar el ordenador. Esto se compila con:
+
+\begin{lstlisting}[language=bash]
+as -o kernel.o -c kernel.asm
+\end{lstlisting}
+
+Ahora vamos a entrar a programar en C. Pensarás que ahora todo es pan comido, ponemos un printf en main y ya está, lo hemos hecho.
+
+Pues no, ya que printf y main son funciones que define el sistema operativo, ¡pero nosotros lo estamos creando! Solo podremos usar las funciones que nosotros mismos definamos.
+
+En capítulos posteriores hablaré de como poner nuestra propia libraría del C (glibc, bionic, newlibc) pero tiempo al tiempo. Hemos hablado que queremos poner texto en pantalla, bueno veremos como lo hacemos.
+
+Hay dos opciones, una es llamar a la BIOS y otra es manejar la memoria de la pantalla directamente. Vamos a hacer esto último pues es más claro desde C y además nos permitirá hacerlo cuando entremos en modo protegido.
+
+Creamos un fichero llamado UtVitam\_Main.c con el siguiente contenido:
+
+\begin{lstlisting}[language=C++]
+int UtVitam_Main()
+
+{
+
+char *str = "NextDivel says Hello World", *ch;
+
+unsigned short *vidmem = (unsigned short*) 0xb8000;
+
+unsigned i;
+
+for (ch = str, i = 0; *ch; ch++, i++)
+
+vidmem[i] = (unsigned char) *ch | 0x0700;
+
+return 0;
+
+}
+\end{lstlisting}
+
+Con esto manipulamos directamente la memoria VGA y caracter a caracter lo vamos escribiendo. Compilamos desactivando la stdlib:
+
+\begin{lstlisting}[language=bash]
+gcc -o UtVitam_Main.o -c UtVitam_Main.c -nostdlib -fPIC -ffreestanding
+\end{lstlisting}
+
+
+Si has llegado hasta aquí querrás probar ya tu nuevo y flamante sistema operativo, pero todavía no hemos terminado. Necesitamos un pequeño fichero que diga al compilador en que posición del archivo dejar cada sección. Esto se hace con un linker script. Creamos link.ld:
+
+\begin{lstlisting}[language=C++]
+ENTRY(start)
+
+SECTIONS
+
+{
+
+. = 0x00100000;
+
+.multiboot_header :
+
+{
+
+*(.multiboot_header)
+
+}
+
+.text :
+
+{
+
+code = .; _code = .; __code = .;
+
+*(.text)
+
+. = ALIGN(4096);
+
+}
+
+.data :
+
+{
+
+data = .; _data = .; __data = .;
+
+*(.data)
+
+*(.rodata)
+
+. = ALIGN(4096);
+
+}
+
+.bss :
+
+{
+
+bss = .; _bss = .; __bss = .;
+
+*(.bss)
+
+. = ALIGN(4096);
+
+}
+
+end = .; _end = .; __end = .;
+
+}
+\end{lstlisting}
+
+Con esto definimos la posición de cada sección y el punto de entrada, start, que hemos definido en kernel.asm. Ahora ya podemos unir todo este mejunje:
+
+\begin{lstlisting}[language=bash]
+gcc -o START.ELF kernel.o UtVitam_Main.o -Tlink.ld -nostdlib -fPIC -ffreestanding -lgcc
+\end{lstlisting}
+
+Ahora copiamos START.ELF al /next dentro de nuestra carpeta que simula el root de nuestro sistema operativo. Nos dirigimos a la carpeta root de nuestro sistema operativo nuevo con la consola y verificamos que hay dos archivos: uno /boot/grub/grub.cfg y otro /Ut/START.ELF.
+
+Vamos al directorio superior y llamamos a una utilidad de creación ISOs con GRUB llamada grub-mkrescue
+
+\begin{lstlisting}[language=bash]
+grub-mkrescue -o UtVitam.iso UtVitamroot
+grub-mkrescue -d /usr/lib/grub/i386-pc/ -o os.iso isofiles
+\end{lstlisting}
+
+
+Una vez hayamos hecho esto tendremos una ISO. Esta ISO puede abrirse en ordenadores x86 (64 bits también) y máquinas virtuales. Para probarlo, voy a usar QEMU. Llamamos a QEMU desde la línea de comandos:
+
+\begin{lstlisting}[language=bash]
+qemu-system-i386 nextdivel.iso
+
+\end{lstlisting}
+
+Arrancará SeaBIOS y más tarde tendremos GRUB. Después si todo va correcto veremos nuestra frase.
+
+
+\bibliographystyle{acm}
+\bibliography{../bibliografia}
+\end{document}

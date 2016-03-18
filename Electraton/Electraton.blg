@@ -1,0 +1,47 @@
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
+The top-level auxiliary file: Electraton.aux
+The style file: alpha.bst
+Database file #1: ../cashoBibliografoa.bib.bib
+Warning--can't use both author and editor fields in MehrdadEhsani2005
+You've used 2 entries,
+            2543 wiz_defined-function locations,
+            574 strings with 4806 characters,
+and the built_in function-call counts, 785 in all, are:
+= -- 70
+> -- 50
+< -- 0
++ -- 18
+- -- 18
+* -- 57
+:= -- 148
+add.period$ -- 7
+call.type$ -- 2
+change.case$ -- 13
+chr.to.int$ -- 2
+cite$ -- 3
+duplicate$ -- 30
+empty$ -- 51
+format.name$ -- 20
+if$ -- 152
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 4
+newline$ -- 13
+num.names$ -- 6
+pop$ -- 16
+preamble$ -- 1
+purify$ -- 16
+quote$ -- 0
+skip$ -- 23
+stack$ -- 0
+substring$ -- 14
+swap$ -- 3
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 8
+warning$ -- 1
+while$ -- 6
+width$ -- 4
+write$ -- 28
+(There was 1 warning)

@@ -1,0 +1,19 @@
+\select@language {spanish}
+\contentsline {chapter}{\numberline {1}Introducci\IeC {\'o}n}{4}{chapter.1}
+\contentsline {section}{\numberline {1.1}Produciendo software de calidad}{4}{section.1.1}
+\contentsline {section}{\numberline {1.2}Modelando Software}{5}{section.1.2}
+\contentsline {section}{\numberline {1.3}La importancia del tiempo y el temporizado}{5}{section.1.3}
+\contentsline {section}{\numberline {1.4}Manejando m\IeC {\'u}ltiples trabajos}{7}{section.1.4}
+\contentsline {section}{\numberline {1.5}Usando Interrupciones como m\IeC {\'a}quina de ejecuci\IeC {\'o}n}{7}{section.1.5}
+\contentsline {chapter}{\numberline {2}Empezando a crear proyectos con $ \mu $Vision de Keil}{9}{chapter.2}
+\contentsline {section}{\numberline {2.1}Instalando el software}{9}{section.2.1}
+\contentsline {section}{\numberline {2.2}Creaci\IeC {\'o}n del proyecto}{10}{section.2.2}
+\contentsline {section}{\numberline {2.3}Configuraciones b\IeC {\'a}sicas}{12}{section.2.3}
+\contentsline {chapter}{\numberline {3}Usando el Archivo de Encabezado para Plantilla: cmsis\_os.h}{16}{chapter.3}
+\contentsline {section}{\numberline {3.1}Funciones de CMSIS-RTOS}{16}{section.3.1}
+\contentsline {section}{\numberline {3.2}Convenciones de prefijos y manejo de hilos}{17}{section.3.2}
+\contentsline {section}{\numberline {3.3}Cambio de varias tareas por Algoritmo de Round-Robin}{19}{section.3.3}
+\contentsline {section}{\numberline {3.4}Manejo de se\IeC {\~n}ales}{22}{section.3.4}
+\contentsline {section}{\numberline {3.5}Manejo de rutinas mutuamente excluyentes}{24}{section.3.5}
+\contentsline {chapter}{Anexos}{29}{section*.3}
+\contentsline {chapter}{\numberline {A}Anexo I: C\IeC {\'o}digo para crear un nuevo proyecto}{30}{appendix.Alph1}

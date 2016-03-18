@@ -1,0 +1,67 @@
+\documentclass[12pt,letterpaper,twoside]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{makeidx}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage{kpfonts}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+
+\title{Digestión Anaeróbica}
+\author{Dr. Casimiro Gómez González\\
+	Facultad de Electrónica, UPAEP\\
+               correo: casimiro.gomez@upaep.mx\\
+               Tel: 222 229 9428}
+\date{Primavera 2013}
+\begin{document}
+\frontmatter
+\maketitle
+
+
+\chapter{Prólogo}
+El presente material ha sido desarrollado como parte del proyecto de investigación, financiado por la secretaria de energía de México y el Consejo Nacional de Ciencia y Tecnología de México (CONACYT), el proyecto se llama \textit{\textbf{Diseño de un sistema de lógica difusa para el control de un biodigestor}} y es una recopilación de distintos materiales que se han ido desarrollando en el Laboratorio de Sistemas Embebidos (LSE) de la Universidad Popular Autónoma del Estado de Puebla (UPAEP) en México.
+\begin{flushright}
+
+El autor\\
+Casimiro Gómez González\\
+Doctor en Ingeniería Mecatrónica
+\end{flushright}
+
+\tableofcontents
+\listoftables
+\listoffigures
+
+\mainmatter
+\chapter{La importancia de la digestión anaeróbica}
+La conversión anaeróbica es el rpoceso tecnológico mas viejo utilizado por la humanidad inicialmente se utilizó para la producción de comida y bebidas.
+
+Mientras muchos diferentes modelos anaeróbicos han sido presentados durante años (y algunos forman parte del modelo ADM1), su uso por ingenieros, proveedores tecnológicos y operadores ha sido muy limitado. Dos de los principales factores han sido la gran variedad de modelos disponibles y comúnmente su muy específica naturaleza.
+
+
+
+\begin{figure}
+\centering
+\includegraphics[width=6in]{Biodigesterprocesses.jpg}
+\caption{Familias Microchip}
+\label{fig0}
+\end{figure}
+
+\section{Proceso de conversión en la digestión anaeróbica}
+
+EL proceso de conversión en la digestión anaeróbica puede ser dividido en dos tipos principales (figura \ref{fig0}):
+\begin{itemize}
+\item Bioquímico: Estos procesos son normalmente catalizados por enzimas intra o extracelulares y actual como una sopa de materiales orgánicos disponibles. La desintegración de los compuestos (tales como la biomasa muerta) a constituyentes  particulares y sus posterior hidrolisis enzimatica a monomeros solubles son procesos extracelulares. La digestion de materiales solubles por medio de organismos es un proceso intracelular y este proceso resulta en el crecimiento y decaimiento de la biomasa
+\item Físico-Químico: Estos procesos no son biológicos y abarcan asociación/disociación de iones, y transferencia de gas-líquido. La precipitación puede ser un proceso físico-químico, sin embargo no esta incluido en el modelo.
+\end{itemize}
+
+Distinguir entre el sustrato (lo degradable) y el entrada total de demanda química de oxígeno (DQO) es muy importante, debido a que una importante fracción de la entrada de DQO puede ser anaerobicamente no biodegradable. El factor de biodegradabilidad (D) es una de las más importantes características del influente DQO. Un influente con $D=1$, o componentes orgánicos totalmente degradables, son raramente encontrados. En general, se usa el término 'sustrato' para indicar el DQO degradable, mientras que a la fracción inerte ($1-D$) es representada por el Soluble ($S_I$) y las partículas inertes ($X_I$).  
+
+\bibliographystyle{alpha} %% plain.bst
+\bibliography{./BiodigestorBibliografia}
+\backmatter
+\end{document}
+

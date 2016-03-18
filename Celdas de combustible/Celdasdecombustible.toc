@@ -1,0 +1,9 @@
+\select@language {spanish}
+\contentsline {chapter}{Pr\IeC {\'o}logo}{\es@scroman {iii}}
+\contentsline {chapter}{\numberline {1}Introducci\IeC {\'o}n}{1}
+\contentsline {section}{\numberline {1.1}Breve descripci\IeC {\'o}n hist\IeC {\'o}rica}{3}
+\contentsline {section}{\numberline {1.2}Modelos matem\IeC {\'a}ticos}{5}
+\contentsline {chapter}{\numberline {2}Modelos matem\IeC {\'a}ticos de micro fluidos}{7}
+\contentsline {section}{\numberline {2.1}Escalamiento}{7}
+\contentsline {section}{\numberline {2.2}Ecuaci\IeC {\'o}n de Navier-Stokes para micro fluidos}{8}
+\contentsline {subsection}{\numberline {2.2.1}Derivada material}{8}

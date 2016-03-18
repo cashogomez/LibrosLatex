@@ -1,0 +1,30 @@
+\select@language {spanish}
+\contentsline {chapter}{Pr\IeC {\'o}logo}{\es@scroman {iii}}
+\contentsline {chapter}{\numberline {1}Introducci\IeC {\'o}n}{1}
+\contentsline {section}{\numberline {1.1}Archivo de Comandos}{2}
+\contentsline {section}{\numberline {1.2}El papel del supervisor}{3}
+\contentsline {section}{\numberline {1.3}Los principios y la sintaxis del lenguaje de comando}{3}
+\contentsline {section}{\numberline {1.4}Las principales etapas de un estudio}{4}
+\contentsline {section}{\numberline {1.5}Iniciar el estudio y la adquisici\IeC {\'o}n de la malla}{4}
+\contentsline {section}{\numberline {1.6}Datos que afectan el modelado de una malla}{5}
+\contentsline {section}{\numberline {1.7}Definici\IeC {\'o}n de un dominio de afectaci\IeC {\'o}n}{6}
+\contentsline {section}{\numberline {1.8}Afectar el tipo de elementos finitos}{6}
+\contentsline {chapter}{\numberline {2}Introducci\IeC {\'o}n a Code Aster}{7}
+\contentsline {section}{\numberline {2.1}Como Empezar Code\_Aster, tomado del U0.00.01}{7}
+\contentsline {section}{\numberline {2.2}Documentaci\IeC {\'o}n}{7}
+\contentsline {subsection}{\numberline {2.2.1}Recomendaci\IeC {\'o}n}{8}
+\contentsline {section}{\numberline {2.3}Interfaz gr\IeC {\'a}fica astk}{8}
+\contentsline {section}{\numberline {2.4}El estudio del comportamiento mec\IeC {\'a}nico de las estructuras}{8}
+\contentsline {chapter}{\numberline {3}Comandos de CODE\_ASTER}{11}
+\contentsline {section}{\numberline {3.1}Programas para Code Aster }{13}
+\contentsline {subsection}{\numberline {3.1.1}Comando DEBUT}{14}
+\contentsline {subsection}{\numberline {3.1.2}Comando DEFI\_MATERIAU}{14}
+\contentsline {subsection}{\numberline {3.1.3}Comando LIRE\_MAILLAGE}{16}
+\contentsline {subsection}{\numberline {3.1.4}Comando AFFE\_MODELE}{18}
+\contentsline {subsection}{\numberline {3.1.5}Comando AFFE\_MATERIAU}{19}
+\contentsline {subsection}{\numberline {3.1.6}Comando AFFE\_CHAR\_MECA}{20}
+\contentsline {subsection}{\numberline {3.1.7}Comando MECA\_STATIQUE}{21}
+\contentsline {subsection}{\numberline {3.1.8}Comando CALC\_ELEM}{21}
+\contentsline {subsection}{\numberline {3.1.9}Comando CALC\_NO}{24}
+\contentsline {subsection}{\numberline {3.1.10}Comando IMPR\_RESU}{24}
+\contentsline {subsection}{\numberline {3.1.11}Comando FIN}{25}

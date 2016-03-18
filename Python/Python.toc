@@ -1,0 +1,64 @@
+\select@language {spanish}
+\contentsline {chapter}{\numberline {1}Virtualizando Linux}{5}{chapter.1}
+\contentsline {section}{\numberline {1.1}Una leve introducci\IeC {\'o}n a linux}{5}{section.1.1}
+\contentsline {section}{\numberline {1.2}Historia de las distribuciones de linux}{7}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}Tux}{9}{subsection.1.2.1}
+\contentsline {subsection}{\numberline {1.2.2}Distribuciones de Linux}{10}{subsection.1.2.2}
+\contentsline {section}{\numberline {1.3}Virtualizaci\IeC {\'o}n}{11}{section.1.3}
+\contentsline {subsection}{\numberline {1.3.1}Virtualizaci\IeC {\'o}n por Sistema Operativo}{12}{subsection.1.3.1}
+\contentsline {subsubsection}{Software para virtualizar en Windows}{13}{section*.3}
+\contentsline {subsubsection}{Bajando la distribuci\IeC {\'o}n de Linux}{14}{section*.4}
+\contentsline {section}{\numberline {1.4}Creando una m\IeC {\'a}quina virtual con VMware Player}{15}{section.1.4}
+\contentsline {chapter}{\numberline {2}Instalando Python y el IDE para la programaci\IeC {\'o}n}{24}{chapter.2}
+\contentsline {section}{\numberline {2.1}Instalando Eclipse}{25}{section.2.1}
+\contentsline {section}{\numberline {2.2}Pasos para instalar eclipse en Elementary OS}{25}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Paso 1}{25}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Paso 2 y Paso 3}{25}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Paso 4 y paso 5}{27}{subsection.2.2.3}
+\contentsline {section}{\numberline {2.3}Instalando PyDev}{27}{section.2.3}
+\contentsline {chapter}{\numberline {3}Introducci\IeC {\'o}n a Python}{32}{chapter.3}
+\contentsline {section}{\numberline {3.1}Herencia}{34}{section.3.1}
+\contentsline {section}{\numberline {3.2}Herencia M\IeC {\'u}ltiple}{35}{section.3.2}
+\contentsline {section}{\numberline {3.3}Polimorfismo}{36}{section.3.3}
+\contentsline {section}{\numberline {3.4}Encapsulaci\IeC {\'o}n}{37}{section.3.4}
+\contentsline {section}{\numberline {3.5}Clases mejoradas}{39}{section.3.5}
+\contentsline {section}{\numberline {3.6}M\IeC {\'e}todos Especiales}{39}{section.3.6}
+\contentsline {section}{\numberline {3.7}Algunos m\IeC {\'e}todos de objetos}{40}{section.3.7}
+\contentsline {subsection}{\numberline {3.7.1}Diccionarios}{41}{subsection.3.7.1}
+\contentsline {subsubsection}{D.get(k[, d])}{41}{section*.5}
+\contentsline {subsubsection}{D.has\_key(k)}{41}{section*.6}
+\contentsline {subsubsection}{D.items()}{41}{section*.7}
+\contentsline {subsubsection}{D.keys()}{41}{section*.8}
+\contentsline {subsubsection}{D.pop(k[, d])}{41}{section*.9}
+\contentsline {subsubsection}{D.values()}{41}{section*.10}
+\contentsline {subsection}{\numberline {3.7.2}Cadenas}{41}{subsection.3.7.2}
+\contentsline {subsubsection}{S.count(sub[, start[, end]])}{41}{section*.11}
+\contentsline {subsubsection}{S.find(sub[, start[, end]])}{42}{section*.12}
+\contentsline {subsubsection}{S.join(sequence)}{42}{section*.13}
+\contentsline {subsubsection}{S.partition(sep)}{42}{section*.14}
+\contentsline {subsubsection}{S.replace(old, new[, count])}{42}{section*.15}
+\contentsline {subsubsection}{S.split([sep [,maxsplit]])}{42}{section*.16}
+\contentsline {subsection}{\numberline {3.7.3}Listas}{42}{subsection.3.7.3}
+\contentsline {subsubsection}{L.append(object)}{42}{section*.17}
+\contentsline {subsubsection}{L.count(value)}{42}{section*.18}
+\contentsline {subsubsection}{L.extend(iterable)}{43}{section*.19}
+\contentsline {subsubsection}{L.index(value[, start[, stop]])}{43}{section*.20}
+\contentsline {subsubsection}{L.insert(index, object)}{43}{section*.21}
+\contentsline {subsubsection}{L.pop([index])}{43}{section*.22}
+\contentsline {subsubsection}{L.remove(value)}{43}{section*.23}
+\contentsline {subsubsection}{L.reverse()}{43}{section*.24}
+\contentsline {subsubsection}{L.sort(cmp=None, key=None, reverse=False)}{43}{section*.25}
+\contentsline {section}{\numberline {3.8}Excepciones}{44}{section.3.8}
+\contentsline {chapter}{\numberline {4}Programaci\IeC {\'o}n B\IeC {\'a}sica con Python GTK+ 3}{50}{chapter.4}
+\contentsline {section}{\numberline {4.1}Dependencias}{50}{section.4.1}
+\contentsline {section}{\numberline {4.2}Instalando en Elementary OS}{50}{section.4.2}
+\contentsline {section}{\numberline {4.3}Ejemplo1:Un ejemplo Simple}{51}{section.4.3}
+\contentsline {section}{\numberline {4.4}Ejemplo 2: Ampliando el Ejemplo}{52}{section.4.4}
+\contentsline {section}{\numberline {4.5}Aspectos importantes del ambiente gr\IeC {\'a}fico GTK+}{53}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}Propiedades}{54}{subsection.4.5.1}
+\contentsline {section}{\numberline {4.6}Cadenas}{55}{section.4.6}
+\contentsline {section}{\numberline {4.7}Contenedores de Layout}{55}{section.4.7}
+\contentsline {subsection}{\numberline {4.7.1}Cajas}{56}{subsection.4.7.1}
+\contentsline {subsubsection}{Ejemplo de cajas}{56}{section*.26}
+\contentsline {section}{\numberline {4.8}Entrada de datos}{57}{section.4.8}
+\contentsline {subsection}{\numberline {4.8.1}Ejemplo}{58}{subsection.4.8.1}

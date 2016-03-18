@@ -1,0 +1,85 @@
+\documentclass[12pt]{book}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage[spanish]{babel}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{calrsfs}
+\usepackage{trfsigns}
+
+\newtheorem{thm}{Teorema}[section]
+\theoremstyle{definition}
+\newtheorem{dfn}{Definición}[section]
+\theoremstyle{remark}
+\newtheorem{note}{Nota}[section]
+\theoremstyle{plain}
+\newtheorem{lem}[thm]{Lema}
+
+\geometry{letterpaper}
+
+
+
+\title{Teoría de Fluidos}
+\author{Dr. Casimiro Gómez González\\
+	Facultad de Electrónica, UPAEP\\
+               correo: casimiro.gomez@upaep.mx\\
+               Tel: 222 229 9428}
+\date{Primavera 2010}
+
+\begin{document}
+\frontmatter
+\maketitle
+
+
+\chapter{Prólogo}
+
+El presente material es una recopilación de varios autores y de estudios propios realizados en la teoría de fluidos
+
+
+\begin{flushright}
+
+El autor\\
+Casimiro Gómez González\\
+Doctor en Ingeniería Mecatrónica
+\end{flushright}
+
+\tableofcontents
+
+\mainmatter
+\chapter{Cinemática}
+La cinemática es la rama de la mecánica que trata con cantidades que involucran el espacio y el tiempo solamente. La cinematica estudia variables tales como el desplazamiento, la velocidad, la aceleración, la deformación y la rotación de elementos de fluidos sin referirse a la fuerza responsable de tal movimiento. 
+La convención utilizada en este material es que el número de subíndices indica el orden del tensor. La dirección en el sistema de coordenadas cartesianas seran denotadas por $(x,y,z)$ y las componente de la velocidad se denotan por $(u,v,w)$. Cuando se utiliza la notación tensorial, las direcciones cartesianas se denotan por $(x_1, x_2, x_3)$, con las componentes de la  velocidades correspondientes $(u_1, u_2, u_3)$. Las coordenadas polares planares se denotan por $(r, \theta)$, con $u_r$ y $u_\theta$ como las componentes de velocidad respectivamente. Las coordenadas cilíndricas se denotan por $(R, \varphi, x)$ con $(u_R, u_\varphi , u_x)$ como las componentes de la velocidad correspondiente. Las coordenadas esféricas se denotan por $(r, \theta, \varphi)$, con $(u_r, u_\theta, u_\varphi)$ como las componentes de la velocidad respectivas.
+
+\section{Especificación Lagrangiana y Euleriana}
+Hay dos formas de describir el movimiento de un fluido. En la \textbf{descripción Lagrangiana}, uno esencialmente sigue la historia de partículas de fluidos  individuales. En consecuencia, las dos variables independientes son el tiempo y una etiqueta que se pone a las particulas de fluido. La etiqueta puede ser el vector de posición $\mathbf{x_0}$ de la partícula en algún instante de tiempo $t=0$. En esta descripción cualquier variable de flujo $F$ se expresa como $F(\mathbf{x_0}, t)$. En particular, la posición de la partícula es escrita como $\mathbf{x}(\mathbf{x_0}, t)$, la cual representa la localización de la partícula en $t$ cuya posición inicial fue $\mathbf{x_0}$ en $t=0$.
+
+En la \textbf{descripción Euleriana}, uno se concentra en lo que pasa en un punto espacial $\mathbf{x}$, asi que las variables independientes son $\mathbf{x}$ y $t$. Esto es, las variables de flujo se escriben como $F(\mathbf{x},t)$.
+
+\section{Derivada Material}
+Sea $F$ cualquier variable de campo, tal como la temperatura, velocidad o estres. Empleando las coordenadas Eulerianas $(x,y,x,t)$, calculamos la velocidad de cambio de $F$ en cada punto siguiendo una partícula de identidad fija. La tarea es representar un concepto esencialmente Lagrangiano en un lenguaje Euleriano.
+
+Para incrementos arbitrarios e independientes $dx$ y $dt$, el incremento en $F(\mathbf{x}, t)$ es
+\begin{equation}
+\label{equ100}
+d F = \frac{\partial F}{\partial t} d t + \frac{\partial F}{d x_i} d x_i
+\end{equation}
+
+en donde se implica la suma sobre el índice repetido. Ahora suponiendo que el incremento no es arbitrario, y esta asociado con una particula determinada. El incremento $d\mathbf{x}$ y $d t$ esta relacionado a las componentes de la velocidad por las tres relaciones indicadas por
+\begin{equation}
+\label{equ101}
+d x_i = u_i dt
+\end{equation}
+
+sustituyendo la ecuación \ref{equ101} en la ecuación \ref{equ100} 
+\begin{equation}
+\label{equ102}
+\frac{d F}{dt} = \frac{\partial F}{\partial t}  + u_i \frac{\partial F}{d x_i} 
+\end{equation}
+
+el cambio total $D/Dt$ generalmente es llamado \textbf{derivada material} para enfatizar el hecho de que la derivada se toma siguiendo un elemento del fluido.
+
+\backmatter
+\end{document}

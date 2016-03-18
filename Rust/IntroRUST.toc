@@ -1,0 +1,14 @@
+\select@language {spanish}
+\contentsline {chapter}{\numberline {1}Instalaci\IeC {\'o}n de RUST}{4}{chapter.1}
+\contentsline {section}{\numberline {1.1}Requisitos de instalaci\IeC {\'o}n}{5}{section.1.1}
+\contentsline {section}{\numberline {1.2}Instalando RUST en Linux}{5}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}Desinstalando}{5}{subsection.1.2.1}
+\contentsline {section}{\numberline {1.3}Instalaci\IeC {\'o}n de RustDT}{6}{section.1.3}
+\contentsline {subsection}{\numberline {1.3.1}Instrucciones}{6}{subsection.1.3.1}
+\contentsline {subsection}{\numberline {1.3.2}Actualizar}{6}{subsection.1.3.2}
+\contentsline {chapter}{\numberline {2}Caracter\IeC {\'\i }sticas Principales de RUST}{7}{chapter.2}
+\contentsline {section}{\numberline {2.1}Una corta introducci\IeC {\'o}n a RUST}{7}{section.2.1}
+\contentsline {section}{\numberline {2.2}Programa ``Hola, Mundo''}{10}{section.2.2}
+\contentsline {section}{\numberline {2.3}Conviertiendo a Cargo}{11}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Primer paso}{12}{subsection.2.3.1}
+\contentsline {chapter}{\numberline {3}Dise\IeC {\~n}ando el Sistema Operativo \textbf {\textit {UtVitam}} con Rust}{13}{chapter.3}

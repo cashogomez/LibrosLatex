@@ -1,0 +1,95 @@
+\select@language {spanish}
+\contentsline {chapter}{\numberline {1}Conceptos B\IeC {\'a}sicos de Sistemas Embebidos}{9}{chapter.1}
+\contentsline {chapter}{\numberline {2}Configurando las herramientas}{15}{chapter.2}
+\contentsline {section}{\numberline {2.1}Instalando GTK+}{15}{section.2.1}
+\contentsline {section}{\numberline {2.2}Compartiendo Internet}{15}{section.2.2}
+\contentsline {section}{\numberline {2.3}Instalando Anjuta como IDE de programaci\IeC {\'o}n en Vala}{16}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Instalaci\IeC {\'o}n de Vala}{16}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Pasos para instalar Anjuta en Ubuntu}{16}{subsection.2.3.2}
+\contentsline {subsubsection}{Primer paso}{16}{section*.3}
+\contentsline {subsubsection}{Segundo Paso}{16}{section*.4}
+\contentsline {subsubsection}{Tercer Paso}{17}{section*.5}
+\contentsline {subsubsection}{Cuarto Paso}{17}{section*.6}
+\contentsline {section}{\numberline {2.4}\IeC {\textquestiondown }Que es Vala?}{18}{section.2.4}
+\contentsline {section}{\numberline {2.5}Primer Programa de Vala}{19}{section.2.5}
+\contentsline {section}{\numberline {2.6}Compilaci\IeC {\'o}n del programa en Vala}{21}{section.2.6}
+\contentsline {chapter}{\numberline {3}Configurando FreeBSD}{23}{chapter.3}
+\contentsline {section}{\numberline {3.1}Cambiar idioma al espa\IeC {\~n}ol}{23}{section.3.1}
+\contentsline {section}{\numberline {3.2}Como instalar Xwindows en freebsd para ARM}{24}{section.3.2}
+\contentsline {chapter}{\numberline {4}Sintaxis de Vala}{25}{chapter.4}
+\contentsline {section}{\numberline {4.1}Comentarios}{26}{section.4.1}
+\contentsline {section}{\numberline {4.2}Tipos de datos}{26}{section.4.2}
+\contentsline {section}{\numberline {4.3}Tipos por valor}{26}{section.4.3}
+\contentsline {section}{\numberline {4.4}Cadena de Caracteres}{28}{section.4.4}
+\contentsline {section}{\numberline {4.5}Matrices}{29}{section.4.5}
+\contentsline {section}{\numberline {4.6}Tipos referenciados}{31}{section.4.6}
+\contentsline {section}{\numberline {4.7}Promoci\IeC {\'o}n de tipos est\IeC {\'a}ticos}{32}{section.4.7}
+\contentsline {section}{\numberline {4.8}Inferencia de Tipos}{32}{section.4.8}
+\contentsline {section}{\numberline {4.9}Definir un tipo nuevo a partir de otro}{33}{section.4.9}
+\contentsline {section}{\numberline {4.10}Operadores}{33}{section.4.10}
+\contentsline {subsubsection}{=}{33}{section*.8}
+\contentsline {subsubsection}{+, -, /, *, \%}{33}{section*.9}
+\contentsline {subsubsection}{+=, -=, /=, *=, \%=}{33}{section*.10}
+\contentsline {subsubsection}{++, --}{33}{section*.11}
+\contentsline {subsubsection}{|, \^{} , \&, ~, |=, \&=, \^{}=}{34}{section*.12}
+\contentsline {subsubsection}{<<, >>}{34}{section*.13}
+\contentsline {subsubsection}{$$<<=$$, $$>>=$$}{34}{section*.14}
+\contentsline {subsubsection}{==}{34}{section*.15}
+\contentsline {subsubsection}{<, >, >=, <=, !=}{34}{section*.16}
+\contentsline {subsubsection}{!, \&\&, ||}{35}{section*.17}
+\contentsline {subsubsection}{? :}{35}{section*.18}
+\contentsline {subsubsection}{??}{35}{section*.19}
+\contentsline {subsubsection}{in}{35}{section*.20}
+\contentsline {section}{\numberline {4.11}Estructuras de Control}{36}{section.4.11}
+\contentsline {section}{\numberline {4.12}Elementos del lenguaje}{37}{section.4.12}
+\contentsline {subsection}{\numberline {4.12.1}M\IeC {\'e}todos}{37}{subsection.4.12.1}
+\contentsline {section}{\numberline {4.13}Delegados}{39}{section.4.13}
+\contentsline {section}{\numberline {4.14}M\IeC {\'e}todos an\IeC {\'o}nimos o clausuras}{40}{section.4.14}
+\contentsline {section}{\numberline {4.15}Espacios de Nombres}{41}{section.4.15}
+\contentsline {section}{\numberline {4.16}Struct}{42}{section.4.16}
+\contentsline {section}{\numberline {4.17}Clases}{43}{section.4.17}
+\contentsline {section}{\numberline {4.18}Interfaces}{43}{section.4.18}
+\contentsline {section}{\numberline {4.19}Atributos del c\IeC {\'o}digo}{44}{section.4.19}
+\contentsline {chapter}{\numberline {5}Programaci\IeC {\'o}n B\IeC {\'a}sica con Vala}{45}{chapter.5}
+\contentsline {section}{\numberline {5.1}Leyendo informaci\IeC {\'o}n del Usuario}{45}{section.5.1}
+\contentsline {section}{\numberline {5.2}Matem\IeC {\'a}ticas}{46}{section.5.2}
+\contentsline {section}{\numberline {5.3}Argumentos de linea de comando y c\IeC {\'o}digos de Exit}{46}{section.5.3}
+\contentsline {section}{\numberline {5.4}Leyendo y escribiendo Archivos de Texto}{47}{section.5.4}
+\contentsline {section}{\numberline {5.5}Programaci\IeC {\'o}n Orientada a Objetos}{47}{section.5.5}
+\contentsline {section}{\numberline {5.6}Conceptos B\IeC {\'a}sicos}{48}{section.5.6}
+\contentsline {section}{\numberline {5.7}Construcci\IeC {\'o}n}{50}{section.5.7}
+\contentsline {section}{\numberline {5.8}Destrucci\IeC {\'o}n}{52}{section.5.8}
+\contentsline {section}{\numberline {5.9}Se\IeC {\~n}ales}{52}{section.5.9}
+\contentsline {subsection}{\numberline {5.9.1}Desconectando Se\IeC {\~n}ales}{55}{subsection.5.9.1}
+\contentsline {subsection}{\numberline {5.9.2}Manejadores de se\IeC {\~n}ales por default y connect\_after()}{56}{subsection.5.9.2}
+\contentsline {subsection}{\numberline {5.9.3}Acerca de \textit {user\_data}}{56}{subsection.5.9.3}
+\contentsline {section}{\numberline {5.10}Propiedades}{57}{section.5.10}
+\contentsline {section}{\numberline {5.11}Herencia}{61}{section.5.11}
+\contentsline {section}{\numberline {5.12}Clases abstractas}{63}{section.5.12}
+\contentsline {section}{\numberline {5.13}Interfaces / Mixins}{63}{section.5.13}
+\contentsline {section}{\numberline {5.14}Polimorfismo}{65}{section.5.14}
+\contentsline {section}{\numberline {5.15}Ocultaci\IeC {\'o}n de m\IeC {\'e}todos}{68}{section.5.15}
+\contentsline {section}{\numberline {5.16}Informaci\IeC {\'o}n de tipos en tiempo de ejecuci\IeC {\'o}n}{68}{section.5.16}
+\contentsline {section}{\numberline {5.17}Promoci\IeC {\'o}n de tipos din\IeC {\'a}micos}{69}{section.5.17}
+\contentsline {section}{\numberline {5.18}Genericidad}{69}{section.5.18}
+\contentsline {section}{\numberline {5.19}Construcci\IeC {\'o}n al estilo de GObject}{71}{section.5.19}
+\contentsline {section}{\numberline {5.20}Primeras clases}{73}{section.5.20}
+\contentsline {chapter}{\numberline {6}Manejo de Archivos con Vala}{75}{chapter.6}
+\contentsline {section}{\numberline {6.1}Leyendo archivos de texto linea por linea}{76}{section.6.1}
+\contentsline {section}{\numberline {6.2}Objetos \textit {\textbf {File}}}{77}{section.6.2}
+\contentsline {section}{\numberline {6.3}Algunas Operaciones simples de Archivos}{78}{section.6.3}
+\contentsline {section}{\numberline {6.4}Escribiendo Datos}{79}{section.6.4}
+\contentsline {section}{\numberline {6.5}Leyendo datos binarios}{81}{section.6.5}
+\contentsline {section}{\numberline {6.6}Listando el contenido del directorio}{82}{section.6.6}
+\contentsline {section}{\numberline {6.7}Listado de Archivos As\IeC {\'\i }ncronos}{83}{section.6.7}
+\contentsline {section}{\numberline {6.8}Flujo de lectura as\IeC {\'\i }ncrona}{85}{section.6.8}
+\contentsline {chapter}{\numberline {7}Programaci\IeC {\'o}n con GTK+}{87}{chapter.7}
+\contentsline {section}{\numberline {7.1}Ejemplo B\IeC {\'a}sico}{89}{section.7.1}
+\contentsline {section}{\numberline {7.2}Sincronizaci\IeC {\'o}n de Widgets}{90}{section.7.2}
+\contentsline {section}{\numberline {7.3}Temporizador}{91}{section.7.3}
+\contentsline {subsection}{\numberline {7.3.1}Proyecto de Ejemplo: Dise\IeC {\~n}ando un reloj}{92}{subsection.7.3.1}
+\contentsline {section}{\numberline {7.4}Programa Usando Hilos}{96}{section.7.4}
+\contentsline {section}{\numberline {7.5}Dos hilos}{97}{section.7.5}
+\contentsline {chapter}{\numberline {8}Controlando linux desde Vala}{101}{chapter.8}
+\contentsline {subsection}{\numberline {8.0.1}Para encender el LED}{101}{subsection.8.0.1}
+\contentsline {subsection}{\numberline {8.0.2} Para apagar el LED:}{101}{subsection.8.0.2}

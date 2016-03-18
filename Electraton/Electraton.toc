@@ -1,0 +1,26 @@
+\select@language {spanish}
+\contentsline {chapter}{Pr\IeC {\'o}logo}{\es@scroman {iii}}
+\contentsline {chapter}{\numberline {1}Introducci\IeC {\'o}n}{1}
+\contentsline {section}{\numberline {1.1}Descripci\IeC {\'o}n general del movimiento de un veh\IeC {\'\i }culo}{1}
+\contentsline {section}{\numberline {1.2}Resistencia del Veh\IeC {\'\i }culo}{2}
+\contentsline {subsection}{\numberline {1.2.1}Resistencia de rodamiento}{3}
+\contentsline {section}{\numberline {1.3}C\IeC {\'a}lculo de la relaci\IeC {\'o}n de Sprokets}{5}
+\contentsline {section}{\numberline {1.4}An\IeC {\'a}lisis de Energ\IeC {\'\i }a}{5}
+\contentsline {chapter}{\numberline {2}Motores El\IeC {\'e}ctricos}{7}
+\contentsline {section}{\numberline {2.1}Controladores de motor de Imanes Permanentes }{8}
+\contentsline {section}{\numberline {2.2}Clasificaci\IeC {\'o}n de los motores el\IeC {\'e}ctricos de imanes permanentes}{8}
+\contentsline {section}{\numberline {2.3}Fundamentos de Mec\IeC {\'a}nica de m\IeC {\'a}quinas}{9}
+\contentsline {section}{\numberline {2.4}Tren de engranes simples}{9}
+\contentsline {section}{\numberline {2.5}Eficiencia de un tren de engranes}{10}
+\contentsline {section}{\numberline {2.6}Momento de inercia equivalente}{11}
+\contentsline {section}{\numberline {2.7}Caracter\IeC {\'\i }sticas mec\IeC {\'a}nicas de m\IeC {\'a}quinas}{12}
+\contentsline {section}{\numberline {2.8}Ecuaci\IeC {\'o}n de balance de torque}{12}
+\contentsline {section}{\numberline {2.9}Ejemplo 1: An\IeC {\'a}lisis del torque de maquinarias}{13}
+\contentsline {subsection}{\numberline {2.9.1}Soluci\IeC {\'o}n}{14}
+\contentsline {section}{\numberline {2.10}Ejemplo 2}{15}
+\contentsline {subsection}{\numberline {2.10.1}Soluci\IeC {\'o}n}{15}
+\contentsline {section}{\numberline {2.11}Ejemplo num\IeC {\'e}rico 3}{16}
+\contentsline {subsection}{\numberline {2.11.1}Soluci\IeC {\'o}n}{16}
+\contentsline {section}{\numberline {2.12}Ejemplo num\IeC {\'e}rico 4}{18}
+\contentsline {subsection}{\numberline {2.12.1}Soluci\IeC {\'o}n}{18}
+\contentsline {chapter}{\numberline {3}Imanes Permanentes y circuitos}{21}

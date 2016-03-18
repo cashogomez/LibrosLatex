@@ -1,0 +1,112 @@
+%\documentclass[options]{class}
+\documentclass[12pt, twoside]{report}
+
+%Paquete de Idioma
+\usepackage[spanish]{babel}
+
+%Codificación Alfabeto
+\usepackage[utf8]{inputenc}
+
+%Codificación de Fuente
+\usepackage[T1]{fontenc}
+
+%Índice
+\usepackage{makeidx}
+
+%Gráficos
+\usepackage{graphicx}
+\usepackage{float} 
+%\usepackage{xcolor} 
+
+%Matemática
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amstext} 
+
+%Estilo de Página Numeración superior
+%\pagestyle{headings}
+
+%un estilo propio
+\usepackage{fancyhdr}
+\setlength{\headheight}{15pt}
+
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{ \markboth{\chaptername\ \thechapter: #1}{} }
+\renewcommand{\sectionmark}[1]{ \markright{ Sección \thesection. #1}{} }
+
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[RE]{\textit{ \nouppercase{\leftmark}} }
+\fancyhead[LO]{\textit{ \nouppercase{\rightmark}} }
+\fancyfoot[CE]{\textit{\textcopyright 2016 Laboratorio de Sistemas Embebidos\\
+	                    UPAEP} }
+\fancyfoot[CO]{\textit{LSE010-2016 \\
+		Elaboró: Dr. Casimiro Gómez González} }	            
+\fancypagestyle{plain}{ %
+	\fancyhf{} % remove everything
+	\renewcommand{\headrulewidth}{0pt} % remove lines as well
+	\renewcommand{\footrulewidth}{0pt}
+}
+
+%Hiperlinks \href{url}{text}
+\usepackage[pdftex]{hyperref}
+
+\usepackage{cite} % para contraer referencias
+
+%Titulo
+\title{LSE010-2016: Conceptos Básicos de Eficiencia Energética}
+\author{Dr. Casimiro Gómez González\\
+Ingeniería Ambiental y Desarrollo Sustentable UPAEP\\
+               correo: casimiro.gomez@upaep.mx\\
+               Tel: 222 229 9428 \\
+               Cel: 2225640517 \\
+                     30*5*843847}
+\date{Primavera 2016}
+
+\begin{document}
+
+\maketitle
+
+\chapter*{Prólogo}
+
+En el presente documento se muestra un resumen de los conceptos básicos de eficiencia energéticas, este material ha sido preparado para el posgrado de Ingeniería Ambiental y Desarrollo Sustentable de UPAEP.
+
+
+\begin{flushright}
+	
+	El autor\\
+	Casimiro Gómez González\\
+	Doctor en Ingeniería Mecatrónica
+\end{flushright}
+
+\tableofcontents
+
+
+\chapter{Introducción}
+
+La eficiencia se ha convertido en el tópico principal en estudios de energía, y ha atraido una gran atención desde todas las disciplinas, desde la ingeniería mecánica hasta la física y desde la ingeniería eléctica hasta la arquitectura. Los cálculos de energía son comúnmente usados para evaluar sistemas, aplicaciones, procesos, y servicios en cada sector, que van desde aplicaciones industriales hasta residenciales y desde simple utensilios hasta aplicaciones comerciales. La evaluación de la eficiencia es considerada el componente principal en la asignación del rendimiento de un sistema energético.
+
+Los dos principios principales de la termodinámica son la primera y la segunda ley de la termodinámica, los cuales manejan los términos de eficiencia energética y eficiencia exergética, respectivamente. Un mayor cuidado de los recursos energéticos para una economía sustentable ha provocado la realización de estudios mas refinados, los cuales requieren un análisis más realista de la degradación de la energía debido a su irreversabilidad.
+
+El análisis exergético es muy útil para mejorar la eficiencia del uso de los recursos energéticos. En general, muchos estudios de eficiencia energética son realizados con análisis exergéticos más que con analisis energéticos, porque la eficiencia exergética siempre mide que tan cerca esta la eficiencia de un proceso del ideal. Sin embargo, el análisis exergéticos identifica con mucha precisión el margen disponible para diseñar sistemas energéticos reduciendo sus ineficiencias. Muchos Ingenieros e investigadores coinciden en que el comportamiento termodinámico es mejor evaluado usando el análisis exergético porque proporciona mas ideas del comportamiento interno y es mas útil en los esfuerzos por mejorar la eficiencia que el análisis energéticos solo.
+
+La segunda ley de la termodinámica es una herramienta que nos da una idea del impacto ambiental. El enlace mas apropiado entre la segunda ley y el impacto ambiental puede ser sugerido por la exergía, en parte porque es una medida de estado inicial de un sistema dado su ambiente. La magnitud de la exergía de un sistema depende de los estados tanto del sistema como del ambiente. Este estado inicial es cero solamente cuando el sistema esta en equilibrio con su ambiente.
+
+Como estado inicial, el análisis exergético esta basado en la combinación de la primera y la segunda ley de la termodinámica y puede señalar las perdidas de calidad, o el trabajo potencial, en un sistema. El análisis exergético por consecuencia, esta enlazado a la sustentabilidad porque incrementa la sustentabilidad del uso de la energá, no se enfoca en las pérdidas de energía, sino en las pérdidas de las calidad de la energía (o exergía). La principal ventaja del análisis exergético sobre el análisis energético es que el contenido de exergía de un flujo de proceso es una mejor evaluación  del flujo que su contenido de enegía, porque la exergía indica la fracción de energía que es útil y utilizable. 
+
+El desarrollo sustentable requiere no solo que los recursos de energía sustentable sean usados, sino que sean usados de manera eficiente. 
+
+\section{Exergía}
+
+Los intentos para cuantificar la calidad o "trabajo potencial" de la energía en base a la segunda ley de la termodinámica ha resultado en la defición de la propiedad de la exergía.
+
+El análisis exergético es una técnica de análisis termodinámico basada en la segunda ley de la termodinámica que porporciona un significado alternativo e ilustra la comparación entre procesos y sistemas racionalmente y con significados. En particular, el análisis exergético estudia la eficiencia y proporciona medidas reales de que tan cerca el comportamiento actual de un sistema se encuentra del ideal, e idenfica mas claramente que el analisis energético las cuasas y localizaciones de las pérdidas termodinámicas y su impacto en el ambiente. En consecuencia, el analisis exergético puede ayudar en mejorar y optimizar los diseños.
+
+El análisis exergético se basa en el segundo principio de la termodinámica. Su aplicación en  el  análisis  de  procesos  o  sistemas,  permite proponer  mejoras  ingenieriles  a  los  mismos  y hacer más eficiente la utilización de recursos. La exergía es una propiedad que determina el  potencial  de  trabajo  útil  de  una  cantidad  de  energía  determinada  en  cierto  estado especificado. El uso de los recursos tanto energéticos como no energéticos en un sistema cerrado, ocasiona intrínsecamente la destrucción de la exergía, tal como lo manifiesta la  segunda  ley  de  la  termodinámica.  Mediante  la  evaluación  de  las  pérdidas  de  exergía,  se  identifican  las  posibles mejoras  al  sistema que  permiten  la  optimización del  proceso,  y  por ende, se contribuye a la disminución del impacto ambiental
+
+
+
+\bibliographystyle{acm}
+\bibliography{../bibliografia}
+\end{document}

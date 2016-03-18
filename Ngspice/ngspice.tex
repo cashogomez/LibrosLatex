@@ -1,0 +1,75 @@
+\documentclass[12pt]{book}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage[spanish]{babel}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{trfsigns}
+
+\newtheorem{thm}{Teorema}[section]
+\theoremstyle{definition}
+\newtheorem{dfn}{Definición}[section]
+\theoremstyle{remark}
+\newtheorem{note}{Nota}[section]
+\theoremstyle{plain}
+\newtheorem{lem}[thm]{Lema}
+
+\geometry{letterpaper}
+
+
+
+\title{Introducción a la simulación con ngspice}
+\author{Dr. Casimiro Gómez González\\
+	Facultad de Electrónica, UPAEP\\
+               correo: casimiro.gomez@upaep.mx\\
+               Tel: 222 229 9428}
+\date{Primavera 2010}
+
+\begin{document}
+\frontmatter
+\maketitle
+
+
+\chapter{Prólogo}
+
+El presente libro está diseñado para ser impartido en un semestre en las licenciatura en ingeniería Mecatrónica, Electrónica o Biónica. El material ha sido desarrollado a lo largo de varios años de experiencia impartiendo la materia en la Universidad Popular Autónoma del Estado de Puebla (UPAEP) en Puebla, México.
+
+El material está auto contenido, es decir, se ha procurado que leyendo secuencialmente el libro se podrá diseñar filtros electrónicos analógicos al terminar de leerlo. Como podrá notarse, algunas partes del documento aún no se han terminado. Por lo cual el autor agradecerá cualquier sugerencia, comentario o correcciones que deseen realizar al presente documento. Como todo libro que se presuma de ser moderno se utilizan dos distintos software para el diseño y simulación de los filtros; en el aspecto del cálculo matemático se utiliza MAPLE  y en la simulación electrónica se utiliza Altium.
+
+El material del libro esta organizado en seis capítulos en donde el primer capitulo es una breve introducción a la teoría de amplificadores, este material es necesario debido a que la técnica utilizada para el diseño de los filtros es la de amplificadores en cascada. Por lo que el estudiante debe manejar el diseño de amplificadores en cascada. Básicamente se da una introducción a los amplificadores operacionales bajo esta perspectiva.
+
+
+\begin{flushright}
+
+El autor\\
+Casimiro Gómez González\\
+Doctor en Ingeniería Mecatrónica
+\end{flushright}
+
+\tableofcontents
+
+\mainmatter
+\chapter{Estructura General y convenciones}
+El circuito a ser analizado es descrito por ngspice por un conjunto de lineas, las cuales definen la topología del circuito y los valores de los elementos, y un conjunto de lineas de control, las cualas definen los parametros de los modelos y los controles de ejecución. Dos lineas son esenciales:
+
+\begin{itemize}
+\item La primera linea en el archivo de entrada debe ser el t\´{i}tulo, la cual es una linea de comentario que no necesita ningun caracter especial en primer lugar
+\item La \´{u}ltima linea debe ser .END
+\end{itemize}
+
+El orden de las lineas restantes es arbitrario.
+Cada elemento en un circuito es especificado por una línea la cual contiene:
+
+\begin{itemize}
+\item El nombre del elemento
+\item Los nodos del circuito al cual cada elemento es conectado
+\item y los valores de los parámetros que determinan las características eléctricas de los elementos
+\end{itemize}
+
+La primera letra de el nombre de un elemento determina el tipo de elemento. El formato de los tipos de elementos en ngspice sigue las siguientes reglas, por ejemplo, el nombre de una resistencia debe comenzar con la letra R y puede contener una o más caracteres. Así, R, R1, RSE, ROUT, y R3AC2ZY son nombres válidos de resistencias.
+
+\backmatter
+\end{document}

@@ -1,0 +1,186 @@
+% This file was created with JabRef 2.10.
+% Encoding: Cp1252
+
+
+@MastersThesis{Botm2011,
+  Title                    = {The Design and Development of an ADCS OBC for a CubeSat},
+  Author                   = {Pieter Johannes Botma},
+  School                   = {Faculty of Engineering, Stellenbosch University},
+  Year                     = {2011},
+  Month                    = {December},
+
+  Owner                    = {Casho},
+  Timestamp                = {2014.12.17}
+}
+
+@MastersThesis{Burlyaev2012,
+  Title                    = {System-level Fault-Tolerance Analysis of Small Satellite On-Board Computers},
+  Author                   = {Dmitry Burlyaev},
+  School                   = {Department of Microelectronics \& Computer Engineering, Delft University of Technology},
+  Year                     = {2012},
+  Month                    = {July},
+
+  Owner                    = {Casho},
+  Timestamp                = {2014.12.17}
+}
+
+@Book{Cooling2014,
+  Title                    = {Real-Time Operating Systems},
+  Author                   = {Jim Cooling},
+  Publisher                = {Lindentree Associates},
+  Year                     = {2014},
+  Edition                  = {1st},
+
+  Owner                    = {Casho},
+  Timestamp                = {2014.12.06}
+}
+
+@MastersThesis{DABROWSKI2005,
+  Title                    = {THE DESIGN OF A SOFTWARE SYSTEM FOR A SMALL SPACE SATELLITE},
+  Author                   = {MICHAEL J. DABROWSKI},
+  School                   = {Graduate College of the University of Illinois at Urbana-Champaign},
+  Year                     = {2005},
+
+  Owner                    = {Casho},
+  Timestamp                = {2014.12.17}
+}
+
+@Article{Haryono2013,
+  Title                    = {Error Detection and Correction System (EDAC) of On Board Data Handling (OBDH) in Real Time Operating System Behaviour},
+  Author                   = {Haryono, Agfianto Eko Putra, Jazi Eko Istiyanto and Agus Harjoko},
+  Journal                  = {Scientific Research Journal},
+  Year                     = {2013},
+  Number                   = {2},
+  Volume                   = {10},
+
+  Owner                    = {Casho},
+  Timestamp                = {2014.12.17}
+}
+
+@PhdThesis{Kuwahar2010,
+  Title                    = {FPGA-based Reconfigurable On-board Computing Systems for Space Applications},
+  Author                   = {Toshinori Kuwahara},
+  School                   = {Institute of Space Systems, Universit¨at Stuttgart},
+  Year                     = {2010},
+
+  Owner                    = {Casho},
+  Timestamp                = {2014.12.15}
+}
+
+@Book{Liu2000,
+  Title                    = {Real-Time Systems},
+  Author                   = {Jane W. S. Liu},
+  Publisher                = {Prentice Hall},
+  Year                     = {2000},
+  Edition                  = {1st},
+  Month                    = {April},
+
+  Owner                    = {Casho},
+  Timestamp                = {2014.12.06}
+}
+
+@MastersThesis{LUMBWE2013,
+  Title                    = {Development of an onboard computer (OBC) for a CubeSat},
+  Author                   = {LWABANJI TONY LUMBWE},
+  School                   = {Faculty of Engineering at the Cape Peninsula University of Technology},
+  Year                     = {2013},
+  Month                    = {May},
+
+  Owner                    = {Casho},
+  Timestamp                = {2014.12.17}
+}
+
+@Book{Mann2000,
+  Title                    = {Infrared Optics and Zoom Lenses},
+  Author                   = {Allen Mann},
+  Editor                   = {Arthur R. Weeks, Jr.},
+  Publisher                = {Spie Press},
+  Year                     = {2000},
+
+  Owner                    = {Casho},
+  Timestamp                = {2014.12.08}
+}
+
+@MastersThesis{Myrl2013,
+  Title                    = {On-Board Controller \& Data Handling},
+  Author                   = {Joakim Myrland},
+  School                   = {Department of physics, University of Oslo},
+  Year                     = {2013},
+  Month                    = {February},
+
+  Owner                    = {Casho},
+  Timestamp                = {2014.12.17}
+}
+
+@Book{PhillipA.Laplante2012,
+  Title                    = {Real-time systems design and analysis : tools for the practitioner},
+  Author                   = {Phillip A. Laplante, Seppo J. Ovaska},
+  Editor                   = {Institute of Electrical and Electronics Engineers, Inc},
+  Publisher                = {John Wiley \& Sons, Inc},
+  Year                     = {2012},
+  Edition                  = {4th ed.},
+  Number                   = {ISBN 978-0-470-76864-8},
+
+  Owner                    = {Casho},
+  Timestamp                = {2014.12.06}
+}
+
+@MastersThesis{Ringhofer2006,
+  Title                    = {Design and Implementation of a Memory Controller for Real-Time Applications},
+  Author                   = {Markus Ringhofer},
+  School                   = {Institute of Technical Informatics at the Graz University of Technology},
+  Year                     = {2006},
+
+  Owner                    = {Casho},
+  Timestamp                = {2014.12.17}
+}
+
+@Article{SebastianLopez2013,
+  Title                    = {The Promise of Reconfigurable Computing for Hyperspectral Imaging Onboard Systems: A Review and Trends},
+  Author                   = {Sebastian Lopez, Tanya Vladimirova, Carlos González, Javier Resano, Daniel Mozos, and Antonio Plaza},
+  Journal                  = {Proceedings of the IEEE},
+  Year                     = {2013},
+
+  Month                    = {March},
+  Number                   = {3},
+  Pages                    = {698-722},
+  Volume                   = {101},
+
+  Owner                    = {Casho},
+  Timestamp                = {2014.12.17}
+}
+
+@Article{T.Rajkowskia2012,
+  Title                    = {Low cost and high performance on-board computer for picosatellite},
+  Author                   = {T. Rajkowskia, R. Graczyk, M. C. Palau, P. Orleanski},
+  Journal                  = {Photonics Applications in Astronomy, Communications, Industry, and High-Energy Physics Experiments 2012, Proc. of SPIE},
+  Year                     = {2012},
+  Volume                   = {8454},
+
+  Owner                    = {Casho},
+  Timestamp                = {2014.12.17}
+}
+
+@Conference{Vladimirova2007,
+  Title                    = {A Reconfigurable System-on-Chip Architecture for Pico-Satellite Missions},
+  Author                   = {Tanya Vladimirova and Xiaofeng Wu},
+  Booktitle                = {Communicating Process Architectures 2007},
+  Year                     = {2007},
+  Editor                   = {Alistair McEwan, Steve Schneider, Wilson Ifill and Peter Welch},
+  Pages                    = {493-502},
+  Publisher                = {IOS Press},
+
+  Owner                    = {Casho},
+  Timestamp                = {2014.12.17}
+}
+
+@PhdThesis{Zheng2005,
+  Title                    = {Reconfigurable System-on-a-Chip Based Platform for Satellite On-Board Computing},
+  Author                   = {Daixun Zheng},
+  School                   = {School of Electronics and Physical Sciences, University of Surrey},
+  Year                     = {2005},
+
+  Owner                    = {Casho},
+  Timestamp                = {2014.12.17}
+}
+

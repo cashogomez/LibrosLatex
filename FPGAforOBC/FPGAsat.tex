@@ -1,0 +1,96 @@
+%\documentclass[options]{class}
+\documentclass[12pt, twoside]{report}
+
+%Paquete de Idioma
+\usepackage[spanish]{babel}
+
+%Codificación Alfabeto
+\usepackage[utf8]{inputenc}
+
+%Codificación de Fuente
+\usepackage[T1]{fontenc}
+
+%Índice
+\usepackage{makeidx}
+
+%Gráficos
+\usepackage{graphicx}
+\usepackage{float} 
+%\usepackage{xcolor} 
+
+%Matemática
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amstext} 
+
+%Estilo de Página Numeración superior
+%\pagestyle{headings}
+
+%un estilo propio
+\usepackage{fancyhdr}
+\setlength{\headheight}{15pt}
+
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{ \markboth{\chaptername\ \thechapter: #1}{} }
+\renewcommand{\sectionmark}[1]{ \markright{ Sección \thesection. #1}{} }
+
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[RE]{\textit{ \nouppercase{\leftmark}} }
+\fancyhead[LO]{\textit{ \nouppercase{\rightmark}} }
+\fancyfoot[CE]{\textit{\textcopyright 2014 Laboratorio de Sistemas Embebidos\\
+	                    UPAEP} }
+\fancyfoot[CO]{\textit{LSE002-2014 \\
+		Elaboró: Dr. Casimiro Gómez González} }	            
+\fancypagestyle{plain}{ %
+	\fancyhf{} % remove everything
+	\renewcommand{\headrulewidth}{0pt} % remove lines as well
+	\renewcommand{\footrulewidth}{0pt}
+}
+
+%Hiperlinks \href{url}{text}
+\usepackage[pdftex]{hyperref}
+
+\usepackage{cite} % para contraer referencias
+
+%Titulo
+\title{LSE002-2014: Aplicaciones de FPGA en satélites CubeSat}
+\author{Dr. Casimiro Gómez González\\
+	Facultad de Electrónica, UPAEP\\
+               correo: casimiro.gomez@upaep.mx\\
+               Tel: 222 229 9428}
+\date{Otoño 2014}
+
+\begin{document}
+
+\maketitle
+
+\chapter*{Prólogo}
+
+En el presente reporte se realiza un estudio de las aplicaciones de FPGA en satélites CubeSat. Sus ventajas y sus desventajas, así como el diseño necesario para un satélite con cámara multiespectral. 
+
+
+\begin{flushright}
+	
+	El autor\\
+	Casimiro Gómez González\\
+	Doctor en Ingeniería Mecatrónica
+\end{flushright}
+
+\tableofcontents
+
+
+\chapter{Introducción}
+
+La siglas de FPGA significan \textit{Field Programmable Gate Array}. Los FPGA son dispositivos  lógicos semiconductores programables. El usuario puede realizar las funciones lógicas que desee a través del diseño de un lenguaje de programación. El principal campo de aplicación son los procesadores digitales de señales (\textit{DSP}) y el procesamiento digital de imágenes (\textit{DIP}). El desarrollo de programación lógica para acelerar la computación, inicio a finales de 1980 con el amplio uso de los FPGA, al uso de la programación lógica en los FPGA se le denomina computación reconfigurable. La computación reconfigurable es un campo emergente, en el cual muchos algoritmos de hardware se pueden ejecutar sobre un solo dispositivo, exactamente como diferentes algoritmos pueden ejecutarse en un microprocesador.
+
+La ventaja de velocidad de los FPGA se debe al hecho de que el hardware programado es configurado para un algoritmo en particular. Se estima que se ejecuta 10-100 veces mas rápido que su equivalente algoritmo de software en microprocesador. Ademas de esto, debido a la menor sustancialmente menor frecuencia de reloj que los microprocesadores, la migración del software al FPGA resulta en una reducción en el consumo de energía.
+
+La introducción de los FPGA en aplicaciones espaciales ha sido, sin embargo, muy limitada por la tolerancia a radiación del Antifusible-FPGA, el cual puede ser reconfigurado solo una vez. En los últimos años, SRAM-FPGA  han sido usados en algunas aplicaciones en componentes periféricos no-críticos tales como instrumentos de experimentación. Por ejemplo, El módulo instrumental adaptativo (\textit{AIM}) del satélite australiano Fedsat fue desarrollado para evaluar los efectos de la radiación sobre los SRAM-FPGA que estén en órbita. 
+
+
+
+\bibliographystyle{acm}
+\bibliography{../bibliografia}
+\end{document}

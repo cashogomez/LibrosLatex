@@ -1,0 +1,5 @@
+\select@language {spanish}
+\contentsline {chapter}{Pr\IeC {\'o}logo}{\es@scroman {iii}}
+\contentsline {chapter}{\numberline {1}Cinem\IeC {\'a}tica}{1}
+\contentsline {section}{\numberline {1.1}Especificaci\IeC {\'o}n Lagrangiana y Euleriana}{1}
+\contentsline {section}{\numberline {1.2}Derivada Material}{2}
