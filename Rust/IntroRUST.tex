@@ -107,17 +107,6 @@ La primera versión alfa numerada del compilador de Rust apareció en enero de 2
 
 El objetivo de Rust es ser un buen lenguaje para la creación de grandes programas del lado del cliente y del servidor que se ejecuten en Internet. Esto ha llevado a un conjunto de características con un énfasis en la seguridad, el control de distribución de la memoria y la concurrencia. Se espera que el rendimiento de código seguro sea más lento que C++, si el rendimiento es la única consideración, pero si lo comparamos con el código C++ hecho para que tome precauciones comparables a las que toma Rust, este último puede ser incluso más rápido
 
-\section{Requisitos de instalación}
-
-Para la instalación de RUST en freebsd es importante reconocer que se encuentra en el Tier 3\footnote{Rust clasifica los sistemas operativos según 
-su nivel de actualización y si cuentan con los tres programas: std, rustc y cargo. FreeBSD al encontrarse en el tier 3 significa que el lenguaje es desarrollado por la comunidad y no de manera oficial} , por lo cual se recomienda su instalación con el siguiente comando en la terminal de FreeBSD:
-
-\begin{lstlisting}[language=bash]
-$su 
-$(Introduce tu password de superusuario)
-#pkg update
-#pkg install rust
-\end{lstlisting}
 
 \section{Instalando RUST en Linux}
 
@@ -133,6 +122,15 @@ También es posible instalarlo en dos pasos:
 $ curl -f -L https://static.rust-lang.org/rustup.sh -O
 $ sudo sh rustup.sh
 \end{lstlisting}
+
+
+\section{Instalando Rust Nightly}
+Se instala Rust Nightly con el siguiente comando:
+
+\begin{lstlisting}[language=bash]
+curl -sSf https://static.rust-lang.org/rustup.sh | sudo sh -s -- --channel=nightly --yes
+\end{lstlisting}
+
 
 \subsection{Desinstalando}
 
@@ -342,6 +340,244 @@ Cargo espera que tus archivos fuentes se encuentren en el directorio \textbf{src
 Ahora, nuestro archivo de configuración:
 
 \chapter{Diseñando el Sistema Operativo \textbf{\textit{UtVitam}} con Rust}
+
+En este trabajo se supondrá que se utilizá un sistema operativo parecido a Unix como plataforma de diseño, como por ejemplo Linux.
+
+\section{Construyecto un \textbf{Cross-Compiler}}
+Hay un convención llamada ``el triple objetivo'' para describir una plataforma en particular. Es triple porque consta de tres partes:
+
+\begin{lstlisting}[language=bash]
+arch-kernel-userland
+\end{lstlisting}
+Así que, un triple objetivo para una computadora que tiene un procesador x86-64 bit ejecutando un kernel de linux y programas de usuario (userland) de GNU se vería así:
+
+\begin{lstlisting}[language=bash]
+x86_64-linux-gnu
+\end{lstlisting}
+Si esta compuesto por cuatro partes, se le llama ``Objetivo" mas que ``triple objetivo".
+
+Los kernels por si mismos no necesitan ser para un específico conjunto de programas de usuario, y por eso tu verás 'none' :
+
+\begin{lstlisting}[language=bash]
+x86_64-unknown-none
+\end{lstlisting}
+
+\subsection{Anfitrión y Objetivos}
+
+La razón por los cuales son llamados ``objetivos'' es porque es la arquitectura para la cual estas compilando. La arquitectura desde la cual compilas se llama ``Arquitectura Anfitrión''.
+
+Si el objetivo y el anfitrión son los mismos, nosotros los llamamos ``Compilación''. Si son diferentes, entonces se llama ``Compilación cruzada''. Así se puede afirmar:
+
+
+ \begin{flushright}
+ \textbf{Compile cruzado desde x86\_64-linux-gnu a x86-unknown-none}
+ \end{flushright}
+
+Esto significa que la computadora de desarrollo fue una con GNU/linux de 64 bits, pero el binario final es para una máquina x86 de 32 bits sin sistema operativo.
+
+Por lo tanto se necesita un ambiente en particular construir nuestro Sistema Operativo: Se necesita un compilador cruzado desde cualquier tipo de computadora se este usando para nuestro objetivo.
+
+Para instalar en linux debian o ubuntu, se necesita ejecutar lo siguiente:
+
+\begin{lstlisting}[language=bash]
+sudo apt-get install nasm xorriso qemu build-essential
+\end{lstlisting}
+
+Lo primero que se debe realizar es configurar un Cross-Compiler para la plataforma \textbf{arm-none-eabi}. No serás capaz de compilar correctamente tu sistema operativo sin un \textit{Cross compiler}. Ahora necesitamos compilar \textbf{libcore} de Rust a nuestra arquitectura objetivo . Se trata de una base mínima libre de la dependencia de la biblioteca estándar. Para eso es necesario para compilar desde el código fuente :
+
+\begin{lstlisting}[language=bash]
+git clone https://github.com/rust-lang/rust.git
+cd rust
+rustc --version   #Se toma el numero que este comando y se introduce despues del comando checkout de la linea siguiente
+git checkout 21922e1f4
+sudo mkdir -p /usr/local/lib/rustlib/arm-unknown-linux-gnueabihf/lib 
+sudo rustc --target arm-unknown-linux-gnueabihf -O -Z no-landing-pads src/libcore/lib.rs --out-dir /usr/local/lib/rustlib/arm-unknown-linux-gnueabihf/lib
+\end{lstlisting}
+
+\subsection{Raspberry Pi bootloader}
+
+En el caso de las Raspberry Pi, dos archivos pueden ser encontrados en https://github.com/raspberrypi/firmware/tree/master/boot, el \textbf{bootcode.bin} y el \textbf{start.elf}
+Teniendo un SDCARD de arranque se le borran todos los archivos y se colocan los dos:  \textbf{bootcode.bin} y \textbf{start.elf} en la partición \textbf{boot} de la tarjeta
+
+\subsection{Comenzando la programación}
+
+Con todo configurado, podemos empezar a escribir el código. Vamos a hacer que el led ACT de la Raspberry parpadee, es el verde que se encuentra a lado del led de encendido. Así que, nuestro programa, básicamente necesita encender el led, esperar un tiempo, y apagarlo y luego ciclarse. Asi que en un editor creamos el archivo \emph{kernel.rs}:
+
+\begin{lstlisting}[language=erlang]
+fn main() {
+	println!("Hola Mundo!");
+}
+\end{lstlisting}
+
+Este es el ejemplo estandar de hola mundo, pero la macro \textbf{println!} es parte de la librería estandar de Rust y usa la plataforma E/S para imprimir algo en la pantalla y en este momento no tenemos ninguna plataforma definida. De tal manera, que necesitamos informarle al compilador que nuestro código independiente será independiente:
+
+\begin{lstlisting}[language=erlang]
+#![feature(no_std)]
+#![crate_type = "staticlib"]
+#![no_std]
+
+// kernel.rs
+fn main() {  
+    println!("Hola Mundo!");
+}
+\end{lstlisting}
+
+En la primera linea le informamos al compilador que vamos a usar una característica \textbf{no\_std}, esto se realiza con el atributo  \textbf{\#![feature()]} el cual le informa este tipo de caracteríticas al compilador. Con la instrución \textbf{\#![crate\_type]} le informamos al compilador que estamos compilando una librería estática, lo cual básicamente significa que todo nuestro código esta autocontenido y finalmente, con la instrucción \textbf{\#![no\_std]} le informamos al compilador que no usaremos la librería estándar, de tal manera que no será cargada automáticamente en los procesos iniciales. Ahora si intentamos compilar obtenemos el siguiente error de la figura \ref{fig0001}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{rust_kernel1.png}
+	\caption{Resultados de la compilación cruzada}
+	\label{fig0001}
+\end{figure}
+
+Como se muestra en la figura \ref{fig0001}, la macro \textbf{println!} no está definida, porque no esta implementada en las rutinas de E/S y el runtime, ¡somos independientes!. Si removemos la instrucción \textbf{println!} e intentamos compilar nuevamente obtenemos lo mostrado en la figura \ref{fig0002}
+
+\begin{figure}
+	\centering	\includegraphics[width=1\linewidth]{rust_kernel2.png}
+	\caption{compilación cruzada sin \textbf{println!}}
+	\label{fig0002}
+\end{figure}
+
+Esto significa que el runtime mínimo de Rust espera que estas dos funciones sean definidas. Ambas funciones son usadas por los mecanismos de falla/manejo del compilador. Para un \textit{hola mundo} independiente, definimos estos como implementaciones independientes.
+
+\begin{lstlisting}[language=erlang]
+// kernel.rs
+#![feature(no_std, lang_items)]
+#![crate_type = "staticlib"]
+#![no_std]
+
+pub extern fn main() {  
+    loop {}
+}
+
+#[lang = "eh_personality"]
+extern fn eh_personality() {}
+
+#[lang = "panic_fmt"]
+extern fn panic_fmt() {}  
+\end{lstlisting}
+
+El atributo \textbf{\#[lang]} informa al compilador que la función esta siendo definida para el runtime. Ya que este atributo es una característica necesitamos agregarla a nuestra lista en el atributo \textbf{\#![feature()]}. Ahora para compilar, necesitamos informarle al compilador que queremos producir un archivo objeto. Un archivo objeto es básicamente el código compilado con los símbolos definidos. Usaremos el archivo objeto generado para enalzarlos con \textbf{arm-none-eabi-gcc} y generar el archivo \textbf{kernel.elf}. Adicionamos la bandera \textbf{-O} para remover algunos símbolos innecesarios y realizar alguna optimización. Tambien cambiamos nuestra función \textbf{main} para que sea pública y externa.  Esto informa al compilador que nuestra función será usado externamente.
+\begin{lstlisting}[language=bash]
+rustc --target arm-unknown-linux-gnueabihf -O --emit=obj kernel.rs
+\end{lstlisting}
+
+Esto genera el archivo \textbf{kernel.o}. Podemos comprobar si nuestro compilador cruzado esta trabajando y produciendo código máquina compatible con ARM utilizando el comando \emph{file}:
+
+\begin{lstlisting}[language=bash]
+file kernel.o
+#kernel.o: ELF 32-bit LSB  relocatable, ARM, EABI5 version 1 (SYSV), not stripped
+\end{lstlisting}
+
+Podemos revisar los símbolos del archivo objeto usando \textbf{arm-none-eabi-nm}\footnote{si el comando anterior no funciona, es necesario intalar lo siguiente: sudo apt-get install binutils-arm-none-eabi} :
+
+\begin{lstlisting}[language=bash]
+arm-none-eabi-nm kernel.o
+\end{lstlisting}
+
+Lo cual produce el resultado de la figura \ref{fig0003}.
+
+\begin{figure}
+	\centering	\includegraphics[width=1\linewidth]{rust_kernel3.png}
+	\caption{Etiquetas del \textbf{kernel.o}}
+	\label{fig0003}
+\end{figure}
+
+Esto nos muestra los tres símbolos definidos por nuestro código fuente . El extraño es nuestra función principal \textbf{main}. Esto sucede debido a algo que se llama renombrado, que es algo que el compilador hace para evitar conflictos de nombres. Queremos que nuestros símbolos sean claros, por lo que las herramientas externas sabe cómo hacer referencia a ella. Para indicar al compilador que no destrozar nuestra función principal , tenemos que indicarlo :
+
+\begin{lstlisting}[language=erlang]
+// kernel.rs
+#![feature(no_std, lang_items)]
+#![crate_type = "staticlib"]
+#![no_std]
+
+#[no_mangle]
+pub extern fn main() {  
+    loop {}
+}
+
+#[lang = "eh_personality"]
+extern fn eh_personality() {}
+
+#[lang = "panic_fmt"]
+extern fn panic_fmt() {}  
+\end{lstlisting}
+
+Si compilamos y checamos los símbolos obtenemos lo indicado en la figura \ref{fig0004}
+
+\begin{figure}
+	\centering	\includegraphics[width=1\linewidth]{rust_kernel4.png}
+	\caption{Etiquetas del \textbf{kernel.o} con \textbf{no\_mangle}}
+	\label{fig0004}
+\end{figure}
+
+Ahora todos las etiquetas son claras lo cual será útil cuando lo necesitemos llamar desde el ensamblador.
+
+\subsection{Haciendo el LED parpadear}
+
+La dirección base de la Raspberry Pi B+ GPIO es 0x20200000. El registro que nos permitirá encender nuestro LED es la dirección base + offset 0x8 y tenemos que establecer el bit 15 al 1 para encenderlo. Para desactivarlo, tenemos que establecer el bit 15 al 1 en la dirección base + 0xB offset. Entre estos cambios , tenemos que bloquear el programa durante algún tiempo. Nuestro código se verá así :
+
+\begin{lstlisting}[language=erlang]
+// kernel.rs
+
+#![feature(no_std, lang_items, asm)]
+#![crate_type = "staticlib"]
+#![no_std]
+
+const GPIO_BASE: u32 = 0x20200000;
+
+fn sleep(value: u32) {  
+    for _ in 1..value {
+        unsafe { asm!(""); }
+    }
+}
+
+#[no_mangle]
+pub extern fn main() {  
+    let gpio = GPIO_BASE as *const u32;
+    let led_on = unsafe { gpio.offset(8) as *mut u32 };
+    let led_off = unsafe { gpio.offset(11) as *mut u32 };
+
+    loop {
+        unsafe { *(led_on) = 1 << 15; }
+        sleep(500000);
+        unsafe { *(led_off) = 1 << 15; }
+        sleep(500000);
+    }
+}
+
+#[lang = "eh_personality"] extern fn eh_personality() {}
+#[lang = "panic_fmt"] extern fn panic_fmt() {}
+\end{lstlisting}
+
+Hemos añadido una función de apagado automático que básicamente es un bucle vacío para un rango dado. El \textbf{unsafe { asm!(" ")}} fue la manera que se ha encontrado para evitar que el compilador para elimine a esta parte del código durante la fase de optimización, ya que no parece hacer nada. En la función principal \textbf{main}, creamos un puntero raw para la dirección de GPIO\_BASE, entonces obtenemos un puntero mutable de los lugares que queremos cambiar, que son el uno para encender el LED y para apagarlo. Desde la llamada desplazamiento implica la eliminación de referencias un puntero raw, esto es una operación insegura, por tanto, los bloques no seguros. Con que sólo podemos hacer un bucle infinito que Enciende el LED, espera, apagarlo y esperar.
+
+\subsection{Preparando el codigo }
+
+Ahora podemos compilar el codigo para ejecutarlo en la Raspberry:
+
+\begin{lstlisting}[language=bash]
+rustc --target arm-unknown-linux-gnueabihf -O --emit=obj kernel.rs
+\end{lstlisting}
+
+Con el archivo \textbf{kernel.o} generado se necesita enlazar el código usando \textbf{arm-none-eabi-gcc},  asi que esto puede configurar nuestro símbolo \textbf{main} como el punto de  entrada a nuestro programa, para generar el archivo kernel.elf y luego usar \textbf{arm-none-eabi-objcopy} para generar el archivo binario final \textbf{kernel.img} \footnote{Si la instrucción de la linea 1 no se ejecuta es necesario intalar con el siguiente comando: sudo apt-get install gcc-arm-none-eabi} .
+\begin{lstlisting}[language=bash]
+arm-none-eabi-gcc -O0 -mfpu=vfp -mfloat-abi=hard -march=armv6zk -mtune=arm1176jzf-s -nostartfiles kernel.o -o kernel.elf
+arm-none-eabi-objcopy kernel.elf -O binary kernel.img
+\end{lstlisting}
+Con nuestro kernel.img construido , sólo tenemos que copiarlo en nuestra frambuesa SD junto con los otros archivos de arranque ( start.elf y bootcode.bin ) , se adhieren a nuestra micro SD de nuevo en el Pi de frambuesa y encenderlo para ver nuestra pequeña núcleo en ejecución y parpadea el LED !
+
+Hay un montón de otras cosas interesantes que podemos hacer , como usar el temporizador del sistema en chip para poner en práctica nuestra función dormir o crear algunas abstracciones de la parte superior de la GPIO se dirige para encapsular todas las llamadas inseguras en una API más elegante . Pero creo que por ahora esto es una buena manera de empezar con la programación de metal desnudo con moho .
+\chapter{Sistema Operativo para x86}
+
+En este caso se necesitan tres archivos:
+\begin{itemize}
+\item boot.s.- Punto de entrada del kernel que configura el entorno del procesador
+\item kernel.rs.- Las rutinas actuales del kernel
+\item linker.ld.- Para enlazar los archivos anteriores 
+\end{itemize}
+
 
 Les presento el nuevo sistema operativo UtVitam. UtVitam es un sistema operativo enfocado a dar vida a nuevos proyectos que busquen funcionar independiente y embebidos, por ello es que UtVitam proviene del latin que significa \textbf{A la vida}. La primera decisión que debemos hacer nada más plantearnos el sistema operativo es ¿cuál va a ser el bootloader?
 
