@@ -338,6 +338,132 @@ Si deseamos crear una librería en lugar de un ejecutable, debemos usar el nombr
 Cargo espera que tus archivos fuentes se encuentren en el directorio \textbf{src}. Esto deja los archivos de nivel alto para otras cosas, como READMEs, información de licencias, y cualquier otra cosa no relacionado con tu código. Cargo te ayuda a mantener tus proyectos agradables. Un lugar para cada cosa y cada cosa en su lugar.
 
 Ahora, nuestro archivo de configuración:
+\chapter{Programación embebida usando la toolchain GNU}
+
+Primero debemos actualizar el sistema operativo, en este caso se considera ubuntu:
+
+\begin{lstlisting}[language=bash]
+$ sudo apt-get update
+$ sudo apt-get upgrade
+$ sudo apt-get dist-upgrade
+\end{lstlisting}
+
+Despues debemos instalar el toolchain, para ello anexamos el PPA\footnote{Si el PPA anterior aún no tiene una versión del compilador cruzado debemos usar la versión que trae por defecto por ello usamos lo siguiente:
+sudo apt-get install gcc-arm-none-eabi
+}:
+
+\begin{lstlisting}[language=bash]
+sudo add-apt-repository ppa:team-gcc-arm-embedded/ppa
+sudo apt-get update
+sudo apt-get install gcc-arm-embedded
+\end{lstlisting}
+
+ \section{Programación Ensamblador para ARM}
+ 
+ \subsection{Sumador}
+
+\begin{lstlisting}[language=bash]
+		.thumb
+		.syntax unified
+sp:		.word 0x200
+reset:	.word start+1
+
+start:
+		mov r0, #4
+		mov r1, #5
+		add r2, r1, r0
+stop:	b stop
+\end{lstlisting} 
+
+Los comandos son:
+
+\begin{lstlisting}[language=bash]
+$ arm-none-eabi-as -mcpu=cortex-m3 add.s -o add.o
+$ arm-none-eabi-ld -Ttext=0x0 -o add.elf add.o
+$ arm-none-eabi-objcopy -O binary add.elf add.bin
+\end{lstlisting} 
+
+Los comandos qemu para monitorear es el siguiente:
+
+\begin{lstlisting}[language=bash]
+$ qemu-system-arm -M lm3s811evb -kernel add.bin -monitor stdio
+\end{lstlisting} 
+
+\subsection{Sumar datos en Memoria}
+
+\begin{lstlisting}[language=bash]
+		.syntax unified
+		.thumb
+		.data
+num1:	.word 0x10
+num2:	.word 0x20
+result: .word 0x0
+		.text
+sp:		.word 0x200
+reset:	.word start+1
+
+start:
+		ldr r0, =sdata		@ Load the address of sdata
+		ldr r1, =edata		@ Load the address of edata
+		ldr r2, =etext		@ Load the address of etext
+
+copy: 	ldrb r3, [r2]		@ Load the value from Flash
+		strb r3, [r0]		@ Store the value in RAM
+		add r2, r2, #1		@ Increment Flash pointer 
+		add r0, r0, #1      @ Increment RAM pointer
+		cmp r0, r1			@ Check if end of data
+		bne	copy
+		
+		ldr r0, =num1		@ Load the address of num1
+		ldr r1, [r0]		@ Load the value in num1
+		
+		ldr r0, =num2		@ Load the address of num2
+		ldr r2, [r0]		@ Load the value in num2
+		
+		add r3, r1, r2 		@Add num1 and num2
+		
+		ldr r0, =result		@ Load the address of result
+		str r3, [r0]		@ Store the value in result
+		
+stop:	b stop
+\end{lstlisting}
+
+Script del enlazador add-ram.s:
+
+\begin{lstlisting}[language=bash]
+MEMORY
+{
+	FLASH (rx) : ORIGIN = 0x00000000, LENGTH = 0x00010000
+	SRAM (rwx) : ORIGIN = 0x20000000, LENGTH = 0x00002000
+}
+SECTIONS {
+		.text : {
+				* (.text);
+				etext = .;
+		} > FLASH
+		.data : {
+				sdata = .;
+				* (.data);
+				edata = .;
+		} > SRAM AT> FLASH
+}
+\end{lstlisting}
+
+Los comandos son:
+
+\begin{lstlisting}[language=bash]
+$ arm-none-eabi-as -mcpu=cortex-m3 add-ram.s -o add-ram.o
+$ arm-none-eabi-ld -T add-ram.lds -o add-ram.elf add-ram.o
+$ arm-none-eabi-objcopy -O binary add-ram.elf add-ram.bin
+\end{lstlisting}
+
+Comandos de monitor qemu:
+\begin{lstlisting}[language=bash]
+$ qemu-system-arm -M lm3s811evb -kernel add-ram.bin -monitor stdio
+xp /1xw 0x20000000
+xp /1xw 0x20000004
+xp /1xw 0x20000008
+\end{lstlisting}
 
 \chapter{Diseñando el Sistema Operativo \textbf{\textit{UtVitam}} con Rust}
 
@@ -399,7 +525,7 @@ sudo rustc --target arm-unknown-linux-gnueabihf -O -Z no-landing-pads src/libcor
 En el caso de las Raspberry Pi, dos archivos pueden ser encontrados en https://github.com/raspberrypi/firmware/tree/master/boot, el \textbf{bootcode.bin} y el \textbf{start.elf}
 Teniendo un SDCARD de arranque se le borran todos los archivos y se colocan los dos:  \textbf{bootcode.bin} y \textbf{start.elf} en la partición \textbf{boot} de la tarjeta
 
-\subsection{Comenzando la programación}
+\section{Comenzando la programación}
 
 Con todo configurado, podemos empezar a escribir el código. Vamos a hacer que el led ACT de la Raspberry parpadee, es el verde que se encuentra a lado del led de encendido. Así que, nuestro programa, básicamente necesita encender el led, esperar un tiempo, y apagarlo y luego ciclarse. Asi que en un editor creamos el archivo \emph{kernel.rs}:
 
@@ -514,7 +640,7 @@ Si compilamos y checamos los símbolos obtenemos lo indicado en la figura \ref{f
 
 Ahora todos las etiquetas son claras lo cual será útil cuando lo necesitemos llamar desde el ensamblador.
 
-\subsection{Haciendo el LED parpadear}
+\section{Haciendo el LED parpadear}
 
 La dirección base de la Raspberry Pi B+ GPIO es 0x20200000. El registro que nos permitirá encender nuestro LED es la dirección base + offset 0x8 y tenemos que establecer el bit 15 al 1 para encenderlo. Para desactivarlo, tenemos que establecer el bit 15 al 1 en la dirección base + 0xB offset. Entre estos cambios , tenemos que bloquear el programa durante algún tiempo. Nuestro código se verá así :
 
@@ -563,12 +689,207 @@ rustc --target arm-unknown-linux-gnueabihf -O --emit=obj kernel.rs
 
 Con el archivo \textbf{kernel.o} generado se necesita enlazar el código usando \textbf{arm-none-eabi-gcc},  asi que esto puede configurar nuestro símbolo \textbf{main} como el punto de  entrada a nuestro programa, para generar el archivo kernel.elf y luego usar \textbf{arm-none-eabi-objcopy} para generar el archivo binario final \textbf{kernel.img} \footnote{Si la instrucción de la linea 1 no se ejecuta es necesario intalar con el siguiente comando: sudo apt-get install gcc-arm-none-eabi} .
 \begin{lstlisting}[language=bash]
-arm-none-eabi-gcc -O0 -mfpu=vfp -mfloat-abi=hard -march=armv6zk -mtune=arm1176jzf-s -nostartfiles kernel.o -o kernel.elf
+arm-none-eabi-gcc -O0 -mfpu=vfp -mfloat-abi=hard -march=armv6zk -mtune=arm1176jzf-s -nostartfiles  --specs=rdimon.specs -lgcc -lc -lm -lrdimon  kernel.o -o kernel.elf
 arm-none-eabi-objcopy kernel.elf -O binary kernel.img
 \end{lstlisting}
 Con nuestro kernel.img construido , sólo tenemos que copiarlo en nuestra frambuesa SD junto con los otros archivos de arranque ( start.elf y bootcode.bin ) , se adhieren a nuestra micro SD de nuevo en el Pi de frambuesa y encenderlo para ver nuestra pequeña núcleo en ejecución y parpadea el LED !
 
 Hay un montón de otras cosas interesantes que podemos hacer , como usar el temporizador del sistema en chip para poner en práctica nuestra función dormir o crear algunas abstracciones de la parte superior de la GPIO se dirige para encapsular todas las llamadas inseguras en una API más elegante . Pero creo que por ahora esto es una buena manera de empezar con la programación de metal desnudo con moho .
+
+\section{Tips de compilación y ensamblador}
+Primero se escribe el programa Hola\_Mundo.c con el siguiente código:
+
+\begin{lstlisting}[language=C++]
+#include <stdio.h>
+
+int main()
+{
+  printf("Hola Mundo\n");
+  return 0;
+}
+\end{lstlisting}
+
+Compilando y checando su tamaño en bytes con los siguientes comandos:
+
+\begin{lstlisting}[language=C++]
+gcc -o hola Hola_Mundo.c
+wc -c hola
+\end{lstlisting}
+
+La última instrucción da como resultado:
+
+\begin{lstlisting}[language=C++]
+8608 hola
+\end{lstlisting}
+ ¿De donde provinen los 8.4Kb del archivo ejecutable? \textbf{hola}  nos da una table de simbolos de 79 entradas que pertenecen a nuestra librería estandar. Así que dejaremos de usarla. No utilizaremos \emph{printf} de tal forma que ya no es necesario incluir la librería en el programa:
+ 
+ \begin{lstlisting}[language=C++]
+int main()
+{
+  char *str = "Hola Mundo";
+  return 0;
+}
+\end{lstlisting} 
+ 
+ Recompilando y chechando el tamaño en bytes:
+
+\begin{lstlisting}[language=C++]
+$ gcc -o hola Hola_Mundo.c
+$ wc -c hola
+8560 hola
+\end{lstlisting}
+
+Oh!! Podemos observar que casi no disminuyó el número de bytes (8.36Kb). 
+
+El problema es que gcc esta todavía usando las librerías estandar cuando esta enlazando. Vamos ahora a compilar con la opción \textbf{-nostdlib} la cual de acuerdo con el manual de gcc no usa las librerías estandar cuando esta enlazando. Solamente los archivos que especifiques serán pasados al enlazador.
+
+\begin{lstlisting}[language=C++]
+$ gcc -nostdlib -o hola Hola_Mundo.c
+/usr/bin/ld: aviso: no se puede encontrar el simbolo de entrada _start; se usa por defecto 0000000000400144
+$ wc -c hola
+1648 hola
+\end{lstlisting}
+
+Esto ya se ve muy bien el tamaño del archivo es más razonable (1.6Kb). Ahora ejecutamos:
+
+\begin{lstlisting}[language=C++]
+$ ./hola
+Violacion de segmento (`core' generado)
+\end{lstlisting}
+ Como puede observarse se redujo a expensa de una violación de segmento
+
+Desde la perspectiva del enlazador, por defecto \textbf{\_start} es el punto de entrada a tu programa, no el programa principal \textbf{main}. Esto no esta definido en el \textbf{crt1.o} de la tabla del archivo ejecutable \textbf{ELF}. Se puede verificar esto enlazando nuevamente \textbf{crt1.o} y nada parecido a \textbf{\_start} no es encontrado\footnote{Es importante primero ubicar el archivo crt1.o en nuestro sistema con el comando: sudo find . -name crt1.o -print } :
+
+\begin{lstlisting}[language=bash]
+#Compilar el archivo fuente pero no enlazar
+$ gcc -Os -c Hola_Mundo.c
+#Ahora tratar de enlazar
+$ ld /usr/lib/x86_64-linux-gnu/crt1.o -o hola Hola_Mundo.o
+/usr/lib/x86_64-linux-gnu/crt1.o: En la funcion `_start':
+(.text+0x12): referencia a `__libc_csu_fini' sin definir
+/usr/lib/x86_64-linux-gnu/crt1.o: En la funcion `_start':
+(.text+0x19): referencia a `__libc_csu_init' sin definir
+/usr/lib/x86_64-linux-gnu/crt1.o: En la funcion `_start':
+(.text+0x25): referencia a `__libc_start_main' sin definir
+\end{lstlisting}
+ 
+Esto nos indica donde se encuentra \_start en la libreria fuente:  sysdeps/x86\_64/elf/start.S para la máquina en particular. Este archivo bien comentado exporta el símbolo \_start, ajusta la pila y algunos registros, y llama el programa principal \_\_libc\_start\_main. Si revisamos al final del programa  csu/libc-start.c podemos ver la llamada al programa principal:
+
+\begin{lstlisting}[language=bash]
+result = main (argc, argv, __environ MAIN_AUXVEC_PARAM);
+\end{lstlisting}
+
+Eso es todo acerca de \textbf{\_start}. Vamos a exportar nuestro propio símbolo \textbf{\_start} y llamar al programa \textbf{main} y enlazar de nuevo.
+
+\begin{lstlisting}[language=bash]
+$ nano stubstart.S
+.globl _start
+
+_start:
+    call main
+\end{lstlisting}
+
+Compilando y ejecutando con el archivo ensamblador stubstart.s:
+
+\begin{lstlisting}[language=bash]
+$ gcc -nostdlib stubstart.S -o hola Hola_Mundo.c
+$ ./hola
+Violacion de segmento (`core' generado)
+\end{lstlisting}
+
+Ahora ya no tenemos errores de compilación pero aun tenemos errores de segmentación. Ahora vamos a compilar con opciones de debuging y usaremos gdb (se introduce la opción -g). Ajustaremos un punto de quiebre en el programa principal y revisar hasta la falla:
+
+\begin{lstlisting}[language=bash]
+$ gcc -g -nostdlib stubstart.S -o hola Hola_Mundo.c
+$ gdb hola
+GNU gdb (Ubuntu 7.11-0ubuntu1) 7.11
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+Para las instrucciones de informe de errores, vea:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Leyendo simbolos desde hola...hecho.
+(gdb) break main
+Punto de interrupcion 1 at 0x40014d: file Hola_Mundo.c, line 3.
+(gdb) run
+Starting program: /home/casho/Documentos/ProgramasC/Hola_Mundo/hola 
+
+Breakpoint 1, main () at Hola_Mundo.c:3
+3	  char *str = "Hola Mundo";
+(gdb) step
+4	  return 0;
+(gdb) step
+5	}
+(gdb) step
+main () at Hola_Mundo.c:2
+2	{
+(gdb) step
+
+Breakpoint 1, main () at Hola_Mundo.c:3
+3	  char *str = "Hola Mundo";
+(gdb) step
+4	  return 0;
+(gdb) step
+5	}
+(gdb) step
+
+Program received signal SIGSEGV, Segmentation fault.
+0x0000000000000001 in ?? ()
+(gdb)  
+
+\end{lstlisting}
+
+Como se puede observar ejecutamos dos veces la rutina main. Si observamos en el ensamblador:
+
+\begin{lstlisting}[language=bash]
+$ objdump -d hola
+
+hola:     formato del fichero elf64-x86-64
+
+
+Desensamblado de la seccion .text:
+
+0000000000400144 <_start>:
+  400144:	e8 00 00 00 00       	callq  400149 <main>
+
+0000000000400149 <main>:
+  400149:	55                   	push   %rbp
+  40014a:	48 89 e5             	mov    %rsp,%rbp
+  40014d:	48 c7 45 f8 5c 01 40 	movq   $0x40015c,-0x8(%rbp)
+  400154:	00 
+  400155:	b8 00 00 00 00       	mov    $0x0,%eax
+  40015a:	5d                   	pop    %rbp
+  40015b:	c3                   	retq  
+ \end{lstlisting} 
+
+Revisando el programa anterior es posible observar que se ejecuta primero del programa ensamblador la linea 400144 (etiqueta <\_start> que corresponde cuya linea llama a la subrutina <main> al terminar de ejecutar esta rutina la instrucción retq regresa el programa a la siguiente instrucción despues de ejecutar ell callq lo cual precisamente es el inicio de <main> ya que no hay un indicio de fin de programa despues de callq por lo que se vuelve a ejecutar el programa <main> y al encontrar el retq se indica un error ya que no se llama a ninguna rutina y no hay nada en la pila. Para corregir lo anterior hay que indicar en el programa principal una salida  al sistema despues del callq con SYS\_exit dentro del registro \%eax. Despues hacemos una interrupción dentro del kernel con int \$0x80 para indicarle que salimos del programa sin errores.
+
+\begin{lstlisting}[language=bash]
+$ nano stubstart.S
+.globl _start
+
+_start:
+    call main
+    movl $1, %eax
+    xorl %ebx, %ebx
+    int $0x80
+\end{lstlisting}
+
+y ejecutando
+\begin{lstlisting}[language=bash]
+$ gcc -nostdlib stubstart.S -o hola Hola_Mundo.c
+./hola
+\end{lstlisting}
+
+Ahora nuestro programa se ejecuta sin errores.
 \chapter{Sistema Operativo para x86}
 
 En este caso se necesitan tres archivos:

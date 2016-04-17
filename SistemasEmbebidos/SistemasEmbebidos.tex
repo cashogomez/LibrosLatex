@@ -3087,6 +3087,236 @@ echo 17 > /sys/class/gpio/unexport
 \end{lstlisting}
 
 
+\section{Programación serial con Vala}
+
+En Linux, los periféricos se encuentran representados como simples ficheros del
+sistema de archivos. De esta forma, si se quiere enviar datos a través del puerto
+serie, basta con abrir el fichero asociado al puerto y escribir con las funciones de
+siempre. Cada uno de los puertos serie tiene asociado uno o más ficheros de
+dispositivo. En la Tabla \ref{T001} se muestra la asociación más habitual entre los
+puertos serie y los ficheros del sistema de archivos.
+
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+Puerto & Archivo \\
+\hline \hline
+COM1 & /dev/ttyS0 \\ \hline
+COM2 & /dev/ttyS1 \\ \hline
+COM3 & /dev/ttyS2 \\ \hline
+\end{tabular}
+\caption{Asociación de Puertos Seriales a archivos.}
+\label{T001}
+\end{center}
+\end{table}
+
+Para acceder al puerto únicamente es necesario abrir el fichero asociado
+mediante la llamada al sistema \emph{open}. Se debe tener en cuenta que, en Linux, los
+ficheros asociados a los dispositivos no suelen tener permiso de acceso para los
+usuarios. Para evitar este problema existen varias soluciones:
+
+\begin{itemize}
+\item Cambiar los permisos del fichero/s asociado al dispositivo y dar permisos
+de lectura y escritura a los usuarios.
+\item Ejecutar el programa realizado en modo super-usuario (root).
+\end{itemize}
+
+La especificación de la función open es la siguiente:
+\begin{lstlisting}[language=bash]	
+int handle = Posix.open ("/dev/ttyS1", Posix.O_RDWR | Posix.O_NOCTTY | O_NDELAY);
+\end{lstlisting}
+
+Se debe indicar el fichero que se desea abrir y las opciones de apertura
+necesarias. Estas opciones se indican mediante el uso de constantes definidas
+por el operativo. La función retorna un número
+negativo si no se pudo abrir el fichero indicado. Si el fichero se abrió
+correctamente, se retorna un descriptor de fichero (un entero no negativo que se
+utiliza en las operaciones de E/S posteriores, como en read, write, etc.).
+
+En el código se muestra el uso de la llamada al sistema open.
+La opción O\_RDWR indica que el fichero /dev/ttyS1 (fichero asociado al puerto
+COM2) se debe abrir en modo lectura y escritura.
+La opción O\_NOCTTY indica que el fichero no se abrirá como controlador de
+terminal tty. Si no se especifica esta opción una señal de finalización (abort)
+enviada por la línea finalizaría la ejecución.
+
+Para mandar datos al puerto se emplea la llamada al sistema write:
+
+\begin{lstlisting}[language=bash]
+int l = (int)Posix.write (handle, data, data.length);
+\end{lstlisting}
+
+Escribe hasta \emph{data.length} bytes en el fichero referenciado por el descriptor de fichero \emph{handle}
+desde el búfer que comienza en data.
+
+Para leer datos del puerto se emplea la llamada al sistema read:
+\begin{lstlisting}[language=bash]
+int bytesRead=(int)Posix.read(m_fd, m_buf, max_buf_size);
+\end{lstlisting}
+
+Intenta leer hasta \emph{max\_buf\_size} bytes del fichero cuyo descriptor de fichero es 
+\emph{m\_fd} y guardarlos en la zona de memoria que empieza en \emph{m\_buf}. En el código anterios se puede ver una forma de uso. La llamada al sistema \emph{read}, no finaliza el buffer
+donde deposita los datos con el ASCII nulo. Es por ello, que esta tarea se hace
+explícitamente: 
+\begin{lstlisting}[language=bash]
+buffer[leo]='\0'; . 
+\end{lstlisting}
+
+\subsection{Conceptos de entrada para dispositivos serie}
+
+Hay tres conceptos diferentes de entrada para dispositivos serie. Según la
+aplicación que se quiera realizar se debe escoger el concepto apropiado. Siempre
+que sea posible, se recomienda no obtener una cadena completa mediante un
+ciclo que vaya leyendo carácter a carácter.
+
+\subsubsection{Proceso de entrada canónico}
+
+Es el modo de proceso normal para terminales, pero puede ser útil también para
+comunicaciones con otros dispositivos. Toda la entrada es procesada en unidades
+de líneas, lo que significa que un read sólo devolverá una línea completa de
+entrada. Una línea, por defecto, está finalizada con un NL y fin de fichero o con
+un carácter fin de línea. Un CR (el fin de línea por defecto en DOS/Windows) no
+terminará una línea con la configuración por defecto.
+El proceso de entrada canónica también puede manejar los caracteres borrado,
+borrado de palabra, reimprimir carácter, traducir CR a NL, etc.
+
+\subsubsection{Proceso de entrada no canónico}
+
+Maneja un número fijo de caracteres por lectura y permite un carácter
+temporizador. Este modo se debería usar si la aplicación siempre lee un número
+fijo de caracteres o si el dispositivo conectado envía ráfagas de caracteres.
+
+
+\subsubsection{Entrada asíncrona}
+
+
+Los dos procesos de entrada descritos anteriormente se pueden usar en dos
+modos:
+
+\begin{itemize}
+\item \textbf{Modo síncrono}: la sentencia read se bloqueará hasta que la lectura esté
+completa (este es el modo por defecto).
+
+\item \textbf{Modo asíncrono}: la sentencia read devolverá inmediatamente y enviará
+una señal al programa llamador cuando esté completa. Esta señal puede
+ser recibida por un manejador de señales que la tratará adecuadamente.
+\end{itemize}
+
+\subsubsection{Espera de entradas de origen múltiple}
+
+No es un modo diferente de entrada, pero puede ser útil si se están manejando
+dispositivos múltiples. En aplicaciones donde se esperen entradas de distintos
+orígenes, se procesarán aquellas entradas que estén disponibles y, una vez
+procesadas, se esperará la llegada de nuevas entradas.
+
+\subsection{Configuración del puerto serie en Linux}
+
+En esta sección se mostrará la configuración del puerto serie en lenguaje Vala
+utilizando la interfaz que proporciona el estándar POSIX (acrónimo de Portable
+operating system interface). La información aquí mostrada se ha obtenido, entre
+otras fuentes, del documento ``Serial Programming Guide for POSIX Operating
+Systems''.
+En el archivo de cabecera <termios.h> se definen las estructuras y funciones
+necesarias para llevar a cabo la configuración del puerto serie. La estructura más
+importante es la estructura termios formada por los miembros mostrados en la
+Tabla \ref{T002}.
+
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+Miembro & Descripción \\
+\hline \hline
+c\_cflag & Opciones de control \\ \hline
+c\_lflag & Opciones locales \\ \hline
+c\_iflag & Opciones de entrada \\ \hline
+c\_oflag & Opciones de salida \\ \hline
+c\_cc & Caracteres de control \\ \hline
+c\_ispeed & Velocidad (baudios) de entrada\\ \hline
+c\_ospeed & Velocidad (baudios) de salida \\ \hline
+\end{tabular}
+\caption{Miembros de la estructura termios}
+\label{T002}
+\end{center}
+\end{table}
+
+Las funciones que se utilizarán para llevar a cabo la configuración del puerto
+serie son:
+
+\begin{itemize}
+\item tcgetattr: Se utiliza para obtener los parámetros actuales del puerto.
+\begin{lstlisting}[language=bash]
+int tcgetattr ( int fd, struct termios *termios_p );
+\end{lstlisting}
+
+Obtiene los parámetros asociados con el objeto referido por fd y los
+guarda en la estructura termios referenciada por termios\_p.
+
+\item tcsetattr: Se utiliza para actualizar los parámetros del puerto.
+
+\begin{lstlisting}[language=bash]
+int tcsetattr ( int fd, int optional_actions, struct termios *termios_p);
+\end{lstlisting}
+
+Establece los parámetros de la terminal con descriptor de fichero fd, desde
+la estructura termios referenciada por termios\_p. El argumento
+optional\_actions especifica cuándo tienen efecto los cambios:
+\begin{itemize}
+	\item TCSANOW: El cambio ocurre inmediatamente.
+	\item TCSADRAIN: El cambio ocurre después de que toda la salida escrita a
+fd haya sido transmitida. Esta función debería emplearse cuando se
+cambien parámetros que afecten a la salida.
+	\item TCSAFLUSH: El cambio ocurre después de que toda la salida escrita
+al objeto referenciado por fd haya sido transmitida, y toda la entrada
+que se haya recibido pero no leído será descartada antes de que se
+haga el cambio.
+\end{itemize}
+\item tcflush: Se utiliza para vaciar los buffers de entrada/salida.
+
+\begin{lstlisting}[language=bash]
+int tcsetattr ( int fd, int optional_actions, struct termios *termios_p);
+\end{lstlisting}
+
+Descarta datos escritos al objeto referido por fd pero no transmitidos, o
+datos recibidos pero no leídos, dependiendo del valor de queue\_selector:
+
+\begin{itemize}
+\item TCIFLUSH: Vuelca datos recibidos pero no leídos.
+\item TCOFLUSH: Vuelca datos escritos pero no transmitidos.
+\item TCIOFLUSH: Vuelca tanto los datos recibidos pero no leídos, como los
+escritos pero no transmitidos.
+\end{itemize}
+\item cfsetospeed: Se utiliza para establecer la velocidad de salida.
+
+\begin{lstlisting}[language=bash]
+int cfsetospeed ( struct termios *termios_p, speed_t speed );
+\end{lstlisting}
+Establece la velocidad de salida, guardada en la estructura termios
+apuntada por termios\_p, a speed, que debe ser una de estas constantes:
+B0, B50, B75, B110, B134, B150, B200, B300, B600, B1200, B1800,
+B2400, B4800, B9600, B19200, B38400, B57600, B115200, B230400.
+Los nuevos valores no hacen efecto hasta que se llame con éxito a
+tcsetattr().
+
+\item cfsetispeed: Se utiliza para establecer la velocidad de entrada.
+
+\begin{lstlisting}[language=bash]
+int cfsetispeed ( struct termios *termios_p, speed_t speed );
+\end{lstlisting}
+Establece la velocidad de entrada, guardada en la estructura termios
+apuntada por termios\_p, a speed, que debe ser una de estas constantes:
+B0, B50, B75, B110, B134, B150, B200, B300, B600, B1200, B1800,
+B2400, B4800, B9600, B19200, B38400, B57600, B115200, B230400.
+Si la velocidad de entrada se pone a cero, entonces será igual a la de
+salida. Los nuevos valores no hacen efecto hasta que se llame con éxito a
+tcsetattr().
+\end{itemize}
+En el siguiente ejemplo se puede ver un fragmento de código que muestra la
+utilización de alguna de las funciones comentadas.
+
+
+
 
 
 

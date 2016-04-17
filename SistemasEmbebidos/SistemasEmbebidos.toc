@@ -93,3 +93,10 @@
 \contentsline {chapter}{\numberline {8}Controlando linux desde Vala}{101}{chapter.8}
 \contentsline {subsection}{\numberline {8.0.1}Para encender el LED}{101}{subsection.8.0.1}
 \contentsline {subsection}{\numberline {8.0.2} Para apagar el LED:}{101}{subsection.8.0.2}
+\contentsline {section}{\numberline {8.1}Programaci\IeC {\'o}n serial con Vala}{102}{section.8.1}
+\contentsline {subsection}{\numberline {8.1.1}Conceptos de entrada para dispositivos serie}{103}{subsection.8.1.1}
+\contentsline {subsubsection}{Proceso de entrada can\IeC {\'o}nico}{103}{section*.21}
+\contentsline {subsubsection}{Proceso de entrada no can\IeC {\'o}nico}{104}{section*.22}
+\contentsline {subsubsection}{Entrada as\IeC {\'\i }ncrona}{104}{section*.23}
+\contentsline {subsubsection}{Espera de entradas de origen m\IeC {\'u}ltiple}{104}{section*.24}
+\contentsline {subsection}{\numberline {8.1.2}Configuraci\IeC {\'o}n del puerto serie en Linux}{104}{subsection.8.1.2}
