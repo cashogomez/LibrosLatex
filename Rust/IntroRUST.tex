@@ -362,7 +362,7 @@ sudo apt-get install gcc-arm-embedded
  
  \subsection{Sumador}
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language={[x86masm]Assembler}]
 		.thumb
 		.syntax unified
 sp:		.word 0x200
@@ -391,7 +391,7 @@ $ qemu-system-arm -M lm3s811evb -kernel add.bin -monitor stdio
 
 \subsection{Sumar datos en Memoria}
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language={[x86masm]Assembler}]
 		.syntax unified
 		.thumb
 		.data
@@ -430,7 +430,7 @@ stop:	b stop
 
 Script del enlazador add-ram.s:
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language={[x86masm]Assembler}]
 MEMORY
 {
 	FLASH (rx) : ORIGIN = 0x00000000, LENGTH = 0x00010000
@@ -465,8 +465,248 @@ xp /1xw 0x20000004
 xp /1xw 0x20000008
 \end{lstlisting}
 
+\chapter{Ensamblador en linux}
 
+Para los programas de esta sección se utiliza el ensamblador de gcc en una computadora intel con ubuntu. Algunos códigos podrán tranportarse al tarjetas con Arm y linux instalado pero solo aquellos que dependan del sistema operativo y no del hardware.
 
+\section{Desplegando informacion en linux con ensamblador}
+
+El siguiente código despliega un mensaje en la pantalla utilizando una llamada al sistema de linux (int \$0x80). El kernel de linux proporciona muchas funciones preestablecidas que pueden fácilmente ser accedidas desde ensamblador. Para acceder a estas funciones del kernel, se debe utilizar el código de instrucción \textbf{int} , el cual genera una interrupción por software, con el valor 0x80. La función específica que es realizada es determinada por el valor del registro EAX. Las llamadas el sistema de linux ahorran mucho tiempo al programador de ensamblador.
+
+\begin{lstlisting}[language={[x86masm]Assembler}]
+movl $4, %eax
+movl $1, %ebx
+movl $output, %ecx
+movl $42, %edx
+int $0x80
+\end{lstlisting}
+
+Las llamadas de escritura al sistema linux es usado para escribir bytes a un archivo. Los siguientes son los parámetros para las llamadas de escritura al sistema:
+
+\begin{itemize}
+\item EAX contiene el valor de la llamada al sistema
+\item EBX Contiene el descriptor de archivo al cual se va a escribir
+\item ECX contiene el inicio de la cadena
+\item EDX contiene el largo de la cadena
+\end{itemize}
+
+La salida estandar (STDOUT) representa la terminal de  pantalla de la sesión actual, y tiene un \textbf{descriptor de archivo de 1}. Escribiendo a este archivo descriptor se despliega la información en la terminal de la consola.
+Los bytes a desplegar son definidos como localidades de memoria desde donde se lee la información, y el número de bytes que se desplegarán. El registro \textbf{ECX} es cargado con la localidad de memoria de la etiqueta \textbf{output}, la cual define el inicio de la cadena. Debido a que a lo largo del programa el largo de la cadena es siempre el mismo, se define como constante el tamaño en el registro \textbf{EDX}. En el código anterior el valor de la llamada al sistema es 4 (\textbf{EAX}), el descriptor de archivo es 1 (\textbf{EBX}), el inicio de la cadena \textbf{output} se guarda en \textbf{ECX} y en \textbf{EDX} se pone el tamaño de la cadena que es de 42 bytes o caracteres. Una vez escritos los valores en los registros pertinentes se llama a la interrupción por software con \textbf{int \$0x80}.
+
+En el siguiente código se muestra el código en ensamblador para salir del programa. Se mueve el valor de 1 al registro EAX lo cual define el valor de llamada a sistema (función exit) y el descriptor de archivo, registro EBX, se define como 0 lo cual indica el valor que regresará el programa a el shell de linux. Esto puede ser usado para producir diferentes resultados en el programa del shell, dependiendo de la situación dentro del programa en ensamblador. El valor de cero indica que el programa se terminó exitosamente. Posteriormente a la colocación de los valores en los registros se llama a la interrupción por software \textbf{int \$0x80}.
+
+\begin{lstlisting}[language={[x86masm]Assembler}]
+movl $1, %eax
+movl $0, %ebx
+int $0x80   
+\end{lstlisting}
+   
+\subsection{Hola Mundo en ensamblador}
+
+A continuación se muestra un ejemplo de un programa en ensamblador que despiega información de una cadena, en este caso el mundialmente conocido "Hola Mundo". A continuación se muestra el código en ensamblador
+
+\begin{lstlisting}[language={[x86masm]Assembler}]
+#Hola_Mundo.s Programa Hola Mundo en ensamblador
+.section .data
+output:
+	.ascii "Hola Mundo Cabron\n"
+.section .text
+.globl _start
+_start:
+	movl $4, %eax
+	movl $1, %ebx
+	movl $output, %ecx
+	movl $18, %edx
+	int $0x80
+	movl $1, %eax
+	movl $0, %ebx
+	int $0x80
+\end{lstlisting}
+
+Para compilar el programa y volverlo ejecutable 
+
+\begin{lstlisting}[language=bash]
+$ as -o hola.o Hola_Mundo.s
+$ ld -o Hola hola.o
+\end{lstlisting}
+
+porteriormente se ejecuta el programa con el comando:
+\begin{lstlisting}[language=bash]
+$./Hola
+\end{lstlisting}
+
+\subsection{Enviando resultados a la salida estandar}
+
+Es importante recibir información de salida de un programa y esta información reenviarla al usuario. Para ello se muestra el siguiente programa que utiliza el programa del sistema CPUID para capturar la información del sistema. En la siguiente tabla se muestran las diferentes opciones de salida 
+
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+Valor EAX & Salida CPUID \\
+\hline \hline
+0 & Cadena del vendedor del microprocesador \\ \hline
+1 & Tipo de Procesador, familia, modelo \\ \hline
+2 & Configuración de cache del procesador \\ \hline
+3 & Número de serie del procesador \\ \hline
+4 & Configuración de cache(Número de hilos,  \\ \hline
+ & número de núcleos, y propiedades físicas) \\ \hline
+5 & Información del Monitor \\ \hline
+80000000h & Cadena extendida del vendedor y niveles soportados \\ \hline
+80000001h & Tipo de procesador extendido, familia, modelo \\ \hline
+80000002h - 80000004h & Cadena extendida del procesador \\ \hline
+\end{tabular}
+\caption{Opciones EAX para el comando CPUID.}
+\label{tabla:001}
+\end{center}
+\end{table}
+ 
+ Tomando en cuenta los valores de EAX de la tabla \ref{tabla:001} se escribe el código para llamar al programa que se muestra a continuación:
+ 
+\begin{lstlisting}[language={[x86masm]Assembler}]
+ #cpuid.s Ejemplo de programa que obtiene Vendor ID del procesador
+.section .data
+output:
+  .ascii "El ID del vendedor del procesador es 'xxxxxxxxxxxx'\n"
+.section .text
+.globl _start
+_start:
+  movl $0, %eax
+  cpuid
+  movl $output, %edi
+  movl %ebx, 38(%edi)
+  movl %edx, 42(%edi)
+  movl %ecx, 46(%edi)
+\end{lstlisting}
+En el código anterior se crea una cadena output en donde los valores de x serán sustituidos por la salida que produce el comando cpuid con la opción 0 en el registro EAX, que como indica la tabla \ref{tabla:001} produce el ID del vendedor del microprocesador. Esta cadena se almacena en los registros EBX, EDX y ECX donde la cadena empieza en el registro EBX y se almacenan 4 bytes o caracteres y los 4 siguientes en EDX y los últimos 4 en ECX.  Los valores de que el comando CPUID almacenó en el registro EBX se pasan a la cadena cuyo valor inicial apunta el registro EDI. Como puede observarse en el código se mueven los valores de las cadenas EBX, EDX y ECX a las posiciones 38, 42 y 46 de la cadena apuntada por el registro EDI, el número indica la posición relativa señalada por la posición de memoria base del registro EDI. Una vez que la cadena señalada por el registro EDI se modificó con los resultados entonces se puede hacer una llamada al sistema para desplegar esta cadena modificada en la salida estandar de tal forma que el programa completo queda:
+
+\begin{lstlisting}[language={[x86masm]Assembler}]
+#cpuid.s Ejemplo de programa que obtiene Vendor ID del procesador
+.section .data
+output:
+  .ascii "El ID del vendedor del procesador es 'xxxxxxxxxxxx'\n"
+.section .text
+.globl _start
+_start:
+  movl $0, %eax
+  cpuid
+  movl $output, %edi
+  movl %ebx, 38(%edi)
+  movl %edx, 42(%edi)
+  movl %ecx, 46(%edi)
+  movl $4, %eax
+  movl $1, %ebx
+  movl $output, %ecx
+  movl $52, %edx
+  int $0x80
+  movl $1, %eax
+  movl $0, %ebx
+  int $0x80
+\end{lstlisting}
+
+Para compilar el programa y volverlo ejecutable 
+
+\begin{lstlisting}[language=bash]
+$ as -o cpuid.o cpuid.s
+$ ld -o cpuid cpuid.o
+\end{lstlisting}
+
+Posteriormente se ejecuta el programa con el comando:
+
+\begin{lstlisting}[language=bash]
+$./cpuid
+\end{lstlisting}
+\section{Usando gdb}
+
+Para poder realizar una depuración de un programa en ensamblador, primero se debe reensamblar el código usando el parámetro -gstab:
+
+\begin{lstlisting}[language=bash]
+$ as -gstab -o cpuid.o cpuid.s
+$ ld -o cpuid cpuid.o
+\end{lstlisting}
+
+Específicando el parámetro \textbf{-gstab} información extra es ensamblada dentro del ejecutable para ayudar al programa \textbf{gdb} para recorrer el programa fuente. Ahora el programa ejecutable contiene la información necesaria de depuración, y el programa con \textbf{gdb} se puede correr:
+\begin{lstlisting}[language=bash]
+$ gdb cpuid 
+\end{lstlisting}
+
+COn el comando anterior el depurador inicia, con el programa cargado en la memoria. Es posible ejecutar el programa dentro del depurador con los siguientes comandos:
+
+\begin{itemize}
+\item \textbf{run}.- Sirve para ejecutar el programa
+\item \textbf{break *label+offset}.- Sirve para definir un breakpoint, por ejemplo \textbf{break *\_start}, define un breakpoit en la etiqueta \textbf{\_start} del programa, o bien \textbf{break *\_start+1} que coloca un breakpoint en la instrucción siguiente a la etiqueta \textbf{\_start}.
+\item \textbf{next}.- Ejecuta la siguiente linea de código
+\item \textbf{step}.- Ejecuta al igual que \textbf{next} la siguiente linea de código
+\item \textbf{cont}.- Continua la ejecución normal del código
+\end{itemize}
+
+Además de los comandos de control de ejecución en el depurador son importantes los comandos de despliegue de datos, en la siguiente tabla se muestran estos comandos con sus ejemplos:
+
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+Comando de datos & Descripción \\
+\hline \hline
+\textbf{info registers} & Despliega el valor de todos los registros \\ \hline
+\textbf{print} & Imprime el valor de un registro o variable  \\ \hline
+\textbf{x} & Imprime el valor de una localidad de memoria \\ \hline
+\end{tabular}
+\caption{Opciones para imprimir registros y variables en el depurador.}
+\label{tabla:002}
+\end{center}
+\end{table}
+ 
+\subsection{El comando Print del depurador}
+
+El comando print del depurador se utiliza para imprimir valores individuales de registros. Incluyendo modificadores que pueden dar formato a los valores de salida del comando:
+
+\begin{itemize}
+\item print/d.- Imprime el valor en decimal
+\item print/t.- Imprime los valores en binario
+\item print/x.- Imprime los valores en hexadecimal 
+\end{itemize}
+
+Por ejemplo:
+\begin{lstlisting}[language={[x86masm]Assembler}]
+(gdb) print/x $ebx
+$9 = 0x756e6547
+(gdb) print/x $edx
+$10 = 0x49656e69
+(gdb) print/x $ecx
+$11 = 0x6c65746e
+(gdb)
+\end{lstlisting}
+
+\subsection{Comando x del depurador}
+
+El comando \textbf{x} es usado para imprimir los valores de direcciones específicas de memoria. Similar al comando \textbf{print}, el comando \textbf{x} puede ser formateada. El formato es el siguiente:
+\begin{lstlisting}[language={[x86masm]Assembler}]
+x/nyz
+\end{lstlisting}
+
+donde \textbf{n} es el número de caracteres o bytes a imprimir, \textbf{y} es el formato de salida los cuales pueden ser:
+
+\begin{itemize}
+\item c .- para carateres
+\item d .- Para decimales
+\item x .- para decimales
+\end{itemize}
+
+y \textbf{z} es el tamaño de la palabra en bits:
+
+\begin{itemize}
+\item b .- para un byte (8 bits)
+\item h .- Para media palabra de 16 bits
+\item w .- Para una palabra de 32 bits
+\end{itemize}
+
+A continuación se muestran algunos ejemplos del comando \textbf{x}:
+\begin{lstlisting}[language={[x86masm]Assembler}]
+(gdb) x/42cb &output
+\end{lstlisting}
+
+Este comando imprime los primeros 42 bytes de la variable salida (el amperser indica que se toma la dirección de memoria) en modelidad de caracteres.
 \chapter{Diseñando el Sistema Operativo \textbf{\textit{UtVitam}} con Rust}
 
 En este trabajo se supondrá que se utilizá un sistema operativo parecido a Unix como plataforma de diseño, como por ejemplo Linux.
@@ -851,7 +1091,7 @@ Program received signal SIGSEGV, Segmentation fault.
 
 Como se puede observar ejecutamos dos veces la rutina main. Si observamos en el ensamblador:
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language={[x86masm]Assembler}]
 $ objdump -d hola
 
 hola:     formato del fichero elf64-x86-64
@@ -874,7 +1114,7 @@ Desensamblado de la seccion .text:
 
 Revisando el programa anterior es posible observar que se ejecuta primero del programa ensamblador la linea 400144 (etiqueta <\_start> que corresponde cuya linea llama a la subrutina <main> al terminar de ejecutar esta rutina la instrucción retq regresa el programa a la siguiente instrucción despues de ejecutar ell callq lo cual precisamente es el inicio de <main> ya que no hay un indicio de fin de programa despues de callq por lo que se vuelve a ejecutar el programa <main> y al encontrar el retq se indica un error ya que no se llama a ninguna rutina y no hay nada en la pila. Para corregir lo anterior hay que indicar en el programa principal una salida  al sistema despues del callq con SYS\_exit dentro del registro \%eax. Despues hacemos una interrupción dentro del kernel con int \$0x80 para indicarle que salimos del programa sin errores.
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language={[x86masm]Assembler}]
 $ nano stubstart.S
 .globl _start
 
@@ -932,7 +1172,7 @@ Para ello necesitaremos el GCC y GAS (el ensamblador del proyecto GNU, suele ven
 
 Primero hacemos un archivo llamado kernel.asm. Este archivo contendrá el punto de inicio de nuestro kernel y además definirá el multiboot (una característica de algunos bootloaders como GRUB). El contenido de kernel.asm será:
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language={[x86masm]Assembler}]
 .text
 
 .globl start

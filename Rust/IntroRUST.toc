@@ -15,12 +15,19 @@
 \contentsline {section}{\numberline {3.1}Programaci\IeC {\'o}n Ensamblador para ARM}{14}{section.3.1}
 \contentsline {subsection}{\numberline {3.1.1}Sumador}{14}{subsection.3.1.1}
 \contentsline {subsection}{\numberline {3.1.2}Sumar datos en Memoria}{15}{subsection.3.1.2}
-\contentsline {chapter}{\numberline {4}Dise\IeC {\~n}ando el Sistema Operativo \textbf {\textit {UtVitam}} con Rust}{18}{chapter.4}
-\contentsline {section}{\numberline {4.1}Construyecto un \textbf {Cross-Compiler}}{18}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Anfitri\IeC {\'o}n y Objetivos}{19}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Raspberry Pi bootloader}{20}{subsection.4.1.2}
-\contentsline {section}{\numberline {4.2}Comenzando la programaci\IeC {\'o}n}{20}{section.4.2}
-\contentsline {section}{\numberline {4.3}Haciendo el LED parpadear}{24}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Preparando el codigo }{25}{subsection.4.3.1}
-\contentsline {section}{\numberline {4.4}Tips de compilaci\IeC {\'o}n y ensamblador}{26}{section.4.4}
-\contentsline {chapter}{\numberline {5}Sistema Operativo para x86}{31}{chapter.5}
+\contentsline {chapter}{\numberline {4}Ensamblador en linux}{18}{chapter.4}
+\contentsline {section}{\numberline {4.1}Desplegando informacion en linux con ensamblador}{18}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Hola Mundo en ensamblador}{19}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Enviando resultados a la salida estandar}{20}{subsection.4.1.2}
+\contentsline {section}{\numberline {4.2}Usando gdb}{22}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}El comando Print del depurador}{23}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Comando x del depurador}{24}{subsection.4.2.2}
+\contentsline {chapter}{\numberline {5}Dise\IeC {\~n}ando el Sistema Operativo \textbf {\textit {UtVitam}} con Rust}{25}{chapter.5}
+\contentsline {section}{\numberline {5.1}Construyecto un \textbf {Cross-Compiler}}{25}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Anfitri\IeC {\'o}n y Objetivos}{26}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Raspberry Pi bootloader}{27}{subsection.5.1.2}
+\contentsline {section}{\numberline {5.2}Comenzando la programaci\IeC {\'o}n}{27}{section.5.2}
+\contentsline {section}{\numberline {5.3}Haciendo el LED parpadear}{31}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Preparando el codigo }{32}{subsection.5.3.1}
+\contentsline {section}{\numberline {5.4}Tips de compilaci\IeC {\'o}n y ensamblador}{33}{section.5.4}
+\contentsline {chapter}{\numberline {6}Sistema Operativo para x86}{38}{chapter.6}
