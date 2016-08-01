@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.7.29)  30 JUL 2016 00:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.7.29)  31 JUL 2016 21:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -637,7 +637,7 @@ LaTeX Info: Redefining \% on input line 58.
  [6]
 Cap\'{\i }tulo 1.
 
-Overfull \hbox (4.58717pt too wide) in paragraph at lines 83--85
+Overfull \hbox (4.58717pt too wide) in paragraph at lines 84--86
 []\T1/cmr/m/n/12 Ejercicios....................................................
 .............15$ $%.
  []
@@ -646,38 +646,38 @@ Overfull \hbox (4.58717pt too wide) in paragraph at lines 83--85
 
 
 ]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 86.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 87.
  (/usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 86.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 87.
 
-Overfull \hbox (8.8104pt too wide) in paragraph at lines 90--91
+Overfull \hbox (8.8104pt too wide) in paragraph at lines 91--92
 []\T1/cmr/m/n/12 Lecturas y pro-gra-mas........................................
 ........ 15$ $%. Las
  []
 
-LaTeX Info: Redefining \. on input line 115.
-LaTeX Info: Redefining \% on input line 115.
+LaTeX Info: Redefining \. on input line 116.
+LaTeX Info: Redefining \% on input line 116.
 [2]
-LaTeX Info: Redefining \. on input line 144.
-LaTeX Info: Redefining \% on input line 144.
+LaTeX Info: Redefining \. on input line 145.
+LaTeX Info: Redefining \% on input line 145.
  [3]
-LaTeX Info: Redefining \. on input line 172.
-LaTeX Info: Redefining \% on input line 172.
+LaTeX Info: Redefining \. on input line 173.
+LaTeX Info: Redefining \% on input line 173.
  [4]
-LaTeX Info: Redefining \. on input line 198.
-LaTeX Info: Redefining \% on input line 198.
+LaTeX Info: Redefining \. on input line 199.
+LaTeX Info: Redefining \% on input line 199.
  [5]
-LaTeX Info: Redefining \. on input line 226.
-LaTeX Info: Redefining \% on input line 226.
+LaTeX Info: Redefining \. on input line 227.
+LaTeX Info: Redefining \% on input line 227.
  [6]
-LaTeX Info: Redefining \. on input line 236.
-LaTeX Info: Redefining \% on input line 236.
+LaTeX Info: Redefining \. on input line 237.
+LaTeX Info: Redefining \% on input line 237.
  [7]
-LaTeX Info: Redefining \. on input line 236.
-LaTeX Info: Redefining \% on input line 236.
+LaTeX Info: Redefining \. on input line 237.
+LaTeX Info: Redefining \% on input line 237.
  [8
 
 ]
@@ -686,68 +686,68 @@ Cap\'{\i }tulo 2.
 File: micromecatronica.jpg Graphic file (type jpg)
 
 <use micromecatronica.jpg>
-Package pdftex.def Info: micromecatronica.jpg used on input line 267.
+Package pdftex.def Info: micromecatronica.jpg used on input line 268.
 (pdftex.def)             Requested size: 325.215pt x 200.14084pt.
-LaTeX Info: Redefining \. on input line 278.
-LaTeX Info: Redefining \% on input line 278.
+LaTeX Info: Redefining \. on input line 279.
+LaTeX Info: Redefining \% on input line 279.
  [10 <./micromecatronica.jpg>]
 <mems1.jpg, id=67, 125.71968pt x 125.71968pt>
 File: mems1.jpg Graphic file (type jpg)
  <use mems1.jpg>
-Package pdftex.def Info: mems1.jpg used on input line 281.
+Package pdftex.def Info: mems1.jpg used on input line 282.
 (pdftex.def)             Requested size: 216.81pt x 216.81102pt.
-LaTeX Info: Redefining \. on input line 294.
-LaTeX Info: Redefining \% on input line 294.
+LaTeX Info: Redefining \. on input line 295.
+LaTeX Info: Redefining \% on input line 295.
  [11 <./mems1.jpg>]
-LaTeX Info: Redefining \. on input line 324.
-LaTeX Info: Redefining \% on input line 324.
+LaTeX Info: Redefining \. on input line 325.
+LaTeX Info: Redefining \% on input line 325.
  [12] <mecatronica.jpg, id=74, 268.75406pt x 273.27094pt>
 File: mecatronica.jpg Graphic file (type jpg)
 
 <use mecatronica.jpg>
-Package pdftex.def Info: mecatronica.jpg used on input line 327.
+Package pdftex.def Info: mecatronica.jpg used on input line 328.
 (pdftex.def)             Requested size: 289.07999pt x 293.9398pt.
  <sistemamecatronico.jpg, id=75, 342.5297pt x 234.8775pt>
 File: sistemamecatronico.jpg Graphic file (type jpg)
 
 <use sistemamecatronico.jpg>
-Package pdftex.def Info: sistemamecatronico.jpg used on input line 336.
+Package pdftex.def Info: sistemamecatronico.jpg used on input line 337.
 (pdftex.def)             Requested size: 289.07999pt x 198.24191pt.
-LaTeX Info: Redefining \. on input line 347.
-LaTeX Info: Redefining \% on input line 347.
+LaTeX Info: Redefining \. on input line 348.
+LaTeX Info: Redefining \% on input line 348.
  [13 <./mecatronica.jpg>]
-LaTeX Info: Redefining \. on input line 355.
-LaTeX Info: Redefining \% on input line 355.
+LaTeX Info: Redefining \. on input line 356.
+LaTeX Info: Redefining \% on input line 356.
  [14 <./sistemamecatronico.jpg>] <sistemamecatronico2.jpg, id=83, 334.24875pt x
  209.28188pt>
 File: sistemamecatronico2.jpg Graphic file (type jpg)
 
 <use sistemamecatronico2.jpg>
-Package pdftex.def Info: sistemamecatronico2.jpg used on input line 362.
+Package pdftex.def Info: sistemamecatronico2.jpg used on input line 363.
 (pdftex.def)             Requested size: 289.07999pt x 181.01353pt.
-LaTeX Info: Redefining \. on input line 372.
-LaTeX Info: Redefining \% on input line 372.
+LaTeX Info: Redefining \. on input line 373.
+LaTeX Info: Redefining \% on input line 373.
  [15 <./sistemamecatronico2.jpg>]
 <sistemadinamico.jpg, id=87, 338.01282pt x 208.52907pt>
 File: sistemadinamico.jpg Graphic file (type jpg)
 
 <use sistemadinamico.jpg>
-Package pdftex.def Info: sistemadinamico.jpg used on input line 375.
+Package pdftex.def Info: sistemadinamico.jpg used on input line 376.
 (pdftex.def)             Requested size: 289.07999pt x 178.34511pt.
-LaTeX Info: Redefining \. on input line 390.
-LaTeX Info: Redefining \% on input line 390.
+LaTeX Info: Redefining \. on input line 391.
+LaTeX Info: Redefining \% on input line 391.
  [16 <./sistemadinamico.jpg>]
 <observables.jpg, id=91, 338.76563pt x 238.64156pt>
 File: observables.jpg Graphic file (type jpg)
  <use observables.jpg>
-Package pdftex.def Info: observables.jpg used on input line 393.
+Package pdftex.def Info: observables.jpg used on input line 394.
 (pdftex.def)             Requested size: 289.07999pt x 203.64737pt.
-LaTeX Info: Redefining \. on input line 414.
-LaTeX Info: Redefining \% on input line 414.
+LaTeX Info: Redefining \. on input line 415.
+LaTeX Info: Redefining \% on input line 415.
 
 [17 <./observables.jpg>]
-LaTeX Info: Redefining \. on input line 425.
-LaTeX Info: Redefining \% on input line 425.
+LaTeX Info: Redefining \. on input line 426.
+LaTeX Info: Redefining \% on input line 426.
  [18]
 Cap\'{\i }tulo 3.
 [19
@@ -755,76 +755,76 @@ Cap\'{\i }tulo 3.
 ] <resorte.jpg, id=103, 194.22563pt x 207.77625pt>
 File: resorte.jpg Graphic file (type jpg)
  <use resorte.jpg>
-Package pdftex.def Info: resorte.jpg used on input line 458.
+Package pdftex.def Info: resorte.jpg used on input line 459.
 (pdftex.def)             Requested size: 144.54pt x 154.62703pt.
-LaTeX Info: Redefining \. on input line 469.
-LaTeX Info: Redefining \% on input line 469.
+LaTeX Info: Redefining \. on input line 470.
+LaTeX Info: Redefining \% on input line 470.
 
 [20 <./resorte.jpg>]
-LaTeX Info: Redefining \. on input line 529.
-LaTeX Info: Redefining \% on input line 529.
+LaTeX Info: Redefining \. on input line 530.
+LaTeX Info: Redefining \% on input line 530.
  [21]
-LaTeX Info: Redefining \. on input line 576.
-LaTeX Info: Redefining \% on input line 576.
+LaTeX Info: Redefining \. on input line 577.
+LaTeX Info: Redefining \% on input line 577.
  [22] <rueda.jpeg, id=114, 280.04625pt x 187.45032pt>
 File: rueda.jpeg Graphic file (type jpg)
 
 <use rueda.jpeg>
-Package pdftex.def Info: rueda.jpeg used on input line 638.
+Package pdftex.def Info: rueda.jpeg used on input line 639.
 (pdftex.def)             Requested size: 144.54pt x 96.75107pt.
-LaTeX Info: Redefining \. on input line 645.
-LaTeX Info: Redefining \% on input line 645.
+LaTeX Info: Redefining \. on input line 646.
+LaTeX Info: Redefining \% on input line 646.
  [23] <Angulorueda.jpeg, id=119, 270.25969pt x 236.38312pt>
 File: Angulorueda.jpeg Graphic file (type jpg)
 
 <use Angulorueda.jpeg>
-Package pdftex.def Info: Angulorueda.jpeg used on input line 674.
+Package pdftex.def Info: Angulorueda.jpeg used on input line 675.
 (pdftex.def)             Requested size: 144.54pt x 126.42584pt.
-LaTeX Info: Redefining \. on input line 683.
-LaTeX Info: Redefining \% on input line 683.
+LaTeX Info: Redefining \. on input line 684.
+LaTeX Info: Redefining \% on input line 684.
  [24 <./rueda.jpeg>]
-LaTeX Info: Redefining \. on input line 733.
-LaTeX Info: Redefining \% on input line 733.
+LaTeX Info: Redefining \. on input line 734.
+LaTeX Info: Redefining \% on input line 734.
  [25 <./Angulorueda.jpeg>]
-LaTeX Info: Redefining \. on input line 777.
-LaTeX Info: Redefining \% on input line 777.
+LaTeX Info: Redefining \. on input line 778.
+LaTeX Info: Redefining \% on input line 778.
  [26]
 <hemisferio.jpg, id=130, 249.18094pt x 123.46124pt>
 File: hemisferio.jpg Graphic file (type jpg)
  <use hemisferio.jpg>
-Package pdftex.def Info: hemisferio.jpg used on input line 787.
+Package pdftex.def Info: hemisferio.jpg used on input line 788.
 (pdftex.def)             Requested size: 144.54pt x 71.61697pt.
-LaTeX Info: Redefining \. on input line 803.
-LaTeX Info: Redefining \% on input line 803.
+LaTeX Info: Redefining \. on input line 804.
+LaTeX Info: Redefining \% on input line 804.
 
 [27 <./hemisferio.jpg>]
 <Potencialhemisferio.jpg, id=134, 234.8775pt x 270.25969pt>
 File: Potencialhemisferio.jpg Graphic file (type jpg)
 
 <use Potencialhemisferio.jpg>
-Package pdftex.def Info: Potencialhemisferio.jpg used on input line 806.
+Package pdftex.def Info: Potencialhemisferio.jpg used on input line 807.
 (pdftex.def)             Requested size: 144.54pt x 166.31387pt.
-LaTeX Info: Redefining \. on input line 829.
-LaTeX Info: Redefining \% on input line 829.
+LaTeX Info: Redefining \. on input line 830.
+LaTeX Info: Redefining \% on input line 830.
  [28 <./Potencialhemisferio.jpg>]
-LaTeX Info: Redefining \. on input line 848.
-LaTeX Info: Redefining \% on input line 848.
+LaTeX Info: Redefining \. on input line 849.
+LaTeX Info: Redefining \% on input line 849.
  [29]
-LaTeX Info: Redefining \. on input line 848.
-LaTeX Info: Redefining \% on input line 848.
+LaTeX Info: Redefining \. on input line 849.
+LaTeX Info: Redefining \% on input line 849.
  [30
 
 ]
 Cap\'{\i }tulo 4.
 [31]
-LaTeX Info: Redefining \. on input line 914.
-LaTeX Info: Redefining \% on input line 914.
+LaTeX Info: Redefining \. on input line 915.
+LaTeX Info: Redefining \% on input line 915.
  [32]
-LaTeX Info: Redefining \. on input line 982.
-LaTeX Info: Redefining \% on input line 982.
+LaTeX Info: Redefining \. on input line 983.
+LaTeX Info: Redefining \% on input line 983.
  [33]
-LaTeX Info: Redefining \. on input line 1118.
-LaTeX Info: Redefining \% on input line 1118.
+LaTeX Info: Redefining \. on input line 1119.
+LaTeX Info: Redefining \% on input line 1119.
  [34]
 Cap\'{\i }tulo 5.
 [35
@@ -832,93 +832,93 @@ Cap\'{\i }tulo 5.
 ] <diafasedesa.jpg, id=165, 401.5pt x 401.5pt>
 File: diafasedesa.jpg Graphic file (type jpg)
  <use diafasedesa.jpg>
-Package pdftex.def Info: diafasedesa.jpg used on input line 1209.
+Package pdftex.def Info: diafasedesa.jpg used on input line 1210.
 (pdftex.def)             Requested size: 289.07999pt x 289.09814pt.
-LaTeX Info: Redefining \. on input line 1225.
-LaTeX Info: Redefining \% on input line 1225.
+LaTeX Info: Redefining \. on input line 1226.
+LaTeX Info: Redefining \% on input line 1226.
 
 [36]
-LaTeX Info: Redefining \. on input line 1225.
-LaTeX Info: Redefining \% on input line 1225.
+LaTeX Info: Redefining \. on input line 1226.
+LaTeX Info: Redefining \% on input line 1226.
  [37 <./diafasedesa.jpg>]
-LaTeX Info: Redefining \. on input line 1270.
-LaTeX Info: Redefining \% on input line 1270.
+LaTeX Info: Redefining \. on input line 1271.
+LaTeX Info: Redefining \% on input line 1271.
  [38]
-LaTeX Info: Redefining \. on input line 1326.
-LaTeX Info: Redefining \% on input line 1326.
+LaTeX Info: Redefining \. on input line 1327.
+LaTeX Info: Redefining \% on input line 1327.
  [39]
-LaTeX Info: Redefining \. on input line 1407.
-LaTeX Info: Redefining \% on input line 1407.
+LaTeX Info: Redefining \. on input line 1408.
+LaTeX Info: Redefining \% on input line 1408.
  [40]
-LaTeX Info: Redefining \. on input line 1425.
-LaTeX Info: Redefining \% on input line 1425.
+LaTeX Info: Redefining \. on input line 1426.
+LaTeX Info: Redefining \% on input line 1426.
  [41]
-LaTeX Info: Redefining \. on input line 1425.
-LaTeX Info: Redefining \% on input line 1425.
+LaTeX Info: Redefining \. on input line 1426.
+LaTeX Info: Redefining \% on input line 1426.
  [42
 
 ]
 Cap\'{\i }tulo 6.
 [43]
-LaTeX Info: Redefining \. on input line 1493.
-LaTeX Info: Redefining \% on input line 1493.
+LaTeX Info: Redefining \. on input line 1494.
+LaTeX Info: Redefining \% on input line 1494.
  [44]
 
-LaTeX Warning: Command \textasciicircum invalid in math mode on input line 1593
+LaTeX Warning: Command \textasciicircum invalid in math mode on input line 1594
 .
 
 
-Overfull \hbox (42.442pt too wide) in paragraph at lines 1570--1602
+Overfull \hbox (42.442pt too wide) in paragraph at lines 1571--1603
  [] 
  []
 
-LaTeX Info: Redefining \. on input line 1609.
-LaTeX Info: Redefining \% on input line 1609.
+LaTeX Info: Redefining \. on input line 1610.
+LaTeX Info: Redefining \% on input line 1610.
 [45] <circuitos.jpg, id=200, 672.26157pt x 211.54031pt>
 File: circuitos.jpg Graphic file (type jpg)
  <use circuitos.jpg>
-Package pdftex.def Info: circuitos.jpg used on input line 1613.
+Package pdftex.def Info: circuitos.jpg used on input line 1614.
 (pdftex.def)             Requested size: 289.07999pt x 90.96378pt.
-LaTeX Info: Redefining \. on input line 1620.
-LaTeX Info: Redefining \% on input line 1620.
+LaTeX Info: Redefining \. on input line 1621.
+LaTeX Info: Redefining \% on input line 1621.
 
 [46] <mecanica.jpg, id=204, 389.95688pt x 332.74312pt>
 File: mecanica.jpg Graphic file (type jpg)
  <use mecanica.jpg>
-Package pdftex.def Info: mecanica.jpg used on input line 1637.
+Package pdftex.def Info: mecanica.jpg used on input line 1638.
 (pdftex.def)             Requested size: 289.07999pt x 246.67792pt.
-LaTeX Info: Redefining \. on input line 1646.
-LaTeX Info: Redefining \% on input line 1646.
+LaTeX Info: Redefining \. on input line 1647.
+LaTeX Info: Redefining \% on input line 1647.
 
 [47 <./circuitos.jpg>] <circuito1.jpg, id=208, 397.485pt x 127.22531pt>
 File: circuito1.jpg Graphic file (type jpg)
 
 <use circuito1.jpg>
-Package pdftex.def Info: circuito1.jpg used on input line 1659.
+Package pdftex.def Info: circuito1.jpg used on input line 1660.
 (pdftex.def)             Requested size: 289.07999pt x 92.53008pt.
-LaTeX Info: Redefining \. on input line 1662.
-LaTeX Info: Redefining \% on input line 1662.
+LaTeX Info: Redefining \. on input line 1663.
+LaTeX Info: Redefining \% on input line 1663.
  [48 <./mecanica.jpg>]
 <circuito1planos.jpg, id=212, 375.65344pt x 137.01187pt>
 File: circuito1planos.jpg Graphic file (type jpg)
 
 <use circuito1planos.jpg>
-Package pdftex.def Info: circuito1planos.jpg used on input line 1669.
+Package pdftex.def Info: circuito1planos.jpg used on input line 1670.
 (pdftex.def)             Requested size: 289.07999pt x 105.44301pt.
-LaTeX Info: Redefining \. on input line 1684.
-LaTeX Info: Redefining \% on input line 1684.
+LaTeX Info: Redefining \. on input line 1685.
+LaTeX Info: Redefining \% on input line 1685.
  [49 <./circuito1.jpg> <./circuito1planos.jpg>]
 <sistemamecanico1.jpg, id=217, 402.00188pt x 158.84344pt>
 File: sistemamecanico1.jpg Graphic file (type jpg)
 
 <use sistemamecanico1.jpg>
-Package pdftex.def Info: sistemamecanico1.jpg used on input line 1705.
+Package pdftex.def Info: sistemamecanico1.jpg used on input line 1706.
 (pdftex.def)             Requested size: 289.07999pt x 114.22418pt.
-LaTeX Info: Redefining \. on input line 1728.
-LaTeX Info: Redefining \% on input line 1728.
+LaTeX Info: Redefining \. on input line 1729.
+LaTeX Info: Redefining \% on input line 1729.
  [50 <./sistemamecanico1.jpg>]
-LaTeX Info: Redefining \. on input line 1756.
-LaTeX Info: Redefining \% on input line 1756.
+LaTeX Info: Redefining \. on input line 1757.
+LaTeX Info: Redefining \% on input line 1757.
 
 Overfull \hbox (44.32945pt too wide) has occurred while \output is active
 \T1/cmr/m/sl/12 6.4.  EJEMPLO 2: MODELO LINEAL EN FRECUENCIA DE UN SISTEMA MECÁ
@@ -926,15 +926,15 @@ NICO \T1/cmr/m/n/12 51
  []
 
 [51]
-LaTeX Info: Redefining \. on input line 1756.
-LaTeX Info: Redefining \% on input line 1756.
+LaTeX Info: Redefining \. on input line 1757.
+LaTeX Info: Redefining \% on input line 1757.
  [52
 
 ]
 Cap\'{\i }tulo 7.
 [53]
-LaTeX Info: Redefining \. on input line 1761.
-LaTeX Info: Redefining \% on input line 1761.
+LaTeX Info: Redefining \. on input line 1762.
+LaTeX Info: Redefining \% on input line 1762.
  [54
 
 ] (./MNA.aux
@@ -972,7 +972,7 @@ st/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2016/texmf-dist
 /fonts/type1/public/cm-super/sfsl1200.pfb></usr/local/texlive/2016/texmf-dist/f
 onts/type1/public/cm-super/sfti1200.pfb></usr/local/texlive/2016/texmf-dist/fon
 ts/type1/public/cm-super/sfxc1200.pfb>
-Output written on MNA.pdf (60 pages, 651365 bytes).
+Output written on MNA.pdf (60 pages, 651350 bytes).
 PDF statistics:
  306 PDF objects out of 1000 (max. 8388607)
  201 compressed objects within 3 object streams
