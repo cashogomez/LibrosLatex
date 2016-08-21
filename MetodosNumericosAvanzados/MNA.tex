@@ -421,7 +421,61 @@ Un sistema dinámico se dice que es lineal si y solo si cumple con el principio 
 Si $u_1(t)$ es una señal de entrada a un sistema y su señal de salida es $y_1(t)$ y si además $u_2 (t)$ entra al mismo sistema y su salida es $y_2 (t)$ entonces sea $\alpha u_1(t)+ \beta u_2 (t)$ la entrada al sistema, la salida será $\alpha y_1 (t)+ \beta y_2 (t)$, $\forall \alpha \beta \in \Re$.
 \end{dfn}
 
+\chapter{Variables de estado}
+Las  variables de estado es un método muy común de análisis y control de sistemas. Una manera de pensar en los estados es que son formas de energía existente en un sistema. Otra forma de pensar es que son un conjunto de valores y condiciones determinados que predicen como el sistema se comportará en el tiempo...en otras palabras tener un modelo del sistema predice su comportamiento, es generalmente necesario especificar condiciones iniciales. Este conjunto de condiciones iniciales son generalmente los estados.
 
+\begin{figure}
+\centering
+\includegraphics[width=5in]{hover_rocket_1.png}
+\caption{Cohete}
+\label{fig800}
+\end{figure}
+
+Se define la velocidad de un cohete $v$ y la aceleración $a$ como positiva cuando van hacia arriba al igual a como se define la altura $h$.
+
+\begin{figure}
+\centering
+\includegraphics[width=5in]{hover_rocket_2.png}
+\caption{Convención de signos del Cohete}
+\label{fig801}
+\end{figure}
+Supongamos que la entrada a nuestro sistema es el empuje del cohete, una fuerza sobre el cohete que proviene de algún dispositivo de combustión. Cambiando el enfoque, la señales de control relaciona directamente la aceleración usando la siguiente ecuación:
+
+\begin{equation}
+\label{equ800}
+a[n] = \frac{1}{m}f[n]
+\end{equation}
+
+la cual proviene de la ecuación clásica $f=ma$ donde $f$ es la fuerza en newtons, $m$ es la masa en kilogramos, y $a$ es la aceleración en $m s ^{2}$.
+
+Podemos obtener la ecuación que relaciona la velocidad y la aceleración usando la integración en tiempo discreto. Esto es:
+
+\begin{equation}
+\label{equ801}
+v[n] = v[n-1] + \Delta T a[n-1]
+\end{equation}
+
+Esta ecuación se deriva haciendo una aproximación discreta en el tiempo hacia adelante de una derivada continua
+
+\begin{equation}
+\label{equ802}
+a(t) = \frac{d}{dt}v(t) \approx  \Delta \frac{v(T(t+1))-v(Tt)}{T}
+\end{equation}
+
+
+donde $T$ es la duración de los pasos de tiempo de nuestro sistema en segundos. Convirtiendo la ecuación anterior a notación discreta donde $n$ es el número del paso del tiempo, obtenemos:
+
+\begin{equation}
+\label{equ802}
+a[n] = \frac{v[n+1]-v[n]}{T}
+\end{equation}
+
+después de algunos arreglos:
+
+\begin{equation}
+\label{equ802}
+a[n] = \frac{v[n+1]-v[n]}{T}
+\end{equation}
 
 \chapter{Modelado de sistemas dinámicos}
 

@@ -23,48 +23,49 @@
 \contentsline {section}{\numberline {2.3}El sistema Mecatr\IeC {\'o}nico}{13}
 \contentsline {section}{\numberline {2.4}El sistema din\IeC {\'a}mico}{16}
 \contentsline {subsection}{\numberline {2.4.1}Caracter\IeC {\'\i }stica de un sistema din\IeC {\'a}mico}{18}
-\contentsline {chapter}{\numberline {3}Modelado de sistemas din\IeC {\'a}micos}{19}
-\contentsline {section}{\numberline {3.1}Mec\IeC {\'a}nica Lagrangiana}{19}
-\contentsline {subsection}{\numberline {3.1.1}Ejemplo $1$: Aplicaci\IeC {\'o}n de la M\IeC {\'e}todo Lagrangiano al problema del p\IeC {\'e}ndulo con resorte}{20}
-\contentsline {subsubsection}{Paso 1.- Definir el sistema de referencia}{21}
-\contentsline {subsubsection}{Paso 2.- Obtener las coordenadas del sistema }{21}
-\contentsline {subsubsection}{Paso3.- Derivar las componentes con respecto al tiempo}{21}
-\contentsline {subsubsection}{Paso 4.- calcular la energ\IeC {\'\i }a cin\IeC {\'e}tica y la energ\IeC {\'\i }a potencial}{22}
-\contentsline {subsubsection}{paso 5.- Calcular el Lagrangiano}{22}
-\contentsline {subsubsection}{Paso 6.- Sustituir el Lagrangiano en la ecuaci\IeC {\'o}n de Euler-Lagrange}{22}
-\contentsline {subsection}{\numberline {3.1.2}Ejemplo $2$ : Aplicaci\IeC {\'o}n del M\IeC {\'e}todo de Lagrange al problema de la Rueda }{24}
-\contentsline {subsubsection}{Paso 1.- Definir el sistema de referencia}{24}
-\contentsline {subsubsection}{Paso 2.- Obtener las coordenadas del sistema }{24}
+\contentsline {chapter}{\numberline {3}Variables de estado}{19}
+\contentsline {chapter}{\numberline {4}Modelado de sistemas din\IeC {\'a}micos}{23}
+\contentsline {section}{\numberline {4.1}Mec\IeC {\'a}nica Lagrangiana}{23}
+\contentsline {subsection}{\numberline {4.1.1}Ejemplo $1$: Aplicaci\IeC {\'o}n de la M\IeC {\'e}todo Lagrangiano al problema del p\IeC {\'e}ndulo con resorte}{24}
+\contentsline {subsubsection}{Paso 1.- Definir el sistema de referencia}{25}
+\contentsline {subsubsection}{Paso 2.- Obtener las coordenadas del sistema }{25}
 \contentsline {subsubsection}{Paso3.- Derivar las componentes con respecto al tiempo}{25}
-\contentsline {subsubsection}{Paso 4.- calcular la energ\IeC {\'\i }a cin\IeC {\'e}tica y la energ\IeC {\'\i }a potencial}{25}
+\contentsline {subsubsection}{Paso 4.- calcular la energ\IeC {\'\i }a cin\IeC {\'e}tica y la energ\IeC {\'\i }a potencial}{26}
 \contentsline {subsubsection}{paso 5.- Calcular el Lagrangiano}{26}
 \contentsline {subsubsection}{Paso 6.- Sustituir el Lagrangiano en la ecuaci\IeC {\'o}n de Euler-Lagrange}{26}
-\contentsline {section}{\numberline {3.2}Fuerzas Restrictivas}{27}
-\contentsline {subsection}{\numberline {3.2.1}Ejemplo de fuerza restrictiva}{27}
-\contentsline {subsubsection}{C\IeC {\'a}lculo de las fuerzas rectrictivas}{28}
-\contentsline {section}{\numberline {3.3}Cambio de coordenadas}{29}
-\contentsline {chapter}{\numberline {4}Linealizaci\IeC {\'o}n}{31}
-\contentsline {section}{\numberline {4.1}Linealizaci\IeC {\'o}n}{31}
-\contentsline {section}{\numberline {4.2}Pasos para la linealizaci\IeC {\'o}n}{32}
-\contentsline {subsection}{\numberline {4.2.1}Ejemplo 1: Sistema de dos variables de estado}{33}
-\contentsline {subsubsection}{Paso1.- Encontrar las funciones $f$ y $g$}{33}
-\contentsline {subsubsection}{Paso 2.- Encontrar los puntos de equilibrio}{33}
-\contentsline {subsubsection}{Paso 3.- Calcular el Jacobiano}{33}
-\contentsline {chapter}{\numberline {5}Modelado en el dominio del tiempo}{35}
-\contentsline {section}{\numberline {5.1}Sistema lineal desacoplado}{35}
-\contentsline {section}{\numberline {5.2}Problemas}{36}
-\contentsline {subsection}{\numberline {5.2.1}Problema 1}{38}
-\contentsline {subsection}{\numberline {5.2.2}Problema 2}{38}
-\contentsline {section}{\numberline {5.3}Diagonalizaci\IeC {\'o}n}{39}
-\contentsline {subsection}{\numberline {5.3.1}Caso 1: Los eigenvalores reales y diferentes de $A$}{39}
-\contentsline {subsubsection}{Ejemplo}{39}
-\contentsline {subsection}{\numberline {5.3.2}Caso 2: Los eigenvalores reales y repetidos}{41}
-\contentsline {chapter}{\numberline {6}Modelado en el dominio de la frecuencia}{43}
-\contentsline {section}{\numberline {6.1}La transformada de Laplace}{43}
-\contentsline {section}{\numberline {6.2}Funci\IeC {\'o}n transferencia}{44}
-\contentsline {section}{\numberline {6.3}Ejemplos de modelado en la frecuencia}{46}
-\contentsline {subsection}{\numberline {6.3.1}Ejemplo 1: Funci\IeC {\'o}n transferencia de un circuito el\IeC {\'e}ctrico}{49}
-\contentsline {subsubsection}{Paso 1, 2 y 3: Sustituimos los valores de los elementos con sus impedancias, las fuentes y asignamos corrientes}{49}
-\contentsline {subsubsection}{Paso 4, 5 y 7}{49}
-\contentsline {section}{\numberline {6.4}Ejemplo 2: Modelo lineal en frecuencia de un sistema mec\IeC {\'a}nico}{50}
-\contentsline {chapter}{\numberline {7}An\IeC {\'a}lisis de un sistema completo}{53}
+\contentsline {subsection}{\numberline {4.1.2}Ejemplo $2$ : Aplicaci\IeC {\'o}n del M\IeC {\'e}todo de Lagrange al problema de la Rueda }{28}
+\contentsline {subsubsection}{Paso 1.- Definir el sistema de referencia}{28}
+\contentsline {subsubsection}{Paso 2.- Obtener las coordenadas del sistema }{28}
+\contentsline {subsubsection}{Paso3.- Derivar las componentes con respecto al tiempo}{29}
+\contentsline {subsubsection}{Paso 4.- calcular la energ\IeC {\'\i }a cin\IeC {\'e}tica y la energ\IeC {\'\i }a potencial}{29}
+\contentsline {subsubsection}{paso 5.- Calcular el Lagrangiano}{30}
+\contentsline {subsubsection}{Paso 6.- Sustituir el Lagrangiano en la ecuaci\IeC {\'o}n de Euler-Lagrange}{30}
+\contentsline {section}{\numberline {4.2}Fuerzas Restrictivas}{31}
+\contentsline {subsection}{\numberline {4.2.1}Ejemplo de fuerza restrictiva}{31}
+\contentsline {subsubsection}{C\IeC {\'a}lculo de las fuerzas rectrictivas}{32}
+\contentsline {section}{\numberline {4.3}Cambio de coordenadas}{33}
+\contentsline {chapter}{\numberline {5}Linealizaci\IeC {\'o}n}{35}
+\contentsline {section}{\numberline {5.1}Linealizaci\IeC {\'o}n}{35}
+\contentsline {section}{\numberline {5.2}Pasos para la linealizaci\IeC {\'o}n}{36}
+\contentsline {subsection}{\numberline {5.2.1}Ejemplo 1: Sistema de dos variables de estado}{37}
+\contentsline {subsubsection}{Paso1.- Encontrar las funciones $f$ y $g$}{37}
+\contentsline {subsubsection}{Paso 2.- Encontrar los puntos de equilibrio}{37}
+\contentsline {subsubsection}{Paso 3.- Calcular el Jacobiano}{37}
+\contentsline {chapter}{\numberline {6}Modelado en el dominio del tiempo}{39}
+\contentsline {section}{\numberline {6.1}Sistema lineal desacoplado}{39}
+\contentsline {section}{\numberline {6.2}Problemas}{40}
+\contentsline {subsection}{\numberline {6.2.1}Problema 1}{42}
+\contentsline {subsection}{\numberline {6.2.2}Problema 2}{42}
+\contentsline {section}{\numberline {6.3}Diagonalizaci\IeC {\'o}n}{43}
+\contentsline {subsection}{\numberline {6.3.1}Caso 1: Los eigenvalores reales y diferentes de $A$}{43}
+\contentsline {subsubsection}{Ejemplo}{43}
+\contentsline {subsection}{\numberline {6.3.2}Caso 2: Los eigenvalores reales y repetidos}{45}
+\contentsline {chapter}{\numberline {7}Modelado en el dominio de la frecuencia}{47}
+\contentsline {section}{\numberline {7.1}La transformada de Laplace}{47}
+\contentsline {section}{\numberline {7.2}Funci\IeC {\'o}n transferencia}{48}
+\contentsline {section}{\numberline {7.3}Ejemplos de modelado en la frecuencia}{50}
+\contentsline {subsection}{\numberline {7.3.1}Ejemplo 1: Funci\IeC {\'o}n transferencia de un circuito el\IeC {\'e}ctrico}{53}
+\contentsline {subsubsection}{Paso 1, 2 y 3: Sustituimos los valores de los elementos con sus impedancias, las fuentes y asignamos corrientes}{53}
+\contentsline {subsubsection}{Paso 4, 5 y 7}{53}
+\contentsline {section}{\numberline {7.4}Ejemplo 2: Modelo lineal en frecuencia de un sistema mec\IeC {\'a}nico}{54}
+\contentsline {chapter}{\numberline {8}An\IeC {\'a}lisis de un sistema completo}{57}
