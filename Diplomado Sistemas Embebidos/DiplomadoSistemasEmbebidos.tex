@@ -524,6 +524,7 @@ Agregamos el BrowserModule desde @angular/platform-browser al arreglo import. Es
 \section{Agregar main.ts}
 
 Ahora es necesario decirle a Angular que cargue el modulo de aplicación. Para ello se crea el archivo \textbf{app/main.ts} con el siguiente contenido:
+
 \begin{lstlisting}[language=java]
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
@@ -622,6 +623,37 @@ npm start
 \item El compilador TypeScript en \textbf{watch mode}
 \item Un servidor estático llamado \textbf{lite-server} que carga \textbf{index.html} en un navegador y refresca el navegador cuando el archivo cambia
 \end{itemize}
+
+En la figura \ref{fig101} se puede ver la arquitectura general de un proyecto en angular 2.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\linewidth]{angular.png}
+	\caption{Sistema de archivos de Angular 2}
+	\label{fig101}
+\end{figure}
+
+\section{Diseñando una aplicación de ejemplo}
+
+Suponiendo que deseamos agregar datos a nuestra app, para ello agregamos dos componentes a nuestro AppComponent, como \textit{título} y \textit{heroe}.
+
+
+\begin{lstlisting}[language=html]
+export class AppComponent {
+  titulo = 'Listado de SuperHeroes';
+  heroe = 'Superman';
+  }
+  \end{lstlisting}
+
+
+Después se actualiza el formato en la decoración \textit{@Component} con enlace de datos a estas nuevas propiedades
+
+
+\begin{lstlisting}[language=html]
+template: '<h1>{{titulo}}</h1><h2>Detalles del Super Heroe {{heroe}} </h2>'
+  \end{lstlisting}
+  
+  El navegador mostrará ahora el nombre del super héroe. Las dobles llaves le dicen que a nuestra aplicación leer las propiedades \textit{titulo} y \textit{heroe} desde los componentes.
 
 
 

@@ -30,3 +30,4 @@
 \contentsline {section}{\numberline {2.7}Agregar un archivo index.html}{26}{section.2.7}
 \contentsline {subsection}{\numberline {2.7.1}Agregando algo de estilo}{27}{subsection.2.7.1}
 \contentsline {section}{\numberline {2.8}Construir y ejecutar la app}{27}{section.2.8}
+\contentsline {section}{\numberline {2.9}Dise\IeC {\~n}ando una aplicaci\IeC {\'o}n de ejemplo}{27}{section.2.9}
