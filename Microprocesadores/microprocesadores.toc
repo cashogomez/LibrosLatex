@@ -16,21 +16,27 @@
 \contentsline {subsubsection}{Ejemplo 4}{12}
 \contentsline {subsubsection}{Ejemplo 5}{12}
 \contentsline {chapter}{\numberline {2}Estructura B\IeC {\'a}sica de Una computadora}{15}
-\contentsline {section}{\numberline {2.1}Unidad de Control de la Computadora (UCC)}{16}
-\contentsline {section}{\numberline {2.2}Unidad de Procesos Aritm\IeC {\'e}ticos(UPA)}{18}
-\contentsline {section}{\numberline {2.3}Registros Internos}{21}
-\contentsline {section}{\numberline {2.4}Unidad de control de Programa (UCP)}{21}
-\contentsline {section}{\numberline {2.5}Unidad de Control de Interrupciones (UCI)}{22}
-\contentsline {chapter}{\numberline {3}Memoria}{25}
-\contentsline {section}{\numberline {3.1}Principios de funcionamiento}{25}
-\contentsline {subsection}{\numberline {3.1.1}Multivibradores biestables con transistores}{25}
-\contentsline {section}{\numberline {3.2}Almacenamiento de informaci\IeC {\'o}n binaria}{27}
-\contentsline {chapter}{\numberline {4}Una breve historia de la Arquitectura \emph {ARM}}{31}
-\contentsline {section}{\numberline {4.1}Versiones de la Arquitectura}{31}
-\contentsline {section}{\numberline {4.2}Nombres de los Procesadores}{33}
-\contentsline {section}{\numberline {4.3}La filosof\IeC {\'\i }a de dise\IeC {\~n}o RISC}{33}
-\contentsline {section}{\numberline {4.4}Sistemas de Hardware Embebido}{36}
-\contentsline {chapter}{\numberline {5}Dise\IeC {\~n}o Datapath}{39}
-\contentsline {section}{\numberline {5.1}Calculando la m\IeC {\'a}xima frecuencia de Reloj}{39}
-\contentsline {subsection}{\numberline {5.1.1}Retardo de propagaci\IeC {\'o}n de compuertas}{39}
-\contentsline {subsubsection}{Retardos de entrada simples/M\IeC {\'u}ltiples}{40}
+\contentsline {section}{\numberline {2.1}El modelo calculadora de la computaci\IeC {\'o}n}{15}
+\contentsline {section}{\numberline {2.2}El modelo Archivo-Clerk de computaci\IeC {\'o}n}{17}
+\contentsline {subsection}{\numberline {2.2.1}La computadora de almacenamiento de programa}{18}
+\contentsline {subsubsection}{Almacenamiento}{18}
+\contentsline {subsubsection}{Unidad Aritm\IeC {\'e}tico L\IeC {\'o}gica (ALU)}{18}
+\contentsline {subsubsection}{BUS}{18}
+\contentsline {section}{\numberline {2.3}Unidad de Control de la Computadora (UCC)}{21}
+\contentsline {section}{\numberline {2.4}Unidad de Procesos Aritm\IeC {\'e}ticos(UPA)}{23}
+\contentsline {section}{\numberline {2.5}Registros Internos}{26}
+\contentsline {section}{\numberline {2.6}Unidad de control de Programa (UCP)}{26}
+\contentsline {section}{\numberline {2.7}Unidad de Control de Interrupciones (UCI)}{26}
+\contentsline {chapter}{\numberline {3}Memoria}{29}
+\contentsline {section}{\numberline {3.1}Principios de funcionamiento}{29}
+\contentsline {subsection}{\numberline {3.1.1}Multivibradores biestables con transistores}{29}
+\contentsline {section}{\numberline {3.2}Almacenamiento de informaci\IeC {\'o}n binaria}{31}
+\contentsline {chapter}{\numberline {4}Una breve historia de la Arquitectura \emph {ARM}}{35}
+\contentsline {section}{\numberline {4.1}Versiones de la Arquitectura}{35}
+\contentsline {section}{\numberline {4.2}Nombres de los Procesadores}{37}
+\contentsline {section}{\numberline {4.3}La filosof\IeC {\'\i }a de dise\IeC {\~n}o RISC}{37}
+\contentsline {section}{\numberline {4.4}Sistemas de Hardware Embebido}{40}
+\contentsline {chapter}{\numberline {5}Dise\IeC {\~n}o Datapath}{43}
+\contentsline {section}{\numberline {5.1}Calculando la m\IeC {\'a}xima frecuencia de Reloj}{43}
+\contentsline {subsection}{\numberline {5.1.1}Retardo de propagaci\IeC {\'o}n de compuertas}{43}
+\contentsline {subsubsection}{Retardos de entrada simples/M\IeC {\'u}ltiples}{44}

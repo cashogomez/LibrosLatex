@@ -219,6 +219,111 @@ Uno de los motivos del éxito de Angular 1 fue el data binding, pero éste tení
 La arquitectura de una aplicación Angular ahora se realiza mediante componentes. En este caso no se trata de una novedad de la versión 2, ya que en la versión de Angular 1.5 ya se introdujo el desarrollo basado en componentes.
 
 Sin embargo, la componetización no es algo opcional como en Angular 1.5, sino es una obligatoriedad. Los componentes son estancos, no se comunican con el padre a no ser que se haga explícitamente por medio de los mecanismos disponibles, etc. Todo esto genera aplicaciones más mantenibles, donde se encapsula mejor la funcionalidad y cuyo funcionamiento es más previsible. Ahora se evita el acceso universal a cualquier cosa desde cualquier parte del código, vía herencia o cosas como el ``Root Scope'', que permitía en versiones tempranas de Angular modificar cualquier cosa de la aplicación desde cualquier sitio.
+\section{Configurando un proyecto con comandos}
+
+Primero debe crearse una carpeta en donde se almacenará los archivos del proyectoLa inicializar tu proyecto es necesario ejecutar el siguiente comando:
+
+\begin{lstlisting}[language=bash]
+$ npm init --force
+\end{lstlisting}
+
+Si se utiliza el comando anterior se crea el archivo package.json sin preguntar ningún dato, pero si el comando se ejecuta es:
+
+\begin{lstlisting}[language=bash]
+$ npm init 
+\end{lstlisting}
+
+Se  preguntarán  las características del proyecto para la generación del archivo package.json. Además es necesario instalar el tipado de TypeScript y eso se realiza con el comando:
+
+\begin{lstlisting}[language=bash]
+$ npm install typings --save-dev
+\end{lstlisting}
+Lo cual lo instala como librerías de desarrollo en el archivo de package.json. Para instalar Angular entonces se debe ejecutar:
+
+\begin{lstlisting}[language=bash]
+$ npm install angular --save
+\end{lstlisting}
+
+Lo cual instala angular como dependencia normal en el proyecto.
+
+\subsection{Instalando un servidor ligero}
+
+Para instalar un servidor ligero se puede usar:
+
+\begin{lstlisting}[language=bash] 
+$ npm install lite-server --save-dev
+\end{lstlisting}
+
+posteriormente en el archivo package.json se debe insertar (en la sección de scripts):
+
+\begin{lstlisting}[language=bash] 
+"dev": "lite-server"
+\end{lstlisting}
+
+Ahora es necesario crear en el directorio raíz del proyecto un archivo index.html con el siguiente contenido:
+
+
+\begin{lstlisting}[language=html] 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Arranque Basico de Angular</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <h1>Hello, Everyone!</h1>
+  </body>
+</html>
+\end{lstlisting}
+
+
+para que el servidor este funcionando se debe ejecutar el siguiente comando:
+
+\begin{lstlisting}[language=bash] 
+npm run dev
+\end{lstlisting}
+
+
+\subsection{Configuración de TypeScript para Angular}
+
+Dado el archivo \textbf{index.html} es necesario ahora agregar una linea entre los tag <body> y </body> que ejecute un script de javascript como se muestra a continuación:
+
+\begin{lstlisting}[language=html]
+<script type="text/javascript" src="script.js"></script>
+\end{lstlisting}
+
+Para crear el script que se agregó al archivo \textbf{index.html} se crea primero el archivo typescript \textbf{script.ts} como se muestra a continuación y se graba en el directorio raíz.
+
+\begin{lstlisting}[language=html]
+class Greeter {
+  constructor(public greeting: string) {}
+    greet() {
+      return "<h1>" + this.greeting + "</h1>";"
+    }
+}
+
+var greeter = new Greeter("Hola a todos");
+
+var greeting = greeter.greet();
+
+document.body.innerHTML = greeting;
+\end{lstlisting}
+
+Antes de compilar el programa anterior, se configura el TypeScript con el siguiente comando:
+
+\begin{lstlisting}[language=html]
+$ tsc --init 
+\end{lstlisting}
+Lo cual crea el archivo tsconfig.json que permite configurar inicialmente el TypeScript. Posteriormente se compila este archivo con el comando siguiente:
+
+\begin{lstlisting}[language=html]
+$ tsc 
+\end{lstlisting}
+
+lo cual genera el archivo de javascript \textbf{script.js} que se ejecutará en el navegador.
 
 \section{Creando y configurando un proyecto}
 
@@ -657,9 +762,5 @@ template: '<h1>{{titulo}}</h1><h2>Detalles del Super Heroe {{heroe}} </h2>'
 
 
 
-
-
-\bibliographystyle{acm}
-\bibliography{../bibliografia}
 
 \end{document}

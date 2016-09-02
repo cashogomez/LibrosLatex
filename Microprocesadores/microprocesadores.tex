@@ -438,6 +438,101 @@ A continuación se muestran los diagramas de tiempos cuando X es igual a 1.
 
 \chapter{Estructura Básica de Una computadora}
 
+Las computadoras modernas vienen en todas la formas y tamaños , y nos ayudan a realizar millones de diferentes tipos de tareas desde tareas serias como el control de tráfico aéreo hasta investigación de cáncer y tareas no serias como los juegos de computadoras y retoque por computadoras.
+ En el corazón de las computadoras modernas esta el microprocesador, también llamado Unidad Central de Procesamiento, un delgado, cuadrado de silicio que esta hecho de una red microscópica de compuertas y canales sobre los cuales circula la electricidad. Esta red de compuertas (transistores) y canales (alambres o lineas) es una pequeña versión del tipo de circuitería que vemos cuando un viejo control de TV se rompe o un viejo radio. En resumen, el microprocesador no es solamente el corazón de las computadoras modernas, es una computadora por dentro y por fuera en si mismo. 
+ 
+ \section{El modelo calculadora de la computación}
+ En la figura \ref{fig100} es un resumen gráfico de lo que una computadora hace. De manera general, una computadora toma de flujo de instrucciones (código) y un flujo de datos como entradas, y produce un flujo de resultados de salida. Inicialmente podemos considerar que un flujo de código consiste de diferentes tipos de operaciones aritméticas y el flujo de datos consiste en datos sobre los cuales se realizarán esas operaciones. El flujo de salida, entonces, es hecho de los resultados de estas operaciones. Se puede también decir que el flujo de salida comienza cuando los operadores en el flujo de código son aplicados sobre los operandos del flujo de datos.
+ 
+ \begin{figure}
+\centering
+\includegraphics[width=3.5in]{compu_modelo1.png}
+\caption{Modelo simple de una computadora.}
+\label{fig100}
+\end{figure}
+ 
+Para mostrar este punto, imaginemos que las pequeñas cajas negras en los flujos de la figura \ref{fig100} es el operador de suma (aun signo +) y dos de los cajas blancas contienen dos enteros que serán sumados como se muestra en la figura \ref{fig101}
+
+ \begin{figure}
+\centering
+\includegraphics[width=3.5in]{suma.png}
+\caption{Ejemplo de la suma en la computadora simple}
+\label{fig101}
+\end{figure}
+
+
+Es posible imaginar que las cajas blancas y negras con las teclas de una calculadora, con las cajas blancas siendo números y las negras siendo operadores, la caja gris son los resultados que aparecen en las pantallas de la calculadora.
+
+El tipo de calculadora simple descrita representa la serie de cosas que pensamos que una computadora realiza: como una calculadora de bolsillo, la computadora toma números y operadores aritméticos (tales como +, -, /, x, etc) como entradas, realiza las operaciones requeridas y despliega los resultados.
+
+\section{El modelo Archivo-Clerk de computación}
+
+El modelo ``calculadora'' de la computación es útil en muchos aspectos no es el único o ni siquiera la mejor manera de pensar acerca de lo que las computadoras hacen. Como alternativa, considere la siguiente definición de una computadora:
+
+
+\begin{quotation}
+Una computadora es un dispositivo que maneja números de un lugar a otro, leer, escribir , borrar y volver a escribir números diferentes en diferentes lugares de acuerdo con un conjunto de entradas , un conjunto fijo de reglas para procesar esas entradas , y la historia previa de todos los insumos que el ordenador ha visto desde el último reinicio , hasta que un conjunto predefinido de criterios se cumplen que hacer que el equipo se detenga .
+
+\end{quotation}
+
+
+
+Nosotros al igual que Richard Feynman, llamaremos a esta idea de una computadora como un lector, escritor y modificador de números el modelo de archivos-clerk de computación, la computadora accede a una almacenamiento grande (teóricamente infinito) de números arreglados secuencialmente para el propósito de alterar ese almacenamiento y alcanzar el resultado deseado. Una vez alcanzado el resultado deseado, la computadora se detiene de tal forma que el ahora almacenamiento alterado de los números puede ser leído e interpretado por humanos.
+
+El modelo Archivo-Clerk de computación enfatiza el producto final de la computación mas que la computación en si misma. Esta manera de mirar la computación es poderosa ya que el propósito de la computación no es solo calcular en lo abstracto, sino en producir resultados útiles dado un conjunto de datos.
+
+En conjunto, una computadora es un dispositivo que lee, modifica y escribe una secuencia de números. Estas tres funciones - leer, modificar y escribir - son las tres funciones mas fundamentales que una computadora puede realizar, y todos los componentes de la máuina son diseñados para llevar a cabo estas treas. Esta secuencia leer-modificar-escribir actualmente es al puntos central de la definición del modelo de archivos-clerk de una computadora. Segú este modelo la definición quedaría así:
+
+
+
+\begin{quotation}
+
+Una computadora es un dispositivo que maneja números desde un lugar a otro, leyendo, escribiendo, borrando y reescribiendo diferentes números en diferentes localidades de acuerdo a un conjunto de entradas (leer), a un conjunto de reglas para procesar esas entradas (modificar), y la historia de todas las entradas que la computadora ha manejado desde el último reinicio (escribir), hasta que un conjunto predefinido de criterios se alcanzan y provocan que la computadora se detenga.
+
+
+\end{quotation}
+
+
+
+\subsection{La computadora de almacenamiento de programa}
+
+Todas las computadoras consisten de al menos tres tipos fundamentales de estructuras necesarias para realizar la sequencia  e leer-modificar-escribir:
+
+\subsubsection{Almacenamiento}
+
+para decir que una computadora ``Lee'' y ``escribe'' números implica que hay al menos una estructura para retener el número que lee desde alli y escribe allí.
+
+\subsubsection{Unidad Aritmético Lógica (ALU)}
+
+De igual forma, para decir que una computadora ``modifica'' números implica que una computadora tiene dispositivos que realizan operaciones sobre números. Este dispositivo es la ALU, y es la parte de la  computadora que realiza operaciones aritméticas (sumas, restas y asi), sobre números desde el área de almacenamiento. Primero, los números son leídos desde el almacenamiento hacia el puerto de entrada de datos de la ALU. Una vez dentro de la ALU, son modificados de acuerdo con la operación aritmética correspondiente, y entonces son escritos nuevamente en el almacenamiento a través de el puerto de salida de la ALU.
+
+La ALU esta representada en color verde, y es un dispositivo de tres puertos en el centro de la figura \ref{fig100}.
+
+
+\subsubsection{BUS}
+
+Para poder mover números entre la ALU y el almacenamiento, alguna forma de transmitir números se necesita. Asi, la ALU lee y escribe a el almacen de datos a través del bus de datos, el cual es una red de lineas de transmisión para mover los números en la computadora. Las instrucciones viajan a la ALU a través del bus de instrucciones.
+
+
+
+
+
+El flujo de código de figura \ref{fig100} fluye dentro de la ALU en la forma de una secuencia de instrucciones aritméticas (suma, resta, multiplicación y más). Los operandos de estas instrucciones forman el flujo de datos, que fluye sobre el bus de datos desde el área de almacenamiento hacia la ALU. Una vez que la ALU realiza las operaciones indicadas sobre los operandos de entrada, el flujo de salida fluye fuera de la ALU y regresa al área de almacenamiento via el bus de datos. Este proceso continua hasta que el flujo de código entrando a la ALU se detiene. La figura \ref{fig102} muestra una computadora simple con almacenamiento.
+
+
+\begin{figure}
+\centering
+\includegraphics[width=3.5in]{almacenamiento.png}
+\caption{Ejemplo de la computadora simple con almacenamiento}
+\label{fig102}
+\end{figure}
+
+
+
+Los datos entran a la ALU desde un área especial de almacenamiento, pero ¿de donde viene el flujo de código? Es posible suponer que proviene de un teclado de alguna persona sentada en la computadora e introduciendo una secuencia de instrucciones, cada una de las cuales es transmitida al puerto de entrada de código de la ALU, o probablemente el flujo de código es una lista pregrabada de instrucciones que se alimenta a la ALU, una instrucción a la vez, por algún mecanismo manual o automático. La figura \ref{fig102} muestra el flujo de código como una lista pregrabada de instrucciones que es almacenada en un área de almacenamiento especial así como el flujo de datos, y las computadoras modernas almacenan sus flujos de código de esta manera.
+
+
+
 En este capítulo se diseñarán algunos de los componentes que integran una computadora. En la
 figura \ref{fig29} se muestra el diagrama de bloques general de una computadora.
 
